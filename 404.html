@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Off the Trail | STACKLY Adventure Tourism</title>
+  
+  <link rel="icon" type="image/webp" href="assets/images/Brand-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    .error-page-container {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: #070e17;
+      overflow: hidden;
+    }
+
+    .error-bg-parallax {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/images/404-mountain.webp');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.4;
+      z-index: 1;
+    }
+
+    .error-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(7, 14, 23, 0.75) 0%, rgba(7, 14, 23, 0.95) 85%);
+      z-index: 2;
+    }
+
+    .error-content-box {
+      position: relative;
+      z-index: 3;
+      max-width: 680px;
+    }
+
+    .error-code-badge {
+      font-size: clamp(4.5rem, 12vw, 8.5rem);
+      font-weight: 900;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--primary);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.04em;
+      text-shadow: 0 0 35px rgba(56, 189, 248, 0.4);
+    }
+
+    .error-heading {
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .error-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+    }
+
+    .floating-compass-404 {
+      position: absolute;
+      top: 15%;
+      left: 12%;
+      font-size: 3rem;
+      color: rgba(6, 182, 212, 0.3);
+      z-index: 2;
+    }
+
+    .floating-marker-404 {
+      position: absolute;
+      bottom: 20%;
+      right: 15%;
+      font-size: 2.5rem;
+      color: rgba(56, 189, 248, 0.35);
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="error-page-container">
+    <div class="error-bg-parallax"></div>
+    <div class="error-overlay"></div>
+
+    <!-- Floating Decor -->
+    <i class="fa-solid fa-compass floating-adventure-item floating-compass-404"></i>
+    <i class="fa-solid fa-location-dot floating-adventure-item floating-marker-404"></i>
+
+    <div class="error-content-box">
+      <a href="index.html" style="display:inline-block; margin-bottom:1.5rem;">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY" style="height: 48px;">
+      </a>
+
+      <div class="error-code-badge">404</div>
+
+      <div class="section-badge badge-primary" style="margin-bottom: 1rem;">
+        <i class="fa-solid fa-map-location-dot"></i> Trail Lost
+      </div>
+
+      <h1 class="error-heading">Oops! You've Wandered Off the Trail!</h1>
+      <p class="error-desc">
+        The adventure you're looking for seems to be hidden somewhere beyond the mist. Let's get you back on the right path!
+      </p>
+
+      <div style="display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
+        <button class="btn btn-secondary btn-lg" onclick="handleGoBack()">
+          <i class="fa-solid fa-arrow-left"></i> Previous Page
+        </button>
+        <a href="index.html" class="btn btn-primary btn-lg">
+          <i class="fa-solid fa-house"></i> Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    function handleGoBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
+</body>
+</html>

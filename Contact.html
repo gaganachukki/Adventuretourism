@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Plan Your Adventure | STACKLY</title>
+  
+  <link rel="icon" type="image/webp" href="assets/images/Brand-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY Logo" class="brand-logo-img">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="About.html" class="nav-link">About</a></li>
+          <li><a href="Destinations.html" class="nav-link">Destinations</a></li>
+          <li><a href="Services.html" class="nav-link">Services</a></li>
+          <li><a href="Blog.html" class="nav-link">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="Login.html" class="btn-nav-login"><i class="fa-solid fa-user"></i> Login</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu-backdrop"></div>
+  <div class="mobile-menu-drawer">
+    <div>
+      <a href="index.html" class="brand-logo-wrap" style="margin-bottom: 2rem;">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY" style="height: 38px;">
+      </a>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="About.html" class="nav-link">About</a></li>
+        <li><a href="Destinations.html" class="nav-link">Destinations</a></li>
+        <li><a href="Services.html" class="nav-link">Services</a></li>
+          <li><a href="Blog.html" class="nav-link">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link active">Contact</a></li>
+      </ul>
+    </div>
+    <div style="border-top: 1px solid var(--border-glass); padding-top: 1.5rem;">
+      <a href="Login.html" class="btn btn-primary" style="width: 100%;">Login / Register</a>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div id="searchModalOverlay" class="search-modal-overlay">
+    <div class="search-modal-box">
+      <button id="searchModalClose" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="margin-bottom: 1.25rem;">Search Adventures & Packages</h3>
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass search-input-icon"></i>
+        <input type="text" id="globalSearchInput" placeholder="Search by name, region or activity...">
+      </div>
+      <div id="globalSearchResults" class="search-results-list"></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="page-hero" style="background-image: url('assets/images/rishikesh.webp');">
+      <div class="page-hero-content">
+        <span class="section-badge badge-primary"><i class="fa-solid fa-headset"></i> Expedition Support</span>
+        <h1>Let's Plan Your Next Adventure!</h1>
+        <p>
+          Have a destination in mind? Need help choosing a package? Our team is ready to help you plan your next journey.
+        </p>
+      </div>
+    </section>
+
+    <!-- 01 — CONTACT OVERVIEW (3 Support Channels) -->
+    <div class="container">
+      <div class="contact-overview-grid">
+        <div class="overview-card">
+          <div class="overview-icon"><i class="fa-solid fa-compass"></i></div>
+          <span class="badge-difficulty moderate" style="margin-bottom:0.5rem;">Section 01</span>
+          <h3 class="overview-title">General Inquiries</h3>
+          <p class="overview-desc">Questions regarding our destinations, seasons, fitness requirements, and travel gear.</p>
+          <a href="#adventureContactForm" class="overview-link">Inquire Now <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="overview-card">
+          <div class="overview-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+          <span class="badge-difficulty easy" style="margin-bottom:0.5rem;">Section 02</span>
+          <h3 class="overview-title">Travel Consultation</h3>
+          <p class="overview-desc">Connect with senior mountaineers and route leaders for personalized trail planning.</p>
+          <a href="#adventureContactForm" class="overview-link">Book Consultation <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <div class="overview-card">
+          <div class="overview-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <span class="badge-difficulty challenging" style="margin-bottom:0.5rem;">Section 03</span>
+          <h3 class="overview-title">Booking Support</h3>
+          <p class="overview-desc">Assistance with scheduled trip dates, group discounts, gear rental, and cancellations.</p>
+          <a href="#adventureContactForm" class="overview-link">Get Booking Help <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04, 05, 06 — PARTNERSHIP, CONTACT FORM & CONTACT INFO -->
+    <section class="section-padding">
+      <div class="container">
+        <!-- 04: Partnership Banner -->
+        <div style="background: rgba(6, 182, 212, 0.08); border: 1px solid var(--border-accent); border-radius: var(--radius-md); padding: 1.5rem 2rem; margin-bottom: 3.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+          <div>
+            <span class="badge-difficulty easy" style="margin-bottom: 0.4rem;">Section 04 • B2B & Guide Partners</span>
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-top: 0.2rem;">Are you a local outdoor operator or certified guide?</h3>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Partner with STACKLY to host curated expeditions, eco-camps, or technical clinics.</p>
+          </div>
+          <a href="#adventureContactForm" class="btn btn-outline-accent btn-sm">Partner With Us</a>
+        </div>
+
+        <!-- 05 & 06: Form and Contact Details Split Grid -->
+        <div class="contact-main-grid">
+          <!-- 05: Form -->
+          <div class="contact-form-box">
+            <span class="section-badge">Section 05</span>
+            <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem;">Send an Inquiry</h2>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 2rem;">
+              Fill out the details below. Our adventure planning team will review your requirements and respond within 24 hours.
+            </p>
+
+            <form id="adventureContactForm" novalidate>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Full Name *</label>
+                  <input type="text" id="contactName" class="form-control" placeholder="e.g. Rohan Mehra" required>
+                  <div class="form-error"></div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Email Address *</label>
+                  <input type="email" id="contactEmail" class="form-control" placeholder="rohan@example.com" required>
+                  <div class="form-error"></div>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Phone Number *</label>
+                  <input type="tel" id="contactPhone" class="form-control" placeholder="+91 98765 43210" required>
+                  <div class="form-error"></div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Country / Region</label>
+                  <input type="text" id="contactCountry" class="form-control" placeholder="India" value="India">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Destination of Interest *</label>
+                  <select id="contactDestination" class="form-control" required>
+                    <option value="">Select Destination</option>
+                    <option value="Himalayas">Himalayas, India</option>
+                    <option value="Manali">Manali, Himachal Pradesh</option>
+                    <option value="Ladakh">Ladakh, Jammu & Kashmir</option>
+                    <option value="Rishikesh">Rishikesh, Uttarakhand</option>
+                    <option value="Meghalaya">Meghalaya, North East</option>
+                    <option value="Andaman">Andaman Islands</option>
+                    <option value="Nepal">Nepal (Everest / Annapurna)</option>
+                    <option value="Switzerland">Switzerland (Alps)</option>
+                  </select>
+                  <div class="form-error"></div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Adventure Type</label>
+                  <select id="contactAdventureType" class="form-control">
+                    <option value="Trekking">Trekking & Mountaineering</option>
+                    <option value="Rafting">Whitewater River Rafting</option>
+                    <option value="Paragliding">Tandem Paragliding</option>
+                    <option value="Camping">Alpine Glamping & Stargazing</option>
+                    <option value="Scuba">Scuba Diving & Coral Reefs</option>
+                    <option value="Road Trip">High Altitude Road Trip</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Approx Travel Date</label>
+                  <input type="date" id="contactDate" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Number of Travelers</label>
+                  <select id="contactTravelers" class="form-control">
+                    <option value="1">1 Person (Solo)</option>
+                    <option value="2" selected>2 Persons (Couple)</option>
+                    <option value="4">3–5 Persons (Group)</option>
+                    <option value="8">6+ Persons (Expedition Team)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label class="form-label">Estimated Budget</label>
+                  <select id="contactBudget" class="form-control">
+                    <option value="under10k">Under ₹10,000 / person</option>
+                    <option value="10k-25k" selected>₹10,000 – ₹25,000 / person</option>
+                    <option value="25k-50k">₹25,000 – ₹50,000 / person</option>
+                    <option value="luxury">₹50,000+ (Custom Premium)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Subject</label>
+                  <input type="text" id="contactSubject" class="form-control" placeholder="e.g. Winter Snow Trek Inquiries">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Your Message / Travel Requirements *</label>
+                <textarea id="contactMessage" class="form-control" rows="4" placeholder="Tell us about your fitness level, previous trekking experience, or special requests..." required></textarea>
+                <div class="form-error"></div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                <i class="fa-solid fa-paper-plane"></i> Send Travel Inquiry
+              </button>
+            </form>
+          </div>
+
+          <!-- 06: Contact Info Cards -->
+          <div class="contact-info-panel">
+            <span class="section-badge badge-primary">Section 06</span>
+            <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem;">Expedition HQ</h2>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+              Demonstration office contact points and base camp coordinators.
+            </p>
+
+            <div class="info-card">
+              <div class="info-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <h4 class="info-card-title">Base Camp Headquarters</h4>
+                <div class="info-card-text">
+                  STACKLY Adventure Hub, Solang Valley Road, Manali, Himachal Pradesh 175131, India
+                </div>
+              </div>
+            </div>
+
+
+            <div class="info-card">
+              <div class="info-card-icon"><i class="fa-solid fa-map-pin"></i></div>
+              <div>
+                <h4 class="info-card-title">Southern Regional Hub</h4>
+                <div class="info-card-text">
+                  STACKLY Regional Hub, Meyyanur Bypass Road, Salem, Tamil Nadu 636004, India
+                </div>
+              </div>
+            </div>
+            <div class="info-card">
+              <div class="info-card-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <h4 class="info-card-title">Email Us Directly</h4>
+                <div class="info-card-text">
+                  inquiries@stacklyadventure.com<br>
+                  support@stacklyadventure.com
+                </div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <h4 class="info-card-title">Emergency & Inquiries Hotline</h4>
+                <div class="info-card-text">
+                  +91 (0) 1902 254800 (HQ)<br>
+                  +91 98160 00000 (24/7 Trail Support)
+                </div>
+              </div>
+            </div>
+
+            <div class="info-card">
+              <div class="info-card-icon"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <h4 class="info-card-title">Operational Hours</h4>
+                <div class="info-card-text">
+                  Mon – Sat: 08:00 AM – 08:00 PM IST<br>
+                  Sunday: 09:00 AM – 05:00 PM IST
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- GOOGLE MAP SECTION — SALEM, TAMIL NADU -->
+    <section class="section-padding map-section" id="salemMapSection">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary"><i class="fa-solid fa-map-location-dot"></i> Regional Operations Center</span>
+          <h2 class="section-title">Visit Us in Salem, Tamil Nadu</h2>
+          <p class="section-desc">Gateway to the Shevaroy Hills &amp; Eastern Ghats. Connect with our expedition leaders, test mountaineering gear, and pick up verified trail permits.</p>
+        </div>
+
+        <!-- 3 Feature Detail Cards for Salem Hub -->
+        <div class="map-details-grid">
+          <div class="map-detail-card">
+            <div class="map-detail-icon"><i class="fa-solid fa-building-flag"></i></div>
+            <div>
+              <h4 class="map-detail-title">Regional Hub Address</h4>
+              <div class="map-detail-text">
+                STACKLY Adventure Center, 42/8 Meyyanur Bypass Road, Near Junction &amp; New Bus Stand, Salem, Tamil Nadu 636004, India
+              </div>
+            </div>
+          </div>
+
+          <div class="map-detail-card">
+            <div class="map-detail-icon"><i class="fa-solid fa-compass"></i></div>
+            <div>
+              <h4 class="map-detail-title">Trail Services &amp; Fitting</h4>
+              <div class="map-detail-text">
+                Trek briefings for Yercaud, Kolli Hills, Nilgiris &amp; Western Ghats routes. Petzl gear fitting &amp; equipment dispatch.
+              </div>
+            </div>
+          </div>
+
+          <div class="map-detail-card">
+            <div class="map-detail-icon"><i class="fa-solid fa-phone-volume"></i></div>
+            <div>
+              <h4 class="map-detail-title">Direct Salem Desk</h4>
+              <div class="map-detail-text">
+                Phone: +91 (0427) 244-8800<br>
+                Email: salem.hub@stacklyadventure.com
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Responsive Interactive Google Map Embed Card -->
+        <div class="map-embed-card">
+          <div class="map-iframe-container">
+            <iframe 
+              title="STACKLY Adventure Tourism - Salem, Tamil Nadu Google Map"
+              src="https://maps.google.com/maps?q=Salem%2C%20Tamil%20Nadu&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <div class="map-actions-bar">
+            <div style="display: flex; align-items: center; gap: 0.6rem; color: var(--text-muted); font-size: 0.9rem;">
+              <i class="fa-solid fa-location-dot" style="color: var(--primary);"></i>
+              <span>Coordinates: <strong>11.6643° N, 78.1460° E</strong> (Salem, Tamil Nadu)</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Salem,+Tamil+Nadu" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+                <i class="fa-solid fa-diamond-turn-right"></i> Get Directions
+              </a>
+              <a href="tel:+914272448800" class="btn btn-outline btn-sm" style="border-color: var(--accent); color: var(--accent);">
+                <i class="fa-solid fa-phone"></i> Call Salem Hub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 — FREQUENTLY ASKED QUESTIONS (FAQ Accordion) -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">Section 07 • FAQ</span>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-desc">Everything you need to know about preparing for your STACKLY expedition.</p>
+        </div>
+
+        <div class="faq-accordion">
+          <div class="faq-item active">
+            <div class="faq-header">
+              <h3 class="faq-question">What fitness level is required for high altitude treks?</h3>
+              <div class="faq-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-body">
+              For moderate treks (up to 4,200m), being able to jog 5km in 35-40 minutes is recommended. For challenging treks like Ladakh or winter passes, cardiovascular endurance, stair climbing with a weighted pack, and lung capacity conditioning are crucial. We provide a 4-week training blueprint upon booking.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <h3 class="faq-question">What safety gear and medical provisions are included?</h3>
+              <div class="faq-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-body">
+              Every trek group carries certified portable oxygen cylinders, pulse oximeters for morning and evening vitals checking, hyperbaric safety chambers where required, and comprehensive mountaineering first-aid kits. All guides hold Wilderness First Responder (WFR) certification.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <h3 class="faq-question">What is your cancellation and rescheduling policy?</h3>
+              <div class="faq-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-body">
+              We offer 100% trip credit or date transfers if notified at least 15 days prior to departure. If adverse weather or governmental closures affect the trail, we arrange alternative safe routes or provide full voucher redemption valid for 18 months.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-header">
+              <h3 class="faq-question">Can solo travelers join group expeditions?</h3>
+              <div class="faq-toggle-icon"><i class="fa-solid fa-chevron-down"></i></div>
+            </div>
+            <div class="faq-body">
+              Absolutely! Over 45% of our explorers join solo. We pair solo travelers of the same gender in twin-sharing dome tents, or you can opt for private single tent occupancy at a nominal supplement.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 — FINAL CTA -->
+    <section class="container">
+      <div class="cta-banner-section" style="background-image: url('assets/images/camping.webp');">
+        <div class="cta-banner-content">
+          <span class="section-badge badge-primary">Section 08</span>
+          <h2 style="font-size:var(--fs-h1); font-weight:800; margin:1rem 0 1.25rem;">Your Next Great Journey Starts with a Conversation.</h2>
+          <p style="font-size:1.1rem; line-height:1.7; color:var(--text-muted); margin-bottom:2rem;">
+            Whether you want to climb Himalayan peaks or swim among coral gardens, we’re here to make it happen safely.
+          </p>
+          <div style="display:flex; justify-content:center; gap:1.25rem; flex-wrap:wrap;">
+            <a href="Services.html" class="btn btn-primary btn-lg">Browse Travel Packages</a>
+            <a href="Destinations.html" class="btn btn-secondary btn-lg">Explore All Destinations</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/images/Brand-logo.webp" alt="STACKLY">
+          </a>
+          <p class="footer-desc">
+            Discover extraordinary destinations, experience thrilling adventures, and create unforgettable memories with STACKLY. Your next adventure begins here.
+          </p>
+          <div class="footer-socials">
+            <a href="404.html" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-link"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> About</a></li>
+            <li class="footer-link-item"><a href="Destinations.html"><i class="fa-solid fa-angle-right"></i> Destinations</a></li>
+            <li class="footer-link-item"><a href="Services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+            <li class="footer-link-item"><a href="Blog.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Popular Adventures</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="Services.html?activity=Trekking"><i class="fa-solid fa-angle-right"></i> Mountain Trekking</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Rafting"><i class="fa-solid fa-angle-right"></i> River Rafting</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Paragliding"><i class="fa-solid fa-angle-right"></i> Paragliding</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Camping"><i class="fa-solid fa-angle-right"></i> Camping</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Wildlife"><i class="fa-solid fa-angle-right"></i> Wildlife Safari</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Travel Support</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Travel Guide</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Booking Information</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Safety Guidelines</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Cancellation Policy</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">Copyright &copy; 2026 STACKLY. All Rights Reserved.</div>
+        <div class="footer-legal-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>

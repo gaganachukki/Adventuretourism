@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Destinations — Explore Extraordinary Locations | STACKLY</title>
+  
+  <link rel="icon" type="image/webp" href="assets/images/Brand-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/destinations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY Logo" class="brand-logo-img">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="About.html" class="nav-link">About</a></li>
+          <li><a href="Destinations.html" class="nav-link active">Destinations</a></li>
+          <li><a href="Services.html" class="nav-link">Services</a></li>
+          <li><a href="Blog.html" class="nav-link">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="Login.html" class="btn-nav-login"><i class="fa-solid fa-user"></i> Login</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu-backdrop"></div>
+  <div class="mobile-menu-drawer">
+    <div>
+      <a href="index.html" class="brand-logo-wrap" style="margin-bottom: 2rem;">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY" style="height: 38px;">
+      </a>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="About.html" class="nav-link">About</a></li>
+        <li><a href="Destinations.html" class="nav-link active">Destinations</a></li>
+        <li><a href="Services.html" class="nav-link">Services</a></li>
+          <li><a href="Blog.html" class="nav-link">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <div style="border-top: 1px solid var(--border-glass); padding-top: 1.5rem;">
+      <a href="Login.html" class="btn btn-primary" style="width: 100%;">Login / Register</a>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div id="searchModalOverlay" class="search-modal-overlay">
+    <div class="search-modal-box">
+      <button id="searchModalClose" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="margin-bottom: 1.25rem;">Search Destinations</h3>
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass search-input-icon"></i>
+        <input type="text" id="globalSearchInput" placeholder="Where do you want to explore?">
+      </div>
+      <div id="globalSearchResults" class="search-results-list"></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="page-hero" style="background-image: url('assets/images/ladakh.webp');">
+      <div class="page-hero-content">
+        <span class="section-badge badge-primary"><i class="fa-solid fa-earth-americas"></i> Global Exploration</span>
+        <h1 style="font-size: var(--fs-hero); font-weight: 800; margin-bottom: 1rem;">Discover Places That Take Your Breath Away</h1>
+        <p style="font-size: clamp(1rem, 1.3vw, 1.15rem); color: var(--text-muted); line-height: 1.7;">
+          Explore extraordinary landscapes, hidden destinations, and unforgettable adventure locations across India and international horizons.
+        </p>
+      </div>
+    </section>
+
+    <!-- SEARCH & FILTER STRIP -->
+    <div class="container">
+      <div class="filter-strip">
+        <div class="filter-grid">
+          <div class="filter-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="destSearchInput" placeholder="Search destination by name...">
+          </div>
+          <div>
+            <select id="destRegionSelect" class="form-control" style="background-color: #0e1e34;">
+              <option value="all">All Regions</option>
+              <option value="North India">North India</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jammu & Kashmir">Jammu & Kashmir</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="North East India">North East India</option>
+              <option value="Andaman & Nicobar">Andaman & Nicobar</option>
+              <option value="South India">South India</option>
+              <option value="Western Ghats">Western Ghats</option>
+            </select>
+          </div>
+          <div>
+            <select id="destCategorySelect" class="form-control" style="background-color: #0e1e34;">
+              <option value="all">All Categories</option>
+              <option value="Mountain">Mountain & Snow</option>
+              <option value="River">River & Rafting</option>
+              <option value="Scuba">Beaches & Diving</option>
+              <option value="Waterfalls">Waterfalls & Caves</option>
+              <option value="High Altitude">High Altitude Desert</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" onclick="showToast('Filters Applied', 'Showing matching adventure destinations.', 'accent')">
+            Filter <i class="fa-solid fa-sliders"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 01 — POPULAR DESTINATIONS -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 01</span>
+          <h2 class="section-title">Popular Destinations</h2>
+          <p class="section-desc text-start">The most sought-after adventure hubs rated by thousands of global travelers.</p>
+        </div>
+
+        <div class="destination-grid-standard">
+          <!-- Himalayas -->
+          <div class="dest-card-standard" data-name="Himalayas, India" data-region="North India" data-category="Mountain">
+            <div class="dest-img-wrap">
+              <img src="assets/images/himalayas.webp" alt="Himalayas" loading="lazy">
+              <span class="dest-badge-top">Mountain & Snow</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> North India</div>
+              <h3 class="dest-title">Himalayas, India</h3>
+              <p class="dest-desc">Spectacular high-altitude snow ridges, pristine glaciated valleys, and remote alpine camps.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9 (14k+)</span>
+                <button class="btn btn-primary btn-sm" onclick="openDestinationModal('Himalayas, India', 'North India', 'Mountain Trekking & Snow', 'Dramatic high-altitude peaks, alpine meadows, snow trails, and glaciated passes.', 'assets/images/himalayas.webp')">
+                  View Destination
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manali -->
+          <div class="dest-card-standard" data-name="Manali, India" data-region="Himachal Pradesh" data-category="Mountain River">
+            <div class="dest-img-wrap">
+              <img src="assets/images/manali.webp" alt="Manali" loading="lazy">
+              <span class="dest-badge-top">Alpine & River Valley</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> Himachal Pradesh</div>
+              <h3 class="dest-title">Manali, India</h3>
+              <p class="dest-desc">Pine forests, thrilling whitewater river rafting, tandem paragliding in Solang, and snow trails.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8 (12k+)</span>
+                <button class="btn btn-primary btn-sm" onclick="openDestinationModal('Manali, India', 'Himachal Pradesh', 'Alpine & River Valley', 'Pine forests, river rafting on Beas river, Solang paragliding, and high passes.', 'assets/images/manali.webp')">
+                  View Destination
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ladakh -->
+          <div class="dest-card-standard" data-name="Ladakh, India" data-region="Jammu & Kashmir" data-category="High Altitude">
+            <div class="dest-img-wrap">
+              <img src="assets/images/ladakh.webp" alt="Ladakh" loading="lazy">
+              <span class="dest-badge-top">High Altitude Road Trip</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> Jammu & Kashmir</div>
+              <h3 class="dest-title">Ladakh, India</h3>
+              <p class="dest-desc">Iconic high-altitude passes, ancient cliffside monasteries, and sapphire blue desert lakes.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9 (18k+)</span>
+                <button class="btn btn-primary btn-sm" onclick="openDestinationModal('Ladakh, India', 'Jammu & Kashmir', 'High Altitude Desert', 'Khardung La, Pangong Tso, Nubra Valley sand dunes, and road trips.', 'assets/images/ladakh.webp')">
+                  View Destination
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rishikesh -->
+          <div class="dest-card-standard" data-name="Rishikesh, India" data-region="Uttarakhand" data-category="River">
+            <div class="dest-img-wrap">
+              <img src="assets/images/rishikesh.webp" alt="Rishikesh" loading="lazy">
+              <span class="dest-badge-top">River Rafting & Camp</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> Uttarakhand</div>
+              <h3 class="dest-title">Rishikesh, India</h3>
+              <p class="dest-desc">White water rapids, bungee jumping platforms, and riverside starlight camping along the holy river.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.7 (9k+)</span>
+                <button class="btn btn-primary btn-sm" onclick="openDestinationModal('Rishikesh, India', 'Uttarakhand', 'Whitewater Rafting & Camping', 'Grade IV rapids, bungee jumping, cliff jumps, and beach camping.', 'assets/images/rishikesh.webp')">
+                  View Destination
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Meghalaya -->
+          <div class="dest-card-standard" data-name="Meghalaya, India" data-region="North East India" data-category="Waterfalls">
+            <div class="dest-img-wrap">
+              <img src="assets/images/meghalaya.webp" alt="Meghalaya" loading="lazy">
+              <span class="dest-badge-top">Waterfalls & Caves</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> North East India</div>
+              <h3 class="dest-title">Meghalaya, India</h3>
+              <p class="dest-desc">Deep forest gorges, double decker living root bridges, emerald canyon rivers, and limestone caves.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8 (8k+)</span>
+                <button class="btn btn-primary btn-sm" onclick="openDestinationModal('Meghalaya, India', 'North East India', 'Waterfalls & Caves', 'Double Decker root bridges in Cherrapunji, crystal Umngot river in Dawki, and Mawsmai caves.', 'assets/images/meghalaya.webp')">
+                  View Destination
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Andaman -->
+          <div class="dest-card-standard" data-name="Andaman Islands, India" data-region="Andaman & Nicobar" data-category="Scuba">
+            <div class="dest-img-wrap">
+              <img src="assets/images/andaman.webp" alt="Andaman Islands" loading="lazy">
+              <span class="dest-badge-top">Scuba & Coral Reefs</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> Andaman & Nicobar</div>
+              <h3 class="dest-title">Andaman Islands, India</h3>
+              <p class="dest-desc">Crystal clear turquoise waters, pristine coral reefs, sea turtle encounters, and white sand beaches.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9 (15k+)</span>
+                <button class="btn btn-primary btn-sm" onclick="openDestinationModal('Andaman Islands, India', 'Andaman & Nicobar', 'Scuba Diving & Coral Islands', 'Pristine coral walls at Havelock, Neil island beaches, and radiant bioluminescence.', 'assets/images/andaman.webp')">
+                  View Destination
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — MOUNTAIN DESTINATIONS (Distinct Split Feature Row Layout) -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge badge-primary">Section 02</span>
+          <h2 class="section-title">Mountain Destinations</h2>
+          <p class="section-desc text-start">Reach elevated heights where glaciers meet the sky.</p>
+        </div>
+
+        <div class="dest-feature-row">
+          <div class="dest-feature-img">
+            <img src="assets/images/trekking.webp" alt="Pir Panjal Range" loading="lazy">
+          </div>
+          <div>
+            <span class="badge-difficulty moderate">Elevation 4,200m</span>
+            <h3 style="font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0 1rem;">Pir Panjal Range, Himachal</h3>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
+              The Pir Panjal mountains offer dramatic ridgelines, glacial tarns like Bhrigu Lake, and demanding high-altitude passes linking Kullu to Lahaul.
+            </p>
+            <a href="Services.html?destination=Manali" class="btn btn-primary btn-sm">Explore Mountain Treks</a>
+          </div>
+        </div>
+
+        <div class="dest-feature-row">
+          <div class="dest-feature-img">
+            <img src="assets/images/mountain-camping.webp" alt="Zanskar Valley" loading="lazy">
+          </div>
+          <div>
+            <span class="badge-difficulty challenging">High-Altitude Wilderness</span>
+            <h3 style="font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0 1rem;">Zanskar Valley, Ladakh</h3>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
+              Remote, wild, and breathtakingly stark. Famous for dramatic river gorges, winter Chadar treks on frozen ice, and cliffside monasteries.
+            </p>
+            <a href="Services.html?destination=Ladakh" class="btn btn-primary btn-sm">Explore Zanskar Expeditions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — BEACH DESTINATIONS -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 03</span>
+          <h2 class="section-title">Beach & Coastal Destinations</h2>
+          <p class="section-desc text-start">Tropical islands, coastal cliffs, and underwater coral sanctuaries.</p>
+        </div>
+
+        <div class="destination-grid-standard">
+          <div class="dest-card-standard" data-name="Radhanagar & Elephant Beach" data-region="Andaman & Nicobar" data-category="Scuba">
+            <div class="dest-img-wrap">
+              <img src="assets/images/andaman.webp" alt="Havelock Island" loading="lazy">
+              <span class="dest-badge-top">Havelock Island</span>
+            </div>
+            <div class="dest-content">
+              <h3 class="dest-title">Radhanagar & Elephant Beach</h3>
+              <p class="dest-desc">Ranked among Asia’s finest beaches. Famous for crystal lagoons, sea turtle nesting grounds, and night kayaking.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+                <a href="Services.html?destination=Andaman" class="btn btn-outline btn-sm">View Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-card-standard" data-name="Bharatpur Coral Reef" data-region="Andaman & Nicobar" data-category="Scuba">
+            <div class="dest-img-wrap">
+              <img src="assets/images/scuba-diving.webp" alt="Neil Island" loading="lazy">
+              <span class="dest-badge-top">Neil Island</span>
+            </div>
+            <div class="dest-content">
+              <h3 class="dest-title">Bharatpur Coral Reef</h3>
+              <p class="dest-desc">Vibrant shallow coral gardens with clownfish, blue sea stars, and calm crystal bays ideal for novice and expert divers.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                <a href="Services.html?destination=Andaman" class="btn btn-outline btn-sm">View Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-card-standard" data-name="Varkala Cliff Beach" data-region="South India" data-category="Scuba">
+            <div class="dest-img-wrap">
+              <img src="assets/images/varkala-beach.webp" alt="Varkala Cliff Beach" loading="lazy">
+              <span class="dest-badge-top">Varkala Cliff</span>
+            </div>
+            <div class="dest-content">
+              <h3 class="dest-title">Varkala & Papanasam Beach</h3>
+              <p class="dest-desc">Iconic red laterite sea cliffs towering over golden sands, famous for coastal surfing breaks, mineral springs, and ocean kayaking.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+                <a href="Services.html?activity=Scuba" class="btn btn-outline btn-sm">View Packages</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 — FOREST & WILDLIFE DESTINATIONS -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge badge-primary">Section 04</span>
+          <h2 class="section-title">Forest & Wildlife Destinations</h2>
+          <p class="section-desc text-start">Immerse yourself in deep ancient forests, mist-shrouded canopies, and legendary wildlife sanctuaries.</p>
+        </div>
+
+        <div class="dest-feature-row">
+          <div class="dest-feature-img">
+            <img src="assets/images/wildlife-safari.webp" alt="Jim Corbett National Park">
+          </div>
+          <div>
+            <span class="badge-difficulty easy">Uttarakhand Wildlife</span>
+            <h3 style="font-size: 1.8rem; font-weight: 700; margin: 0.5rem 0 1rem;">Jim Corbett National Park</h3>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
+              India’s oldest national park, nestled at the foothills of the Himalayas. Home to Bengal tigers, wild elephant herds, and hundreds of exotic birds.
+            </p>
+            <a href="Services.html?activity=Wildlife" class="btn btn-primary btn-sm">Book Safari Expedition</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 — WATERFALL DESTINATIONS -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 05</span>
+          <h2 class="section-title">Waterfall Destinations</h2>
+          <p class="section-desc text-start">Cascades plunging through lush green rainforest valleys and limestone canyons.</p>
+        </div>
+
+        <div class="destination-grid-standard">
+          <div class="dest-card-standard" data-name="Nohkalikai & Rainbow Falls" data-region="North East India" data-category="Waterfalls">
+            <div class="dest-img-wrap">
+              <img src="assets/images/meghalaya.webp" alt="Nohkalikai Falls" loading="lazy">
+              <span class="dest-badge-top">Cherrapunji</span>
+            </div>
+            <div class="dest-content">
+              <h3 class="dest-title">Nohkalikai & Rainbow Falls</h3>
+              <p class="dest-desc">Plunging 340 meters into an azure blue canyon pool, surrounded by dense evergreen subtropical forests.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+                <a href="Services.html?destination=Meghalaya" class="btn btn-outline btn-sm">Explore Trails</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-card-standard" data-name="Wei Sawdong Canyon Cascades" data-region="North East India" data-category="Waterfalls">
+            <div class="dest-img-wrap">
+              <img src="assets/images/gallery-7.webp" alt="Wei Sawdong Falls" loading="lazy">
+              <span class="dest-badge-top">Three-Tiered Falls</span>
+            </div>
+            <div class="dest-content">
+              <h3 class="dest-title">Wei Sawdong Canyon Cascades</h3>
+              <p class="dest-desc">A dramatic three-tiered emerald pool tucked deep inside a boulder-strewn canyon reached by wooden bamboo ladders.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+                <a href="Services.html?destination=Meghalaya" class="btn btn-outline btn-sm">Explore Trails</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="dest-card-standard" data-name="Dudhsagar Four-Tiered Falls" data-region="Western Ghats" data-category="Waterfalls">
+            <div class="dest-img-wrap">
+              <img src="assets/images/dudhsagar-falls.webp" alt="Dudhsagar Falls" loading="lazy">
+              <span class="dest-badge-top">Western Ghats</span>
+            </div>
+            <div class="dest-content">
+              <h3 class="dest-title">Dudhsagar Four-Tiered Falls</h3>
+              <p class="dest-desc">One of India’s highest waterfalls surging 310 meters down sheer granite cliffs through dense tropical rainforest biospheres.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+                <a href="Services.html?activity=Trekking" class="btn btn-outline btn-sm">Explore Trails</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 — INTERNATIONAL ADVENTURES (International Banner Cards) -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary">Section 06</span>
+          <h2 class="section-title">International Adventures</h2>
+          <p class="section-desc">Global bucket-list expeditions curated with STACKLY certified partners.</p>
+        </div>
+
+        <div class="dest-intl-grid">
+          <div class="dest-intl-card" onclick="openDestinationModal('Nepal Himalayas', 'Nepal', 'Everest Base Camp & Annapurna', 'Walk in the shadow of Mount Everest, pass prayer flags on high suspension bridges, and experience Sherpa culture.', 'assets/images/nepal.webp')">
+            <img src="assets/images/nepal.webp" alt="Nepal" loading="lazy">
+            <div class="dest-intl-content">
+              <div class="dest-intl-country">Nepal</div>
+              <h3 class="dest-intl-title">Everest Base Camp</h3>
+            </div>
+          </div>
+
+          <div class="dest-intl-card" onclick="openDestinationModal('Swiss Alps', 'Switzerland', 'Alpine Glaciers & Matterhorn', 'Hike along iconic alpine trails, sleep in Swiss mountain huts, and gaze upon the pyramid summit of the Matterhorn.', 'assets/images/switzerland.webp')">
+            <img src="assets/images/switzerland.webp" alt="Switzerland" loading="lazy">
+            <div class="dest-intl-content">
+              <div class="dest-intl-country">Switzerland</div>
+              <h3 class="dest-intl-title">The Swiss Alps</h3>
+            </div>
+          </div>
+
+          <div class="dest-intl-card" onclick="openDestinationModal('Bali Volcanoes & Coast', 'Indonesia', 'Mount Batur Sunrise Trek', 'Hike up the active volcanic crater of Mount Batur for sunrise above the clouds, followed by coastal cliff diving.', 'assets/images/bali.webp')">
+            <img src="assets/images/bali.webp" alt="Bali" loading="lazy">
+            <div class="dest-intl-content">
+              <div class="dest-intl-country">Indonesia</div>
+              <h3 class="dest-intl-title">Bali Volcanic Ridge</h3>
+            </div>
+          </div>
+
+          <div class="dest-intl-card" onclick="openDestinationModal('Krabi & Railay', 'Thailand', 'Deep Water Rock Climbing', 'Scale towering karst limestone monoliths jutting straight out of the Andaman Sea.', 'assets/images/thailand.webp')">
+            <img src="assets/images/thailand.webp" alt="Thailand" loading="lazy">
+            <div class="dest-intl-content">
+              <div class="dest-intl-country">Thailand</div>
+              <h3 class="dest-intl-title">Krabi Sea Cliffs</h3>
+            </div>
+          </div>
+
+          <div class="dest-intl-card" onclick="openDestinationModal('Southern Alps & Fiordland', 'New Zealand', 'Milford Track Expedition', 'Fjord exploration, alpine glacier trekking, and pristine temperate rainforests in the adventure capital of Queenstown.', 'assets/images/new-zealand.webp')">
+            <img src="assets/images/new-zealand.webp" alt="New Zealand" loading="lazy">
+            <div class="dest-intl-content">
+              <div class="dest-intl-country">New Zealand</div>
+              <h3 class="dest-intl-title">Fiordland Wilderness</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 — HIDDEN GEMS (Offset Cards) -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 07</span>
+          <h2 class="section-title">Hidden Nature Escapes & Gems</h2>
+          <p class="section-desc text-start">Undiscovered alpine plateaus and secret forest lakes away from crowds.</p>
+        </div>
+
+        <div class="gems-grid">
+          <div class="gem-card">
+            <span class="badge-difficulty easy">Secret Trail</span>
+            <h3 style="font-size:1.3rem; font-weight:700; margin:0.75rem 0 0.5rem;">Tirthan Valley, Himachal</h3>
+            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">
+              The gateway to the Great Himalayan National Park. Crystal trout streams, ancient deodar cedar forests, and authentic homestays.
+            </p>
+            <a href="Services.html?destination=Manali" class="overview-link">View Trips <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <div class="gem-card">
+            <span class="badge-difficulty moderate">High Altitude</span>
+            <h3 style="font-size:1.3rem; font-weight:700; margin:0.75rem 0 0.5rem;">Dzukou Valley, Nagaland</h3>
+            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">
+              Perched at 2,452 meters on the border of Nagaland and Manipur, famous for undulating bamboo grass valleys and the rare Dzukou Lily.
+            </p>
+            <a href="Services.html?destination=Meghalaya" class="overview-link">View Trips <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+
+          <div class="gem-card">
+            <span class="badge-difficulty challenging">Remote Pass</span>
+            <h3 style="font-size:1.3rem; font-weight:700; margin:0.75rem 0 0.5rem;">Chopta & Chandrashila</h3>
+            <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.6; margin-bottom:1rem;">
+              Known as the 'Mini Switzerland of India'. Summit Chandrashila at sunrise for a 360-degree panorama of Nanda Devi and Trishul peaks.
+            </p>
+            <a href="Services.html?destination=Rishikesh" class="overview-link">View Trips <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 — FINAL CTA -->
+    <section class="container" style="padding-bottom: 4rem;">
+      <div class="cta-banner-section" style="background-image: url('assets/images/himalayas.webp');">
+        <div class="cta-banner-content">
+          <span class="section-badge badge-primary">Section 08</span>
+          <h2>Your Dream Destination Is Waiting.</h2>
+          <p>
+            Choose from over 30+ domestic and international adventure destinations. Our expert travel guides ensure safety, authenticity, and unforgettable memories.
+          </p>
+          <div style="display:flex; justify-content:center; gap:1.25rem; flex-wrap:wrap;">
+            <a href="Services.html" class="btn btn-primary btn-lg">Browse Travel Packages</a>
+            <a href="Contact.html" class="btn btn-secondary btn-lg">Contact Travel Specialist</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/images/Brand-logo.webp" alt="STACKLY">
+          </a>
+          <p class="footer-desc">
+            Discover extraordinary destinations, experience thrilling adventures, and create unforgettable memories with STACKLY. Your next adventure begins here.
+          </p>
+          <div class="footer-socials">
+            <a href="404.html" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="social-link"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" class="social-link"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-link"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> About</a></li>
+            <li class="footer-link-item"><a href="Destinations.html"><i class="fa-solid fa-angle-right"></i> Destinations</a></li>
+            <li class="footer-link-item"><a href="Services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+            <li class="footer-link-item"><a href="Blog.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Popular Adventures</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="Services.html?activity=Trekking"><i class="fa-solid fa-angle-right"></i> Mountain Trekking</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Rafting"><i class="fa-solid fa-angle-right"></i> River Rafting</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Paragliding"><i class="fa-solid fa-angle-right"></i> Paragliding</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Camping"><i class="fa-solid fa-angle-right"></i> Camping</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Wildlife"><i class="fa-solid fa-angle-right"></i> Wildlife Safari</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Travel Support</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Travel Guide</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Booking Information</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Safety Guidelines</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Cancellation Policy</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">Copyright &copy; 2026 STACKLY. All Rights Reserved.</div>
+        <div class="footer-legal-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/destinations.js"></script>
+</body>
+</html>

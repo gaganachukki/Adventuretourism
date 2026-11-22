@@ -1,0 +1,506 @@
+/* ==========================================================================
+   STACKLY ADVENTURE TOURISM — CLIENT DASHBOARD SPECIALIZED STYLES (client-dashboard.css)
+   ========================================================================== */
+
+/* Hero Welcome Banner */
+.explorer-welcome-banner {
+  background: linear-gradient(135deg, rgba(14, 30, 52, 0.95), rgba(10, 20, 34, 0.95)), 
+              radial-gradient(circle at top right, rgba(56, 189, 248, 0.15), transparent 70%);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.welcome-lead {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.welcome-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.welcome-title .sync-user-name {
+  color: var(--dash-primary);
+}
+
+.welcome-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  line-height: 1.5;
+}
+
+.countdown-badge-card {
+  background: rgba(7, 14, 23, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-icon {
+  font-size: 1.8rem;
+  color: var(--dash-primary);
+}
+
+.countdown-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.countdown-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-light);
+}
+
+.countdown-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
+/* 5-Step Journey Progress Tracker */
+.journey-tracker-card {
+  background: var(--dash-card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.tracker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.tracker-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.tracker-timeline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding: 0 2rem;
+  margin-bottom: 1rem;
+}
+
+.tracker-line-bg {
+  position: absolute;
+  top: 22px;
+  left: 3rem;
+  right: 3rem;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  z-index: 1;
+}
+
+.tracker-line-fill {
+  position: absolute;
+  top: 22px;
+  left: 3rem;
+  width: 75%; /* Step 4 active */
+  height: 4px;
+  background: linear-gradient(90deg, var(--dash-accent), var(--dash-primary));
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+  z-index: 2;
+  transition: width 0.6s ease;
+}
+
+.tracker-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  cursor: pointer;
+}
+
+.step-node {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #091321;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+}
+
+.tracker-step.completed .step-node {
+  background: var(--status-success);
+  border-color: var(--status-success);
+  color: #070e17;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+.tracker-step.active .step-node {
+  background: var(--dash-primary);
+  border-color: var(--dash-primary);
+  color: #070e17;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
+  transform: scale(1.15);
+}
+
+.step-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.2;
+}
+
+.step-sub {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+/* Day-by-Day Trail Checkpoints */
+.trail-checkpoints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.trail-checkpoint-item {
+  background: rgba(10, 20, 34, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: all 0.2s ease;
+}
+
+.trail-checkpoint-item:hover {
+  border-color: var(--border-medium);
+  background: rgba(14, 30, 52, 0.85);
+}
+
+.checkpoint-day {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--dash-primary);
+  background: var(--dash-primary-tint);
+  padding: 4px 9px;
+  border-radius: var(--radius-sm);
+}
+
+.checkpoint-meta {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.checkpoint-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.checkpoint-desc {
+  font-size: 0.76rem;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.checkpoint-altitude {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--dash-primary);
+  white-space: nowrap;
+}
+
+/* Assigned Guide Card */
+.assigned-guide-card {
+  background: rgba(10, 20, 34, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.assigned-guide-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--dash-primary), #0284c7);
+  color: #070e17;
+  font-weight: 800;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.assigned-guide-meta {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.assigned-guide-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.assigned-guide-title {
+  font-size: 0.78rem;
+  color: var(--dash-primary);
+  font-weight: 600;
+}
+
+.assigned-guide-rating {
+  font-size: 0.76rem;
+  color: #f59e0b;
+  margin-top: 3px;
+}
+
+.assigned-guide-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-guide-contact {
+  padding: 0.5rem 1rem;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid var(--border-medium);
+  color: var(--dash-primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-guide-contact:hover {
+  background: var(--dash-primary);
+  color: #070e17;
+}
+
+/* Gear Checklist */
+.gear-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.gear-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1rem;
+  background: rgba(10, 20, 34, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gear-item:hover {
+  border-color: var(--border-medium);
+  background: rgba(14, 30, 52, 0.85);
+}
+
+.gear-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--dash-primary);
+  cursor: pointer;
+}
+
+.gear-text {
+  font-size: 0.85rem;
+  color: var(--white);
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.gear-cat {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+/* Progress Bar for Gear */
+.gear-progress-bar-wrap {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0.75rem 0 1.5rem;
+}
+
+.gear-progress-fill {
+  height: 100%;
+  width: 80%;
+  background: linear-gradient(90deg, var(--dash-accent), var(--dash-primary));
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* Loyalty Points & Tier Progress */
+.loyalty-banner {
+  background: linear-gradient(135deg, rgba(14, 30, 52, 0.85), rgba(8, 16, 28, 0.95));
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.loyalty-points-val {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--dash-primary);
+  line-height: 1;
+  margin-top: 4px;
+}
+
+/* Bucket List Saved Cards */
+.bucket-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.bucket-card {
+  background: rgba(10, 20, 34, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+}
+
+.bucket-card:hover {
+  border-color: var(--border-medium);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.bucket-img-wrap {
+  height: 150px;
+  position: relative;
+}
+
+.bucket-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bucket-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.bucket-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.bucket-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+@media (max-width: 768px) {
+  .explorer-welcome-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .tracker-timeline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .tracker-line-bg,
+  .tracker-line-fill {
+    display: none;
+  }
+
+  .tracker-step {
+    flex-direction: row;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  .step-node {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .assigned-guide-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .assigned-guide-actions {
+    width: 100%;
+  }
+
+  .btn-guide-contact {
+    flex-grow: 1;
+    justify-content: center;
+  }
+}

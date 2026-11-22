@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Executive Expedition Command Center | STACKLY Admin</title>
+  <meta name="description" content="Administrative command center for STACKLY Adventure Tourism: live mountain telemetry, dispatch queues, tour package catalog, and traveler bookings.">
+  <link rel="icon" href="assets/images/Brand-logo.webp" type="image/webp">
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/admin-dashboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+</head>
+<body class="admin-dashboard-body">
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="admin-sidebar-backdrop" id="adminSidebarBackdrop"></div>
+
+  <!-- ==========================================================================
+       ADMIN SIDEBAR NAVIGATION
+       ========================================================================== -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <!-- Header -->
+    <div class="admin-sidebar-header">
+      <a href="index.html" class="admin-brand" aria-label="STACKLY Storefront">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY" class="admin-brand-img">
+        <span class="admin-badge-role">ADMIN</span>
+      </a>
+      <button type="button" class="admin-close-btn" id="adminCloseBtn" aria-label="Close sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Practice / Explorer Profile Badge Card -->
+    <div class="admin-practice-pill">
+      <div class="admin-hq-avatar sync-admin-avatar">AM</div>
+      <div class="admin-practice-meta">
+        <span class="practice-title sync-admin-name">Alex Morgan</span>
+        <span class="sync-admin-email" style="font-size:0.72rem; color:var(--text-light); display:block; overflow:hidden; text-overflow:ellipsis; max-width:140px; margin-bottom:2px;">alex.morgan@stackly.com</span>
+        <span class="practice-subtitle"><span class="pulse-cyan"></span> Basecamp Telemetry Active</span>
+      </div>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav class="admin-nav" aria-label="Admin Navigation">
+      <div class="admin-nav-heading">Operations &amp; Dispatch</div>
+
+      <!-- Tab 1: Overview -->
+      <button type="button" class="admin-nav-item active" data-tab="admin-tab-overview">
+        <i class="fa-solid fa-gauge-high"></i>
+        <span>Expedition Command</span>
+      </button>
+
+      <!-- Tab 2: Live Dispatch -->
+      <button type="button" class="admin-nav-item" data-tab="admin-tab-dispatch">
+        <i class="fa-solid fa-tower-broadcast"></i>
+        <span>Live Trail Dispatch</span>
+        <span class="admin-badge highlight">18 Live</span>
+      </button>
+
+      <div class="admin-nav-heading">Catalog &amp; Bookings</div>
+
+      <!-- Tab 3: Packages Catalog -->
+      <button type="button" class="admin-nav-item" data-tab="admin-tab-packages">
+        <i class="fa-solid fa-map-location-dot"></i>
+        <span>Tour Packages</span>
+        <span class="admin-badge highlight">16 Live</span>
+      </button>
+
+      <!-- Tab 4: Master Bookings -->
+      <button type="button" class="admin-nav-item" data-tab="admin-tab-bookings">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span>Bookings Ledger</span>
+        <span class="admin-badge">142</span>
+      </button>
+
+      <!-- Tab 5: Customer Directory -->
+      <button type="button" class="admin-nav-item" data-tab="admin-tab-customers">
+        <i class="fa-solid fa-users"></i>
+        <span>Traveler Directory</span>
+        <span class="admin-badge">84</span>
+      </button>
+
+      <div class="admin-nav-heading">Logistics &amp; Safety</div>
+
+      <!-- Tab 6: Mountain Guides -->
+      <button type="button" class="admin-nav-item" data-tab="admin-tab-guides">
+        <i class="fa-solid fa-person-hiking"></i>
+        <span>Guides &amp; Rescue</span>
+        <span class="admin-badge">12 Active</span>
+      </button>
+
+      <!-- Tab 7: Promo Vouchers -->
+      <button type="button" class="admin-nav-item" data-tab="admin-tab-offers">
+        <i class="fa-solid fa-tags"></i>
+        <span>Promo Vouchers</span>
+      </button>
+
+      <div class="admin-nav-heading">Controls</div>
+
+      <!-- Tab 8: System Settings -->
+      <button type="button" class="admin-nav-item" data-tab="admin-tab-settings">
+        <i class="fa-solid fa-sliders"></i>
+        <span>Safety &amp; Controls</span>
+      </button>
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="admin-sidebar-footer">
+      <a href="index.html" class="admin-link-btn">
+        <i class="fa-solid fa-compass"></i>
+        <span>Public Storefront</span>
+      </a>
+      <a href="Login.html" class="admin-link-btn" style="color:var(--dash-primary);">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Admin Sign Out</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       MAIN CONTENT WRAPPER
+       ========================================================================== -->
+  <div class="admin-main-wrap">
+    <!-- Topbar -->
+    <header class="admin-topbar">
+      <div class="admin-topbar-left">
+        <button type="button" class="admin-mobile-hamburger" id="adminHamburgerBtn" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <a href="index.html" class="admin-mobile-logo" aria-label="STACKLY Home">
+          <img src="assets/images/Brand-logo.webp" alt="STACKLY" class="admin-mobile-logo-img">
+        </a>
+
+        <!-- Live Status Pill -->
+        <span class="kitchen-status-pill">
+          <span class="pulse-cyan"></span> Basecamp 4°C Optimal &bull; 18 Expeditions Live
+        </span>
+      </div>
+
+      <div class="admin-topbar-right">
+        <!-- Add Package Action CTA -->
+        <button type="button" class="admin-btn-action" id="openAddPackageBtn">
+          <i class="fa-solid fa-plus"></i>
+          <span>New Expedition</span>
+        </button>
+
+        <!-- Notification Bell Dropdown -->
+        <div class="header-action-container">
+          <button type="button" class="header-icon-btn" id="notifBellBtn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notif-badge-count">3</span>
+          </button>
+
+          <!-- Dropdown Panel -->
+          <div class="dropdown-panel" id="notifDropdown">
+            <div class="dropdown-header">
+              <span class="dropdown-header-title">Expedition Alerts</span>
+              <span class="status-pill info" style="font-size:0.65rem;">3 New</span>
+            </div>
+            <div class="dropdown-body">
+              <div class="dropdown-item">
+                <div class="notif-indicator cyan"></div>
+                <div class="notif-content">
+                  <p class="notif-text">Permit Approved: Roopkund Summit Pass</p>
+                  <span class="notif-time">14 Trekkers &bull; Verified by IMF &bull; 5m ago</span>
+                </div>
+              </div>
+              <div class="dropdown-item">
+                <div class="notif-indicator amber"></div>
+                <div class="notif-content">
+                  <p class="notif-text">Weather Advisory: High winds at Spiti Ridge</p>
+                  <span class="notif-time">Gusts up to 45 km/h &bull; Guide Dorje notified &bull; 24m ago</span>
+                </div>
+              </div>
+              <div class="dropdown-item">
+                <div class="notif-indicator green"></div>
+                <div class="notif-content">
+                  <p class="notif-text">New Booking Confirmed: Andaman Deep Scuba</p>
+                  <span class="notif-time">Order #STK-ADV-9842 &bull; ₹38,500 Paid &bull; 1h ago</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="#admin-tab-dispatch" class="dropdown-footer-link" onclick="document.querySelector('[data-tab=admin-tab-dispatch]').click();">View Live Dispatch Stream &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Profile Dropdown Trigger -->
+        <div class="header-menu-container">
+          <div class="header-profile-btn" id="adminProfileBtn">
+            <div class="header-avatar sync-admin-avatar">AM</div>
+            <div class="profile-meta-top">
+              <span class="profile-name-top sync-admin-name">Alex Morgan</span>
+              <span class="profile-role-top">Operations Lead</span>
+            </div>
+          </div>
+
+          <!-- Profile Dropdown Panel -->
+          <div class="header-dropdown-panel" id="adminProfileDropdown">
+            <div class="profile-dropdown-header">
+              <div class="header-avatar-lg sync-admin-avatar">AM</div>
+              <div class="profile-meta-lg">
+                <span class="profile-name-lg sync-admin-name">Alex Morgan</span>
+                <span class="profile-email-lg sync-admin-email">alex.morgan@stackly.com</span>
+                <span class="profile-role-tag">SUPER ADMIN</span>
+              </div>
+            </div>
+            <div class="profile-dropdown-links">
+              <a href="#admin-tab-settings" class="profile-menu-link" onclick="document.querySelector('[data-tab=admin-tab-settings]').click();">
+                <i class="fa-solid fa-sliders" style="width:16px;"></i>
+                <span>Operations Settings</span>
+              </a>
+              <a href="index.html" class="profile-menu-link">
+                <i class="fa-solid fa-compass" style="width:16px;"></i>
+                <span>Public Tourism Site</span>
+              </a>
+              <a href="Login.html" class="profile-menu-link logout">
+                <i class="fa-solid fa-arrow-right-from-bracket" style="width:16px;"></i>
+                <span>Log Out</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="admin-content">
+
+      <!-- ======================================================================
+           TAB 1: LIVE EXPEDITIONS COMMAND (OVERVIEW)
+           ====================================================================== -->
+      <section class="admin-tab-panel active" id="admin-tab-overview">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Expedition Operations Command Center 🏔️</h1>
+            <p class="dash-page-subtitle">Real-time mountain telemetry, dispatch queues, permit approvals, and today's adventure throughput.</p>
+          </div>
+          <span class="status-pill success" style="padding:8px 16px; font-size:0.85rem;"><i class="fa-solid fa-tower-broadcast"></i> 18 Expeditions Live on Trail</span>
+        </div>
+
+        <!-- 4 KPI Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Today's Revenue</span>
+              <div class="kpi-icon-wrap kpi-icon-cyan"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+            </div>
+            <div class="kpi-val kpi-counter" data-target="845000" data-prefix="₹">₹8,45,000</div>
+            <span class="kpi-sub" style="color:#10b981;"><i class="fa-solid fa-arrow-trend-up"></i> +22.4% vs last week</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Active Trekkers on Trail</span>
+              <div class="kpi-icon-wrap kpi-icon-green"><i class="fa-solid fa-person-hiking"></i></div>
+            </div>
+            <div class="kpi-val kpi-counter" data-target="156">156</div>
+            <span class="kpi-sub">9 Groups &bull; 0 Evacuations</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Average Safety Rating</span>
+              <div class="kpi-icon-wrap kpi-icon-amber"><i class="fa-solid fa-star"></i></div>
+            </div>
+            <div class="kpi-val">4.96</div>
+            <span class="kpi-sub" style="color:#10b981;"><i class="fa-solid fa-shield-halved"></i> 100% Safety Compliance</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">High-Altitude Permits</span>
+              <div class="kpi-icon-wrap kpi-icon-blue"><i class="fa-solid fa-passport"></i></div>
+            </div>
+            <div class="kpi-val">94.2%</div>
+            <span class="kpi-sub">18 of 20 Himalayan Slots Issued</span>
+          </div>
+        </div>
+
+        <!-- Live Field Dispatch Queue (6 Live Tickets) -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <h3 class="dash-card-title"><i class="fa-solid fa-route"></i> Live Field Dispatch Queue</h3>
+              <p style="font-size:0.8rem; color:var(--text-light); margin-top:2px;">Click "Advance Status" to transition expeditions through field checkpoints.</p>
+            </div>
+            <span class="status-pill danger"><span class="pulse-dot"></span> GPS Telemetry Active</span>
+          </div>
+
+          <div class="expedition-dispatch-queue">
+            <!-- Ticket 1 -->
+            <div class="expedition-ticket" id="ticket-9842">
+              <div class="ticket-meta">
+                <span class="ticket-id">#EXP-9842</span>
+                <div class="ticket-details">
+                  <span class="ticket-title">Himalayan Roopkund High Altitude Trek (4,800m)</span>
+                  <span class="ticket-info">Lead Guide: Tenzing Norbu &bull; 14 Trekkers &bull; Current Checkpoint: Bhagwabasa High Base (4,300m)</span>
+                </div>
+              </div>
+              <div class="ticket-actions">
+                <span class="status-pill warning ticket-status-badge"><i class="fa-solid fa-person-hiking"></i> Ascent in Progress</span>
+                <button type="button" class="btn-advance-status" data-ticket="ticket-9842">
+                  <i class="fa-solid fa-forward-step"></i> Advance Status
+                </button>
+              </div>
+            </div>
+
+            <!-- Ticket 2 -->
+            <div class="expedition-ticket" id="ticket-8721">
+              <div class="ticket-meta">
+                <span class="ticket-id">#EXP-8721</span>
+                <div class="ticket-details">
+                  <span class="ticket-title">Rishikesh Grade-V Rapid Rafting Expedition</span>
+                  <span class="ticket-info">Lead Guide: Vikram Singh &bull; 8 Rafters &bull; Current Checkpoint: Marine Drive Rapid Launch</span>
+                </div>
+              </div>
+              <div class="ticket-actions">
+                <span class="status-pill info ticket-status-badge"><i class="fa-solid fa-water"></i> River Briefing Done</span>
+                <button type="button" class="btn-advance-status" data-ticket="ticket-8721">
+                  <i class="fa-solid fa-forward-step"></i> Advance Status
+                </button>
+              </div>
+            </div>
+
+            <!-- Ticket 3 -->
+            <div class="expedition-ticket" id="ticket-7650">
+              <div class="ticket-meta">
+                <span class="ticket-id">#EXP-7650</span>
+                <div class="ticket-details">
+                  <span class="ticket-title">Bir Billing Cross-Country Paragliding</span>
+                  <span class="ticket-info">Lead Pilot: Sunil Rana &bull; 6 Tandem Pilots &bull; Current Checkpoint: Billing Launch Ridge (2,400m)</span>
+                </div>
+              </div>
+              <div class="ticket-actions">
+                <span class="status-pill success ticket-status-badge"><i class="fa-solid fa-wind"></i> Thermal Flight Active</span>
+                <button type="button" class="btn-advance-status" data-ticket="ticket-7650">
+                  <i class="fa-solid fa-forward-step"></i> Advance Status
+                </button>
+              </div>
+            </div>
+
+            <!-- Ticket 4 -->
+            <div class="expedition-ticket" id="ticket-6531">
+              <div class="ticket-meta">
+                <span class="ticket-id">#EXP-6531</span>
+                <div class="ticket-details">
+                  <span class="ticket-title">Andaman Havelock Deep Sea Scuba Expedition</span>
+                  <span class="ticket-info">Lead Divemaster: Ananya Das &bull; 10 Divers &bull; Current Checkpoint: Dixon's Pinnacle Sanctuary</span>
+                </div>
+              </div>
+              <div class="ticket-actions">
+                <span class="status-pill success ticket-status-badge"><i class="fa-solid fa-mask-snorkel"></i> Underwater Dive Active</span>
+                <button type="button" class="btn-advance-status" data-ticket="ticket-6531">
+                  <i class="fa-solid fa-forward-step"></i> Advance Status
+                </button>
+              </div>
+            </div>
+
+            <!-- Ticket 5 -->
+            <div class="expedition-ticket" id="ticket-5412">
+              <div class="ticket-meta">
+                <span class="ticket-id">#EXP-5412</span>
+                <div class="ticket-details">
+                  <span class="ticket-title">Meghalaya Living Root Bridges &amp; Canyon Trek</span>
+                  <span class="ticket-info">Lead Guide: Banroi Lyngdoh &bull; 12 Trekkers &bull; Current Checkpoint: Double Decker Root Bridge</span>
+                </div>
+              </div>
+              <div class="ticket-actions">
+                <span class="status-pill warning ticket-status-badge"><i class="fa-solid fa-cloud-rain"></i> Canyon Trail Descent</span>
+                <button type="button" class="btn-advance-status" data-ticket="ticket-5412">
+                  <i class="fa-solid fa-forward-step"></i> Advance Status
+                </button>
+              </div>
+            </div>
+
+            <!-- Ticket 6 -->
+            <div class="expedition-ticket" id="ticket-4309">
+              <div class="ticket-meta">
+                <span class="ticket-id">#EXP-4309</span>
+                <div class="ticket-details">
+                  <span class="ticket-title">Ladakh Khardung La High Pass Motor Expedition</span>
+                  <span class="ticket-info">Lead Marshal: Dorje Angchuk &bull; 16 Riders &bull; Current Checkpoint: South Pullu Military Checkpost</span>
+                </div>
+              </div>
+              <div class="ticket-actions">
+                <span class="status-pill info ticket-status-badge"><i class="fa-solid fa-motorcycle"></i> Convoy Moving to Summit</span>
+                <button type="button" class="btn-advance-status" data-ticket="ticket-4309">
+                  <i class="fa-solid fa-forward-step"></i> Advance Status
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-Column Operational Grid -->
+        <div class="admin-operations-grid">
+          <!-- Left: Mountain Weather Telemetry -->
+          <div class="dash-card" style="margin-bottom:0;">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title"><i class="fa-solid fa-cloud-bolt"></i> Mountain Weather Telemetry</h3>
+              <span class="status-pill success"><span class="pulse-cyan"></span> Live Sensors</span>
+            </div>
+
+            <div class="weather-telemetry-grid">
+              <div class="weather-station-card">
+                <div class="station-header">
+                  <span class="station-name">Roopkund Ridge</span>
+                  <span class="station-altitude">4,750 m</span>
+                </div>
+                <div class="station-stats">
+                  <span class="station-temp">-4°C</span>
+                  <span class="station-condition"><i class="fa-solid fa-snowflake" style="color:var(--dash-primary);"></i> Wind: 18 km/h</span>
+                </div>
+                <span class="status-pill success" style="font-size:0.65rem; margin-top:4px;">Optimal Visibility</span>
+              </div>
+
+              <div class="weather-station-card">
+                <div class="station-header">
+                  <span class="station-name">Solang Pass</span>
+                  <span class="station-altitude">2,050 m</span>
+                </div>
+                <div class="station-stats">
+                  <span class="station-temp">12°C</span>
+                  <span class="station-condition"><i class="fa-solid fa-sun" style="color:#f59e0b;"></i> Wind: 8 km/h</span>
+                </div>
+                <span class="status-pill success" style="font-size:0.65rem; margin-top:4px;">Excellent Conditions</span>
+              </div>
+
+              <div class="weather-station-card">
+                <div class="station-header">
+                  <span class="station-name">Zanskar Gorge</span>
+                  <span class="station-altitude">3,500 m</span>
+                </div>
+                <div class="station-stats">
+                  <span class="station-temp">2°C</span>
+                  <span class="station-condition"><i class="fa-solid fa-cloud" style="color:var(--text-muted);"></i> Wind: 14 km/h</span>
+                </div>
+                <span class="status-pill info" style="font-size:0.65rem; margin-top:4px;">Chilly &bull; Stable</span>
+              </div>
+
+              <div class="weather-station-card">
+                <div class="station-header">
+                  <span class="station-name">Havelock Coral Bay</span>
+                  <span class="station-altitude">Sea Level</span>
+                </div>
+                <div class="station-stats">
+                  <span class="station-temp">28°C</span>
+                  <span class="station-condition"><i class="fa-solid fa-water" style="color:var(--dash-primary);"></i> Swell: 0.6 m</span>
+                </div>
+                <span class="status-pill success" style="font-size:0.65rem; margin-top:4px;">Clear Water (25m vis)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Guides Readiness & Satellite Status -->
+          <div class="dash-card" style="margin-bottom:0;">
+            <div class="dash-card-header">
+              <h3 class="dash-card-title"><i class="fa-solid fa-walkie-talkie"></i> Field Guides Readiness</h3>
+              <span class="status-pill success">12/12 Online</span>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:0.85rem;">
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:0.6rem 0.8rem; background:rgba(10,20,34,0.7); border-radius:6px; border:1px solid var(--border-subtle);">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <div class="header-avatar" style="width:34px; height:34px; font-size:0.8rem;">TN</div>
+                  <div>
+                    <span style="font-weight:700; color:var(--white); font-size:0.84rem; display:block;">Tenzing Norbu</span>
+                    <span style="font-size:0.7rem; color:var(--dash-primary);">IMF Certified Alpine Master</span>
+                  </div>
+                </div>
+                <span class="status-pill success" style="font-size:0.65rem;"><i class="fa-solid fa-satellite"></i> Sat-Phone OK</span>
+              </div>
+
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:0.6rem 0.8rem; background:rgba(10,20,34,0.7); border-radius:6px; border:1px solid var(--border-subtle);">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <div class="header-avatar" style="width:34px; height:34px; font-size:0.8rem;">VS</div>
+                  <div>
+                    <span style="font-weight:700; color:var(--white); font-size:0.84rem; display:block;">Vikram Singh</span>
+                    <span style="font-size:0.7rem; color:var(--dash-primary);">IRF Swiftwater Rescue Pro</span>
+                  </div>
+                </div>
+                <span class="status-pill success" style="font-size:0.65rem;"><i class="fa-solid fa-satellite"></i> VHF Radio OK</span>
+              </div>
+
+              <div style="display:flex; align-items:center; justify-content:space-between; padding:0.6rem 0.8rem; background:rgba(10,20,34,0.7); border-radius:6px; border:1px solid var(--border-subtle);">
+                <div style="display:flex; align-items:center; gap:10px;">
+                  <div class="header-avatar" style="width:34px; height:34px; font-size:0.8rem;">SR</div>
+                  <div>
+                    <span style="font-weight:700; color:var(--white); font-size:0.84rem; display:block;">Sunil Rana</span>
+                    <span style="font-size:0.7rem; color:var(--dash-primary);">FAI Cross-Country Pilot</span>
+                  </div>
+                </div>
+                <span class="status-pill success" style="font-size:0.65rem;"><i class="fa-solid fa-satellite"></i> Vario GPS OK</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 2: LIVE FIELD TELEMETRY & CONVOYS
+           ====================================================================== -->
+      <section class="admin-tab-panel" id="admin-tab-dispatch">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Live Field Dispatch &amp; Telemetry 🛰️</h1>
+            <p class="dash-page-subtitle">Real-time GPS coordinates, oxygen saturation metrics, and satellite telemetry for all active mountain teams.</p>
+          </div>
+          <button type="button" class="admin-btn-action" onclick="showToast('Satellite Broadcast', 'All 18 trail beacons pinged successfully with 100% telemetry.');">
+            <i class="fa-solid fa-satellite-dish"></i> Ping All Beacons
+          </button>
+        </div>
+
+        <div class="dash-card">
+          <div class="table-toolbar">
+            <div class="table-search-wrap">
+              <i class="fa-solid fa-magnifying-glass table-search-icon"></i>
+              <input type="text" class="table-search-input" id="dispatchSearchInput" placeholder="Search expedition, guide, or checkpoint...">
+            </div>
+            <div class="table-filters">
+              <select class="dash-select" id="dispatchStatusFilter">
+                <option value="all">All Checkpoints</option>
+                <option value="ascent">Ascent Active</option>
+                <option value="briefing">Briefing Complete</option>
+                <option value="summit">Summit Push</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="dash-table-wrap">
+            <table class="dash-table" id="dispatchTable">
+              <thead>
+                <tr>
+                  <th>Expedition ID</th>
+                  <th>Tour Package</th>
+                  <th>Lead Field Guide</th>
+                  <th>Current Elevation</th>
+                  <th>Group Size</th>
+                  <th>SPO2 Level</th>
+                  <th>Telemetry Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="ticket-id">#EXP-9842</span></td>
+                  <td><strong>Himalayan Roopkund Trek</strong></td>
+                  <td>Tenzing Norbu</td>
+                  <td><span style="color:var(--dash-primary); font-weight:700;">4,300 m</span></td>
+                  <td>14 Trekkers</td>
+                  <td><span style="color:#10b981; font-weight:700;">94% Normal</span></td>
+                  <td><span class="status-pill warning">Ascent Active</span></td>
+                  <td>
+                    <button class="table-action-btn" title="Ping Radio" onclick="showToast('Radio Comm', 'VHF channel open to Tenzing Norbu.');"><i class="fa-solid fa-walkie-talkie"></i></button>
+                    <button class="table-action-btn" title="View Coordinates" onclick="showToast('GPS Telemetry', 'Lat: 30.2642° N, Lon: 79.7317° E.');"><i class="fa-solid fa-location-crosshairs"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="ticket-id">#EXP-8721</span></td>
+                  <td><strong>Rishikesh Rapid Rafting</strong></td>
+                  <td>Vikram Singh</td>
+                  <td><span style="color:var(--dash-primary); font-weight:700;">340 m</span></td>
+                  <td>8 Rafters</td>
+                  <td><span style="color:#10b981; font-weight:700;">99% Normal</span></td>
+                  <td><span class="status-pill info">River Active</span></td>
+                  <td>
+                    <button class="table-action-btn" title="Ping Radio" onclick="showToast('Radio Comm', 'VHF channel open to Vikram Singh.');"><i class="fa-solid fa-walkie-talkie"></i></button>
+                    <button class="table-action-btn" title="View Coordinates" onclick="showToast('GPS Telemetry', 'Lat: 30.0869° N, Lon: 78.2676° E.');"><i class="fa-solid fa-location-crosshairs"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="ticket-id">#EXP-7650</span></td>
+                  <td><strong>Bir Billing Paragliding</strong></td>
+                  <td>Sunil Rana</td>
+                  <td><span style="color:var(--dash-primary); font-weight:700;">2,400 m</span></td>
+                  <td>6 Tandems</td>
+                  <td><span style="color:#10b981; font-weight:700;">98% Normal</span></td>
+                  <td><span class="status-pill success">Airborne Flight</span></td>
+                  <td>
+                    <button class="table-action-btn" title="Ping Radio" onclick="showToast('Radio Comm', 'Aviation freq 144.150 MHz connected.');"><i class="fa-solid fa-walkie-talkie"></i></button>
+                    <button class="table-action-btn" title="View Coordinates" onclick="showToast('GPS Telemetry', 'Lat: 32.0520° N, Lon: 76.7179° E.');"><i class="fa-solid fa-location-crosshairs"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="ticket-id">#EXP-6531</span></td>
+                  <td><strong>Andaman Coral Scuba</strong></td>
+                  <td>Ananya Das</td>
+                  <td><span style="color:var(--dash-primary); font-weight:700;">-18 m (Sea)</span></td>
+                  <td>10 Divers</td>
+                  <td><span style="color:#10b981; font-weight:700;">99% Normal</span></td>
+                  <td><span class="status-pill success">Submerged</span></td>
+                  <td>
+                    <button class="table-action-btn" title="Ping Dive Boat" onclick="showToast('Sonar Ping', 'Dive vessel boat acoustic receiver nominal.');"><i class="fa-solid fa-ship"></i></button>
+                    <button class="table-action-btn" title="View Coordinates" onclick="showToast('GPS Telemetry', 'Lat: 11.9761° N, Lon: 92.9876° E.');"><i class="fa-solid fa-location-crosshairs"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 3: TOUR PACKAGES CATALOG
+           ====================================================================== -->
+      <section class="admin-tab-panel" id="admin-tab-packages">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Tour Packages &amp; Expeditions Catalog 🗺️</h1>
+            <p class="dash-page-subtitle">Manage live adventure tours, slot availability, difficulty tiers, and expedition pricing.</p>
+          </div>
+          <button type="button" class="admin-btn-action" id="openAddPackageBtn2">
+            <i class="fa-solid fa-plus"></i> Add New Package
+          </button>
+        </div>
+
+        <div class="table-toolbar">
+          <div class="table-search-wrap">
+            <i class="fa-solid fa-magnifying-glass table-search-icon"></i>
+            <input type="text" class="table-search-input" id="packageSearchInput" placeholder="Search packages by title or region...">
+          </div>
+          <div class="table-filters">
+            <select class="dash-select" id="packageDifficultyFilter">
+              <option value="all">All Difficulties</option>
+              <option value="easy">Easy</option>
+              <option value="moderate">Moderate</option>
+              <option value="hard">Challenging</option>
+              <option value="extreme">Extreme</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Packages Grid -->
+        <div class="admin-packages-grid" id="packagesContainer">
+          <!-- Card 1 -->
+          <div class="admin-package-card" data-title="Himalayan Summit Expedition" data-difficulty="extreme">
+            <div class="pkg-thumb-wrap">
+              <img src="assets/images/himalayas.webp" alt="Himalayas" class="pkg-thumb-img">
+              <span class="pkg-badge-diff extreme">Extreme &bull; 5,364m</span>
+            </div>
+            <div class="pkg-body">
+              <h4 class="pkg-title">Himalayan Summit Expedition</h4>
+              <span class="pkg-location"><i class="fa-solid fa-location-dot" style="color:var(--dash-primary);"></i> Uttarakhand, India</span>
+              <p style="font-size:0.78rem; color:var(--text-light); line-height:1.4;">8 Days / 7 Nights alpine high-altitude trek with certified IMF Sherpas.</p>
+              <div class="pkg-meta-row">
+                <span class="pkg-price">₹24,999</span>
+                <div class="pkg-actions">
+                  <button class="table-action-btn" title="Edit" onclick="showToast('Edit Package', 'Editing Himalayan Summit Expedition.');"><i class="fa-solid fa-pen"></i></button>
+                  <button class="table-action-btn delete" title="Delete" onclick="deletePackageCard(this);"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="admin-package-card" data-title="Ganges White-Water Rapids" data-difficulty="moderate">
+            <div class="pkg-thumb-wrap">
+              <img src="assets/images/rafting.webp" alt="Rishikesh" class="pkg-thumb-img">
+              <span class="pkg-badge-diff moderate">Moderate &bull; Grade IV</span>
+            </div>
+            <div class="pkg-body">
+              <h4 class="pkg-title">Ganges White-Water Rapids</h4>
+              <span class="pkg-location"><i class="fa-solid fa-location-dot" style="color:var(--dash-primary);"></i> Rishikesh, India</span>
+              <p style="font-size:0.78rem; color:var(--text-light); line-height:1.4;">3 Days / 2 Nights white water rapid rafting, cliff jumping &amp; beach camp.</p>
+              <div class="pkg-meta-row">
+                <span class="pkg-price">₹8,999</span>
+                <div class="pkg-actions">
+                  <button class="table-action-btn" title="Edit" onclick="showToast('Edit Package', 'Editing Ganges White-Water.');"><i class="fa-solid fa-pen"></i></button>
+                  <button class="table-action-btn delete" title="Delete" onclick="deletePackageCard(this);"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="admin-package-card" data-title="Bir Billing Aerial Paragliding" data-difficulty="easy">
+            <div class="pkg-thumb-wrap">
+              <img src="assets/images/paragliding.webp" alt="Bir Billing" class="pkg-thumb-img">
+              <span class="pkg-badge-diff easy">Easy &bull; Tandem</span>
+            </div>
+            <div class="pkg-body">
+              <h4 class="pkg-title">Bir Billing Aerial Paragliding</h4>
+              <span class="pkg-location"><i class="fa-solid fa-location-dot" style="color:var(--dash-primary);"></i> Himachal Pradesh, India</span>
+              <p style="font-size:0.78rem; color:var(--text-light); line-height:1.4;">2 Days / 1 Night tandem cross-country flights with Go-Pro 4K footage.</p>
+              <div class="pkg-meta-row">
+                <span class="pkg-price">₹6,499</span>
+                <div class="pkg-actions">
+                  <button class="table-action-btn" title="Edit" onclick="showToast('Edit Package', 'Editing Paragliding Package.');"><i class="fa-solid fa-pen"></i></button>
+                  <button class="table-action-btn delete" title="Delete" onclick="deletePackageCard(this);"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="admin-package-card" data-title="Havelock Coral Reef Deep Dive" data-difficulty="moderate">
+            <div class="pkg-thumb-wrap">
+              <img src="assets/images/scuba-diving.webp" alt="Andaman" class="pkg-thumb-img">
+              <span class="pkg-badge-diff moderate">Moderate &bull; PADI</span>
+            </div>
+            <div class="pkg-body">
+              <h4 class="pkg-title">Havelock Coral Reef Deep Dive</h4>
+              <span class="pkg-location"><i class="fa-solid fa-location-dot" style="color:var(--dash-primary);"></i> Andaman Islands, India</span>
+              <p style="font-size:0.78rem; color:var(--text-light); line-height:1.4;">5 Days / 4 Nights certified scuba diving among manta rays &amp; reefs.</p>
+              <div class="pkg-meta-row">
+                <span class="pkg-price">₹18,500</span>
+                <div class="pkg-actions">
+                  <button class="table-action-btn" title="Edit" onclick="showToast('Edit Package', 'Editing Scuba Package.');"><i class="fa-solid fa-pen"></i></button>
+                  <button class="table-action-btn delete" title="Delete" onclick="deletePackageCard(this);"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="admin-package-card" data-title="Meghalaya Living Root Rainforest" data-difficulty="hard">
+            <div class="pkg-thumb-wrap">
+              <img src="assets/images/meghalaya.webp" alt="Meghalaya" class="pkg-thumb-img">
+              <span class="pkg-badge-diff hard">Challenging &bull; Rainforest</span>
+            </div>
+            <div class="pkg-body">
+              <h4 class="pkg-title">Meghalaya Living Root Rainforest</h4>
+              <span class="pkg-location"><i class="fa-solid fa-location-dot" style="color:var(--dash-primary);"></i> Cherrapunji, India</span>
+              <p style="font-size:0.78rem; color:var(--text-light); line-height:1.4;">6 Days / 5 Nights waterfall caving, bamboo trails &amp; root bridges.</p>
+              <div class="pkg-meta-row">
+                <span class="pkg-price">₹16,200</span>
+                <div class="pkg-actions">
+                  <button class="table-action-btn" title="Edit" onclick="showToast('Edit Package', 'Editing Meghalaya Package.');"><i class="fa-solid fa-pen"></i></button>
+                  <button class="table-action-btn delete" title="Delete" onclick="deletePackageCard(this);"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="admin-package-card" data-title="Ladakh Khardung La Motorcycle Safari" data-difficulty="extreme">
+            <div class="pkg-thumb-wrap">
+              <img src="assets/images/ladakh.webp" alt="Ladakh" class="pkg-thumb-img">
+              <span class="pkg-badge-diff extreme">Extreme &bull; 5,602m</span>
+            </div>
+            <div class="pkg-body">
+              <h4 class="pkg-title">Ladakh Khardung La Motorcycle Safari</h4>
+              <span class="pkg-location"><i class="fa-solid fa-location-dot" style="color:var(--dash-primary);"></i> Leh-Ladakh, India</span>
+              <p style="font-size:0.78rem; color:var(--text-light); line-height:1.4;">9 Days / 8 Nights Royal Enfield high mountain pass motorcycle safari.</p>
+              <div class="pkg-meta-row">
+                <span class="pkg-price">₹32,500</span>
+                <div class="pkg-actions">
+                  <button class="table-action-btn" title="Edit" onclick="showToast('Edit Package', 'Editing Ladakh Package.');"><i class="fa-solid fa-pen"></i></button>
+                  <button class="table-action-btn delete" title="Delete" onclick="deletePackageCard(this);"><i class="fa-solid fa-trash"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 4: MASTER BOOKINGS LEDGER
+           ====================================================================== -->
+      <section class="admin-tab-panel" id="admin-tab-bookings">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Master Bookings Ledger 📋</h1>
+            <p class="dash-page-subtitle">Search, inspect, and approve customer expedition bookings and payment settlements.</p>
+          </div>
+          <button type="button" class="admin-btn-action" onclick="showToast('Export Complete', 'Exported 142 bookings to CSV spreadsheet.');">
+            <i class="fa-solid fa-file-csv"></i> Export CSV
+          </button>
+        </div>
+
+        <div class="dash-card">
+          <div class="table-toolbar">
+            <div class="table-search-wrap">
+              <i class="fa-solid fa-magnifying-glass table-search-icon"></i>
+              <input type="text" class="table-search-input" id="bookingSearchInput" placeholder="Search bookings by ID, traveler, or tour...">
+            </div>
+            <div class="table-filters">
+              <select class="dash-select" id="bookingStatusFilter">
+                <option value="all">All Statuses</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="dash-table-wrap">
+            <table class="dash-table" id="bookingsTable">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Traveler Name</th>
+                  <th>Expedition</th>
+                  <th>Travel Dates</th>
+                  <th>Guests</th>
+                  <th>Amount</th>
+                  <th>Payment</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="ticket-id">#STK-ADV-9842</span></td>
+                  <td>
+                    <div style="font-weight:700;">Alex Morgan</div>
+                    <span style="font-size:0.72rem; color:var(--text-light);">alex.morgan@stackly.com</span>
+                  </td>
+                  <td>Himalayan Summit Expedition</td>
+                  <td>14 Oct &ndash; 22 Oct 2026</td>
+                  <td>2 Persons</td>
+                  <td><strong style="color:var(--dash-primary);">₹49,998</strong></td>
+                  <td><span class="status-pill success">Paid Full</span></td>
+                  <td><span class="status-pill warning">In Progress</span></td>
+                  <td>
+                    <button class="table-action-btn" title="View Details" onclick="showToast('Booking Details', 'Showing itinerary voucher for #STK-ADV-9842.');"><i class="fa-solid fa-eye"></i></button>
+                    <button class="table-action-btn" title="Print Voucher" onclick="showToast('Print Itinerary', 'Printing official STACKLY Expedition Voucher.');"><i class="fa-solid fa-print"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="ticket-id">#STK-ADV-8711</span></td>
+                  <td>
+                    <div style="font-weight:700;">Priya Sharma</div>
+                    <span style="font-size:0.72rem; color:var(--text-light);">priya.sharma@gmail.com</span>
+                  </td>
+                  <td>Rishikesh White-Water Rapids</td>
+                  <td>02 Nov &ndash; 05 Nov 2026</td>
+                  <td>4 Persons</td>
+                  <td><strong style="color:var(--dash-primary);">₹35,996</strong></td>
+                  <td><span class="status-pill success">Paid Full</span></td>
+                  <td><span class="status-pill success">Confirmed</span></td>
+                  <td>
+                    <button class="table-action-btn" title="View Details" onclick="showToast('Booking Details', 'Showing itinerary voucher for #STK-ADV-8711.');"><i class="fa-solid fa-eye"></i></button>
+                    <button class="table-action-btn" title="Print Voucher" onclick="showToast('Print Itinerary', 'Printing official STACKLY Expedition Voucher.');"><i class="fa-solid fa-print"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="ticket-id">#STK-ADV-7620</span></td>
+                  <td>
+                    <div style="font-weight:700;">Rahul Verma</div>
+                    <span style="font-size:0.72rem; color:var(--text-light);">rahul.verma@techcorp.in</span>
+                  </td>
+                  <td>Bir Billing Tandem Flight</td>
+                  <td>18 Nov &ndash; 20 Nov 2026</td>
+                  <td>1 Person</td>
+                  <td><strong style="color:var(--dash-primary);">₹6,499</strong></td>
+                  <td><span class="status-pill success">Paid Full</span></td>
+                  <td><span class="status-pill success">Confirmed</span></td>
+                  <td>
+                    <button class="table-action-btn" title="View Details" onclick="showToast('Booking Details', 'Showing itinerary voucher for #STK-ADV-7620.');"><i class="fa-solid fa-eye"></i></button>
+                    <button class="table-action-btn" title="Print Voucher" onclick="showToast('Print Itinerary', 'Printing official STACKLY Expedition Voucher.');"><i class="fa-solid fa-print"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="ticket-id">#STK-ADV-6549</span></td>
+                  <td>
+                    <div style="font-weight:700;">Elena Rostova</div>
+                    <span style="font-size:0.72rem; color:var(--text-light);">elena.rostova@traveler.com</span>
+                  </td>
+                  <td>Havelock Coral Reef Deep Dive</td>
+                  <td>10 Dec &ndash; 15 Dec 2026</td>
+                  <td>2 Persons</td>
+                  <td><strong style="color:var(--dash-primary);">₹37,000</strong></td>
+                  <td><span class="status-pill success">Paid Full</span></td>
+                  <td><span class="status-pill success">Confirmed</span></td>
+                  <td>
+                    <button class="table-action-btn" title="View Details" onclick="showToast('Booking Details', 'Showing itinerary voucher for #STK-ADV-6549.');"><i class="fa-solid fa-eye"></i></button>
+                    <button class="table-action-btn" title="Print Voucher" onclick="showToast('Print Itinerary', 'Printing official STACKLY Expedition Voucher.');"><i class="fa-solid fa-print"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 5: REGISTERED TRAVELERS DIRECTORY
+           ====================================================================== -->
+      <section class="admin-tab-panel" id="admin-tab-customers">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Registered Travelers Directory 👥</h1>
+            <p class="dash-page-subtitle">Customer profiles, mountaineering credentials, emergency contacts, and loyalty tier status.</p>
+          </div>
+          <span class="status-pill info">84 Active Explorers</span>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-table-wrap">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Traveler</th>
+                  <th>Contact</th>
+                  <th>Trips Completed</th>
+                  <th>Loyalty Tier</th>
+                  <th>Emergency Contact</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                      <div class="header-avatar" style="width:36px; height:36px;">AM</div>
+                      <div>
+                        <div style="font-weight:700;">Alex Morgan</div>
+                        <span style="font-size:0.72rem; color:var(--text-light);">ID: #EXP-TRV-102</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>alex.morgan@stackly.com<br><span style="font-size:0.74rem; color:var(--text-light);">+91 98450 12345</span></td>
+                  <td><strong>8 Expeditions</strong></td>
+                  <td><span class="status-pill info"><i class="fa-solid fa-crown"></i> Alpine Elite</span></td>
+                  <td>Sarah Morgan (+91 98450 99999)</td>
+                  <td><span class="status-pill success">Verified</span></td>
+                  <td>
+                    <button class="table-action-btn" title="Send Notification" onclick="showToast('Message Sent', 'Notified Alex Morgan.');"><i class="fa-solid fa-envelope"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div style="display:flex; align-items:center; gap:10px;">
+                      <div class="header-avatar" style="width:36px; height:36px;">PS</div>
+                      <div>
+                        <div style="font-weight:700;">Priya Sharma</div>
+                        <span style="font-size:0.72rem; color:var(--text-light);">ID: #EXP-TRV-144</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>priya.sharma@gmail.com<br><span style="font-size:0.74rem; color:var(--text-light);">+91 97410 88721</span></td>
+                  <td><strong>4 Expeditions</strong></td>
+                  <td><span class="status-pill success"><i class="fa-solid fa-star"></i> Trailblazer</span></td>
+                  <td>Rohan Sharma (+91 97410 11223)</td>
+                  <td><span class="status-pill success">Verified</span></td>
+                  <td>
+                    <button class="table-action-btn" title="Send Notification" onclick="showToast('Message Sent', 'Notified Priya Sharma.');"><i class="fa-solid fa-envelope"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 6: MOUNTAIN GUIDES & RESCUE ROSTER
+           ====================================================================== -->
+      <section class="admin-tab-panel" id="admin-tab-guides">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Mountain Guides &amp; Rescue Roster 🧗</h1>
+            <p class="dash-page-subtitle">Certified mountain guides, wilderness first responders, and active trail assignments.</p>
+          </div>
+          <button type="button" class="admin-btn-action" onclick="showToast('Add Guide', 'Guide certification registration opened.');">
+            <i class="fa-solid fa-user-plus"></i> Register Guide
+          </button>
+        </div>
+
+        <div class="admin-guides-grid">
+          <!-- Guide 1 -->
+          <div class="admin-guide-card">
+            <div class="guide-card-top">
+              <div class="guide-avatar">TN</div>
+              <div class="guide-info">
+                <span class="guide-name">Tenzing Norbu</span>
+                <span class="guide-cert">IMF Certified Alpine Master</span>
+              </div>
+            </div>
+            <div class="guide-meta-list">
+              <span><i class="fa-solid fa-shield-halved" style="color:var(--dash-primary); width:16px;"></i> Wilderness First Responder (WFR)</span>
+              <span><i class="fa-solid fa-mountain" style="color:var(--dash-primary); width:16px;"></i> 14 Himalayan Expeditions Guided</span>
+              <span><i class="fa-solid fa-satellite" style="color:#10b981; width:16px;"></i> Active: #EXP-9842 (Roopkund)</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:10px; border-top:1px solid var(--border-subtle);">
+              <span class="status-pill success">On Trail &bull; Healthy</span>
+              <button class="table-action-btn" onclick="showToast('Radio Link', 'Calling VHF radio for Tenzing Norbu.');"><i class="fa-solid fa-phone"></i></button>
+            </div>
+          </div>
+
+          <!-- Guide 2 -->
+          <div class="admin-guide-card">
+            <div class="guide-card-top">
+              <div class="guide-avatar">VS</div>
+              <div class="guide-info">
+                <span class="guide-name">Vikram Singh</span>
+                <span class="guide-cert">IRF Swiftwater Rescue Lead</span>
+              </div>
+            </div>
+            <div class="guide-meta-list">
+              <span><i class="fa-solid fa-water" style="color:var(--dash-primary); width:16px;"></i> Grade-V White-Water Certified</span>
+              <span><i class="fa-solid fa-person-swimming" style="color:var(--dash-primary); width:16px;"></i> Lifeguard Rescue Trainer</span>
+              <span><i class="fa-solid fa-satellite" style="color:#10b981; width:16px;"></i> Active: #EXP-8721 (Rishikesh)</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:10px; border-top:1px solid var(--border-subtle);">
+              <span class="status-pill success">On River &bull; Healthy</span>
+              <button class="table-action-btn" onclick="showToast('Radio Link', 'Calling VHF radio for Vikram Singh.');"><i class="fa-solid fa-phone"></i></button>
+            </div>
+          </div>
+
+          <!-- Guide 3 -->
+          <div class="admin-guide-card">
+            <div class="guide-card-top">
+              <div class="guide-avatar">AD</div>
+              <div class="guide-info">
+                <span class="guide-name">Ananya Das</span>
+                <span class="guide-cert">PADI Master Scuba Diver Trainer</span>
+              </div>
+            </div>
+            <div class="guide-meta-list">
+              <span><i class="fa-solid fa-mask-snorkel" style="color:var(--dash-primary); width:16px;"></i> Deep Diving &amp; Enriched Air Nitrox</span>
+              <span><i class="fa-solid fa-fish" style="color:var(--dash-primary); width:16px;"></i> 1,200+ Logged Oceanic Dives</span>
+              <span><i class="fa-solid fa-satellite" style="color:#10b981; width:16px;"></i> Active: #EXP-6531 (Andaman)</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:10px; border-top:1px solid var(--border-subtle);">
+              <span class="status-pill success">Underwater &bull; Safe</span>
+              <button class="table-action-btn" onclick="showToast('Radio Link', 'Calling baseboat for Ananya Das.');"><i class="fa-solid fa-phone"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 7: PROMO VOUCHERS & COUPONS
+           ====================================================================== -->
+      <section class="admin-tab-panel" id="admin-tab-offers">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Promotional Discount Vouchers 🏷️</h1>
+            <p class="dash-page-subtitle">Configure campaign vouchers, seasonal trek discounts, and traveler redemption quotas.</p>
+          </div>
+          <button type="button" class="admin-btn-action" onclick="showToast('Create Voucher', 'Voucher creation dialog active.');">
+            <i class="fa-solid fa-plus"></i> Create New Voucher
+          </button>
+        </div>
+
+        <div class="coupons-grid">
+          <div class="coupon-card">
+            <span class="coupon-code-badge">SUMMIT20</span>
+            <div style="font-weight:700; color:var(--white);">20% Off Himalayan Expeditions</div>
+            <p class="coupon-desc">Valid for all high-altitude mountain treks over 4,000m elevation.</p>
+            <div class="coupon-stats">
+              <span>Redeemed: 64 times</span>
+              <span style="color:#10b981;">Active &bull; No Expiry</span>
+            </div>
+          </div>
+
+          <div class="coupon-card">
+            <span class="coupon-code-badge">TREKFIRST15</span>
+            <div style="font-weight:700; color:var(--white);">15% First Adventure Discount</div>
+            <p class="coupon-desc">Instant discount applied on first booking across any tour package.</p>
+            <div class="coupon-stats">
+              <span>Redeemed: 128 times</span>
+              <span style="color:#10b981;">Active</span>
+            </div>
+          </div>
+
+          <div class="coupon-card">
+            <span class="coupon-code-badge">OCEANDEEP50</span>
+            <div style="font-weight:700; color:var(--white);">Flat ₹5,000 Off Scuba Tours</div>
+            <p class="coupon-desc">Applicable on Andaman Island PADI certified exploration diving packages.</p>
+            <div class="coupon-stats">
+              <span>Redeemed: 32 times</span>
+              <span style="color:#10b981;">Active</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 8: SYSTEM CONTROLS & SAFETY SETTINGS
+           ====================================================================== -->
+      <section class="admin-tab-panel" id="admin-tab-settings">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Safety Protocols &amp; Operating Settings ⚙️</h1>
+            <p class="dash-page-subtitle">Configure emergency weather switches, trail safety SLA limits, and telemetry refresh frequencies.</p>
+          </div>
+          <button type="button" class="admin-btn-action" onclick="showToast('Settings Saved', 'Operational controls successfully updated.');">
+            <i class="fa-solid fa-floppy-disk"></i> Save Controls
+          </button>
+        </div>
+
+        <div class="settings-section-card">
+          <h3 class="dash-card-title" style="margin-bottom:1rem;"><i class="fa-solid fa-shield-virus"></i> High-Altitude Safety Protocols</h3>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-label-title">Automated Weather Emergency Broadcast</div>
+              <div class="settings-label-sub">Instantly halts high-pass ascents when ridge wind speed exceeds 50 km/h or blizzards occur.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-label-title">Satellite Oxygen Telemetry Heartbeat (SPO2)</div>
+              <div class="settings-label-sub">Trigger medical alert when trekker pulse oximetry falls below 80% at &gt;4,000m.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-label-title">Real-Time Booking SMS &amp; WhatsApp Confirmations</div>
+              <div class="settings-label-sub">Automatically dispatch gear checklist &amp; guide contacts upon payment confirmation.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-section-card" style="border-color:rgba(239, 68, 68, 0.4);">
+          <h3 class="dash-card-title" style="color:#f87171; margin-bottom:1rem;"><i class="fa-solid fa-triangle-exclamation" style="color:#f87171;"></i> Emergency Expedition Halt Switch</h3>
+          <p style="font-size:0.84rem; color:var(--text-light); margin-bottom:1rem;">In case of severe seismic activity or avalanche warnings, click below to lock all bookings and issue instant satellite return orders to all active mountain leads.</p>
+          <button type="button" style="padding:0.75rem 1.5rem; background:rgba(239,68,68,0.2); border:1px solid #ef4444; color:#f87171; font-weight:700; border-radius:6px; cursor:pointer;" onclick="showToast('Emergency SOS', 'Basecamp return broadcast triggered for all active field teams.');">
+            <i class="fa-solid fa-radiation"></i> Broadcast Emergency Return Order
+          </button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL: ADD NEW TOUR PACKAGE
+       ========================================================================== -->
+  <div class="admin-modal" id="addPackageModal">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title"><i class="fa-solid fa-mountain" style="color:var(--dash-primary); margin-right:8px;"></i> Add New Expedition Package</h3>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="addPackageForm">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group full">
+              <label class="form-label" for="pkgTitle">Package Title</label>
+              <input type="text" id="pkgTitle" class="form-input" placeholder="e.g. Spiti Valley Winter Snow Expedition" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pkgRegion">Region / Destination</label>
+              <input type="text" id="pkgRegion" class="form-input" placeholder="e.g. Himachal Pradesh, India" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pkgCategory">Adventure Category</label>
+              <select id="pkgCategory" class="form-input">
+                <option value="trekking">Mountain Trekking</option>
+                <option value="water">Water &amp; Rafting</option>
+                <option value="aerial">Aerial Paragliding</option>
+                <option value="coastal">Scuba Diving</option>
+                <option value="safari">Motorcycle Safari</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pkgDuration">Duration</label>
+              <input type="text" id="pkgDuration" class="form-input" placeholder="e.g. 7 Days / 6 Nights" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pkgDifficulty">Difficulty Tier</label>
+              <select id="pkgDifficulty" class="form-input">
+                <option value="easy">Easy (Family / Gentle)</option>
+                <option value="moderate" selected>Moderate (Good Fitness)</option>
+                <option value="hard">Challenging (Alpine Prep)</option>
+                <option value="extreme">Extreme (High Elevation)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pkgPrice">Price per Person (₹)</label>
+              <input type="number" id="pkgPrice" class="form-input" placeholder="e.g. 19500" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="pkgSlots">Total Slots Available</label>
+              <input type="number" id="pkgSlots" class="form-input" placeholder="e.g. 16" required>
+            </div>
+
+            <div class="form-group full">
+              <label class="form-label" for="pkgDesc">Expedition Description</label>
+              <textarea id="pkgDesc" class="form-textarea" rows="3" placeholder="Brief outline of trail difficulty, elevation profile, and highlights..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="admin-link-btn" id="modalCancelBtn" style="background:rgba(255,255,255,0.08); color:var(--white);">Cancel</button>
+          <button type="submit" class="admin-btn-action"><i class="fa-solid fa-check"></i> Create Package</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="dash-toast" id="dashToast">
+    <i class="fa-solid fa-circle-check toast-icon" id="toastIcon"></i>
+    <div class="toast-body">
+      <span class="toast-title" id="toastTitle">Success</span>
+      <span class="toast-desc" id="toastDesc">Operation completed successfully.</span>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,474 @@
+/* ==========================================================================
+   STACKLY ADVENTURE TOURISM — ADMIN DASHBOARD SPECIALIZED STYLES (admin-dashboard.css)
+   ========================================================================== */
+
+/* Live Expeditions Queue / Dispatch Stream */
+.expedition-dispatch-queue {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.expedition-ticket {
+  background: rgba(10, 20, 34, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  transition: all 0.25s ease;
+}
+
+.expedition-ticket:hover {
+  border-color: var(--border-medium);
+  background: rgba(14, 30, 52, 0.85);
+  transform: translateX(4px);
+}
+
+.ticket-meta {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-grow: 1;
+}
+
+.ticket-id {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--dash-primary);
+  background: var(--dash-primary-tint);
+  border: 1px solid var(--border-subtle);
+  padding: 4px 9px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.ticket-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ticket-title {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.ticket-info {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ticket-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-shrink: 0;
+}
+
+.btn-advance-status {
+  padding: 0.45rem 0.9rem;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid var(--border-medium);
+  color: var(--dash-primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-advance-status:hover {
+  background: var(--dash-primary);
+  color: #070e17;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
+/* 2-Column Operational Grid */
+.admin-operations-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1.2fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Mountain Weather Telemetry Widget */
+.weather-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.weather-station-card {
+  background: rgba(10, 20, 34, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.station-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.station-name {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.station-altitude {
+  font-size: 0.72rem;
+  color: var(--dash-primary);
+  font-weight: 600;
+}
+
+.station-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.station-temp {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.station-condition {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Tour Packages Catalog Grid */
+.admin-packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-package-card {
+  background: rgba(10, 20, 34, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-package-card:hover {
+  border-color: var(--border-medium);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.pkg-thumb-wrap {
+  height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pkg-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.admin-package-card:hover .pkg-thumb-img {
+  transform: scale(1.05);
+}
+
+.pkg-badge-diff {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.pkg-badge-diff.moderate { background: rgba(56, 189, 248, 0.85); color: #070e17; }
+.pkg-badge-diff.hard { background: rgba(245, 158, 11, 0.85); color: #070e17; }
+.pkg-badge-diff.extreme { background: rgba(239, 68, 68, 0.85); color: #fff; }
+.pkg-badge-diff.easy { background: rgba(16, 185, 129, 0.85); color: #070e17; }
+
+.pkg-body {
+  padding: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.pkg-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.pkg-location {
+  font-size: 0.76rem;
+  color: var(--text-light);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pkg-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.pkg-price {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--dash-primary);
+}
+
+.pkg-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Mountain Guides Roster Grid */
+.admin-guides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.admin-guide-card {
+  background: rgba(10, 20, 34, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: all 0.25s ease;
+}
+
+.admin-guide-card:hover {
+  border-color: var(--border-medium);
+  transform: translateY(-2px);
+}
+
+.guide-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.guide-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--dash-primary), #0284c7);
+  color: #070e17;
+  font-weight: 800;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.guide-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-name {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.guide-cert {
+  font-size: 0.72rem;
+  color: var(--dash-primary);
+  font-weight: 600;
+}
+
+.guide-meta-list {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Promo Voucher Cards */
+.coupons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.coupon-card {
+  background: rgba(10, 20, 34, 0.8);
+  border: 1px dashed var(--dash-primary);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.coupon-code-badge {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--dash-primary);
+  font-family: monospace;
+}
+
+.coupon-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.coupon-stats {
+  font-size: 0.72rem;
+  color: var(--text-light);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* System Settings Panels */
+.settings-section-card {
+  background: rgba(10, 20, 34, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.settings-label-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.settings-label-sub {
+  font-size: 0.75rem;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+/* Switch Toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.15);
+  transition: .3s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--dash-primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+@media (max-width: 992px) {
+  .admin-operations-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .expedition-ticket {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ticket-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .ticket-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .weather-telemetry-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Born to Explore, Built for Adventure | STACKLY</title>
+  <meta name="description" content="Discover the STACKLY story: our mission, certified mountaineering guides, safety protocols, and commitment to sustainable adventure tourism across the world.">
+  
+  <link rel="icon" type="image/webp" href="assets/images/Brand-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY Logo" class="brand-logo-img">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="About.html" class="nav-link active">About</a></li>
+          <li><a href="Destinations.html" class="nav-link">Destinations</a></li>
+          <li><a href="Services.html" class="nav-link">Services</a></li>
+          <li><a href="Blog.html" class="nav-link">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="Login.html" class="btn-nav-login"><i class="fa-solid fa-user"></i> Login</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu-backdrop"></div>
+  <div class="mobile-menu-drawer">
+    <div>
+      <a href="index.html" class="brand-logo-wrap" style="margin-bottom: 2rem;">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY" style="height: 38px;">
+      </a>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="About.html" class="nav-link active">About</a></li>
+        <li><a href="Destinations.html" class="nav-link">Destinations</a></li>
+        <li><a href="Services.html" class="nav-link">Services</a></li>
+          <li><a href="Blog.html" class="nav-link">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <div style="border-top: 1px solid var(--border-glass); padding-top: 1.5rem;">
+      <a href="Login.html" class="btn btn-primary" style="width: 100%;">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Login / Register
+      </a>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div id="searchModalOverlay" class="search-modal-overlay">
+    <div class="search-modal-box">
+      <button id="searchModalClose" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="margin-bottom: 1.25rem;">Search Adventures & Packages</h3>
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass search-input-icon"></i>
+        <input type="text" id="globalSearchInput" placeholder="Search by name, region or activity...">
+      </div>
+      <div id="globalSearchResults" class="search-results-list"></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="page-hero" style="background-image: url('assets/images/mountain-camping.webp');">
+      <div class="page-hero-content">
+        <span class="section-badge badge-primary"><i class="fa-solid fa-compass"></i> Our Brand Story</span>
+        <h1 style="font-size: var(--fs-hero); font-weight: 800; margin-bottom: 1rem; line-height: 1.15;">
+          Born to Explore. Built for Adventure.
+        </h1>
+        <p style="font-size: clamp(1rem, 1.3vw, 1.15rem); color: var(--text-muted); line-height: 1.7; max-width: 720px; margin: 0 auto;">
+          STACKLY was forged in high alpine ridges and wild river canyons. We unite authentic exploration with uncompromised safety, certified mountaineers, and ecological stewardship.
+        </p>
+
+        <!-- 4 Quick Stats Strip -->
+        <div class="hero-stats-strip">
+          <div class="hero-stat-box">
+            <div class="hero-stat-num">14,000+</div>
+            <div class="hero-stat-label">Explorers Guided</div>
+          </div>
+          <div class="hero-stat-box">
+            <div class="hero-stat-num">35+</div>
+            <div class="hero-stat-label">Curated Trails</div>
+          </div>
+          <div class="hero-stat-box">
+            <div class="hero-stat-num">100%</div>
+            <div class="hero-stat-label">Safety Record</div>
+          </div>
+          <div class="hero-stat-box">
+            <div class="hero-stat-num">16+</div>
+            <div class="hero-stat-label">Years of Mastery</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 01 — OUR GENESIS & STORY -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="about-split-row">
+          <div>
+            <span class="section-badge badge-primary">Section 01 • The Genesis</span>
+            <h2 style="font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 800; margin-bottom: 1.25rem; line-height: 1.2;">
+              From Himalayan High Passes to Global Horizons
+            </h2>
+            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem;">
+              STACKLY began with a simple belief: the world’s most profound transformations happen when we leave our comfort zones. Founded in 2010 by high-altitude mountaineers, swiftwater kayakers, and outdoor educators, we saw that commercial tourism had become passive and predictable.
+            </p>
+            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.5rem;">
+              We set out to engineer expeditions that combine authentic adrenaline with certified leadership, real-time satellite safety telemetry, environmental conservation, and deep cultural immersion.
+            </p>
+            <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-shield-halved" style="color: var(--primary); font-size: 1.2rem;"></i>
+                <span style="font-size: 0.88rem; font-weight: 600; color: #fff;">IMF &amp; PADI Certified</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-users" style="color: var(--primary); font-size: 1.2rem;"></i>
+                <span style="font-size: 0.88rem; font-weight: 600; color: #fff;">Max 12 Trekkers</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-leaf" style="color: var(--primary); font-size: 1.2rem;"></i>
+                <span style="font-size: 0.88rem; font-weight: 600; color: #fff;">Leave No Trace</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-img-frame">
+            <img src="assets/images/hero-adventure.webp" alt="STACKLY Expedition Journey">
+            <div class="about-badge-floating">
+              <div class="about-badge-num">100%</div>
+              <div class="about-badge-label">Certified Mountain Guides</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02 — MISSION, VISION & TRAVEL PHILOSOPHY -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary">Guiding Principles</span>
+          <h2 class="section-title">Our Mission, Vision &amp; Ethos</h2>
+          <p class="section-desc">What fuels our team of mountaineers, divemasters, and expedition leaders every single day.</p>
+        </div>
+
+        <div class="values-grid">
+          <!-- Mission -->
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-bullseye"></i></div>
+            <span class="badge-difficulty moderate" style="margin-bottom:0.75rem;">Section 02</span>
+            <h3 class="value-title">Our Mission</h3>
+            <p class="value-desc">
+              Make authentic outdoor adventure accessible through meticulous planning, transparent pricing, certified Sherpa leadership, premium alpine gear, and zero single-use plastic.
+            </p>
+          </div>
+
+          <!-- Vision -->
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-eye"></i></div>
+            <span class="badge-difficulty easy" style="margin-bottom:0.75rem;">Section 03</span>
+            <h3 class="value-title">Our Vision</h3>
+            <p class="value-desc">
+              Inspire a global community of mindful adventurers who challenge their limits, connect with wild ecosystems, and discover life-altering moments atop remote peaks and coral reefs.
+            </p>
+          </div>
+
+          <!-- Philosophy -->
+          <div class="value-card">
+            <div class="value-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+            <span class="badge-difficulty challenging" style="margin-bottom:0.75rem;">Section 04</span>
+            <h3 class="value-title">Our Philosophy</h3>
+            <p class="value-desc">
+              We travel not to conquer nature, but to be humbled by it. Every expedition is guided by deep respect for indigenous mountain communities, trail camaraderie, and environmental care.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03 — 4 PILLARS OF EXCELLENCE -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary">Why Travelers Trust Us</span>
+          <h2 class="section-title">Four Pillars of STACKLY Expeditions</h2>
+          <p class="section-desc">Engineered from over a decade of high-altitude logistics and international rescue standards.</p>
+        </div>
+
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-certificate"></i></div>
+            <h3 class="pillar-title">Certified Leadership</h3>
+            <p class="pillar-desc">Every lead guide is IMF, IRF, or PADI certified with a minimum of 8 years field experience and Wilderness First Responder (WFR) training.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-satellite-dish"></i></div>
+            <h3 class="pillar-title">Satellite Telemetry</h3>
+            <p class="pillar-desc">Real-time GPS satellite beacons, continuous pulse oximetry tracking, and 24/7 dedicated high-altitude helicopter evacuation insurance backup.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-user-group"></i></div>
+            <h3 class="pillar-title">Small Group Dynamic</h3>
+            <p class="pillar-desc">We cap expedition groups at 12 travelers, ensuring personalized guide attention, minimal trail footprint, and authentic team camaraderie.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+            <h3 class="pillar-title">Local Empowerment</h3>
+            <p class="pillar-desc">Over 85% of our trail crew, porters, and cooks are hired from indigenous Himalayan valleys with fair living wages and high-altitude gear.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04 — DIVERSE ADVENTURE DISCIPLINES -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="about-split-row reversed">
+          <div>
+            <span class="section-badge badge-primary">Section 05</span>
+            <h2 style="font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 800; margin-bottom: 1.25rem; line-height: 1.2;">
+              Five Specialized Adventure Disciplines
+            </h2>
+            <p style="font-size: 0.98rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem;">
+              We operate across five comprehensive outdoor sectors, managed by specialized discipline directors:
+            </p>
+            <ul style="display: flex; flex-direction: column; gap: 0.85rem; color: var(--text-muted); font-size: 0.92rem; margin-bottom: 1.75rem;">
+              <li><strong style="color:var(--primary);"><i class="fa-solid fa-mountain" style="width:20px;"></i> Alpine Trekking:</strong> High altitude ridge hikes, snowy pass crossings, and technical summit ascents up to 6,000m.</li>
+              <li><strong style="color:var(--accent);"><i class="fa-solid fa-water" style="width:20px;"></i> Whitewater Rapids:</strong> Grade IV &amp; V river rafting expeditions, cliff jumping, and rapid navigation.</li>
+              <li><strong style="color:var(--secondary);"><i class="fa-solid fa-wind" style="width:20px;"></i> Aerial Paragliding:</strong> Tandem cross-country thermal flights with veteran FAI-certified pilots.</li>
+              <li><strong style="color:var(--primary);"><i class="fa-solid fa-mask-snorkel" style="width:20px;"></i> Oceanic Scuba Diving:</strong> Certified PADI exploration diving along pristine coral reefs and shipwrecks.</li>
+              <li><strong style="color:var(--accent);"><i class="fa-solid fa-campground" style="width:20px;"></i> Wilderness Camping:</strong> Geodesic all-weather domes, starlight wilderness camps, and Leave No Trace bivouacs.</li>
+            </ul>
+            <a href="Services.html#services-experiences" class="btn btn-primary">Explore All Disciplines &rarr;</a>
+          </div>
+
+          <div class="about-img-frame">
+            <img src="assets/images/rafting.webp" alt="Multi-terrain adventures">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05 — RESPONSIBLE TRAVEL & CONSERVATION -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="about-split-row">
+          <div class="about-img-frame">
+            <img src="assets/images/meghalaya.webp" alt="Eco conservation and living bridges">
+          </div>
+          <div>
+            <span class="section-badge badge-primary">Section 06 • Sustainability</span>
+            <h2 style="font-size: clamp(2rem, 3vw, 2.6rem); font-weight: 800; margin-bottom: 1.25rem; line-height: 1.2;">
+              Responsible Travel &amp; Environmental Stewardship
+            </h2>
+            <p style="font-size: 1rem; line-height: 1.8; color: var(--text-muted); margin-bottom: 1.25rem;">
+              Our commitment to ecological preservation is built into every expedition budget. We adhere strictly to international Leave No Trace (LNT) guidelines:
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.75rem;">
+              <div style="display: flex; align-items: flex-start; gap: 0.85rem;">
+                <i class="fa-solid fa-circle-check" style="color: var(--primary); font-size: 1.15rem; margin-top: 0.2rem;"></i>
+                <div><strong style="color: #fff;">Zero Single-Use Plastic:</strong> Every traveler receives reusable aluminum water canisters and high-grade filtration pouches on trail.</div>
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 0.85rem;">
+                <i class="fa-solid fa-circle-check" style="color: var(--primary); font-size: 1.15rem; margin-top: 0.2rem;"></i>
+                <div><strong style="color: #fff;">4,500+ kg Trail Waste Retrieved:</strong> On every descent, our guides and porters collect non-biodegradable waste left behind by past visitors.</div>
+              </div>
+              <div style="display: flex; align-items: flex-start; gap: 0.85rem;">
+                <i class="fa-solid fa-circle-check" style="color: var(--primary); font-size: 1.15rem; margin-top: 0.2rem;"></i>
+                <div><strong style="color: #fff;">Direct Community Investment:</strong> 10% of expedition net proceeds fund solar heaters and education supplies in remote Himalayan villages.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06 — SENIOR EXPEDITION GUIDES DIRECTORY -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary">Section 07</span>
+          <h2 class="section-title">Meet Our Senior Expedition Guides</h2>
+          <p class="section-desc">Certified mountaineers, swiftwater rescue marshals, and marine biologists who keep you safe.</p>
+        </div>
+
+        <div class="team-grid">
+          <!-- Guide 1 -->
+          <div class="team-card">
+            <div class="team-img-wrap">
+              <img src="assets/images/guide-1.webp" alt="Tenzing Norbu">
+              <span class="team-badge-cert">IMF Alpine Master</span>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Tenzing Norbu</h3>
+              <div class="team-role">Head of Alpine Trekking</div>
+              <p class="team-bio">16 years guiding in Garhwal and Ladakh. 14 successful summits above 6,000m.</p>
+            </div>
+          </div>
+
+          <!-- Guide 2 -->
+          <div class="team-card">
+            <div class="team-img-wrap">
+              <img src="assets/images/guide-2.webp" alt="Vikram Singh">
+              <span class="team-badge-cert">IRF Rescue Lead</span>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Vikram Singh</h3>
+              <div class="team-role">Chief River Marshal</div>
+              <p class="team-bio">International Rafting Federation certified. Over 1,400 descents on the Ganges and Zanskar.</p>
+            </div>
+          </div>
+
+          <!-- Guide 3 -->
+          <div class="team-card">
+            <div class="team-img-wrap">
+              <img src="assets/images/guide-3.webp" alt="Sunil Rana">
+              <span class="team-badge-cert">FAI Paragliding Pilot</span>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Sunil Rana</h3>
+              <div class="team-role">Master Flight Director</div>
+              <p class="team-bio">Bir Billing native with 3,400+ air hours. Expert in cross-country thermal glides.</p>
+            </div>
+          </div>
+
+          <!-- Guide 4 -->
+          <div class="team-card">
+            <div class="team-img-wrap">
+              <img src="assets/images/guide-4.webp" alt="Ananya Das">
+              <span class="team-badge-cert">PADI Master Trainer</span>
+            </div>
+            <div class="team-info">
+              <h3 class="team-name">Ananya Das</h3>
+              <div class="team-role">Lead Marine Biologist</div>
+              <p class="team-bio">PADI Master Scuba Diver Trainer. 1,200+ reef dives across Andaman and Lakshadweep.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 07 — TESTIMONIALS -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary">Traveler Stories</span>
+          <h2 class="section-title">What Our Explorers Say</h2>
+          <p class="section-desc">Real stories from adventurers who pushed their limits with STACKLY.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="test-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="test-quote">
+              "Summiting Roopkund with Tenzing and the STACKLY crew was the most transformative experience of my life. The safety protocols and satellite monitoring gave our whole group total peace of mind."
+            </p>
+            <div class="test-author-row">
+              <img src="assets/images/user-1.webp" alt="Rohan Verma" class="test-avatar">
+              <div>
+                <div class="test-author-name">Rohan Verma</div>
+                <div class="test-author-exp">Himalayan Summit Trekker</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="test-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="test-quote">
+              "The Grade V rapids in Rishikesh with Vikram were exhilarating! Everything from the safety gear to the riverbank camp was top-tier. STACKLY is the gold standard for adventure travel."
+            </p>
+            <div class="test-author-row">
+              <img src="assets/images/user-2.webp" alt="Pooja Hegde" class="test-avatar">
+              <div>
+                <div class="test-author-name">Pooja Hegde</div>
+                <div class="test-author-exp">Ganges Whitewater Explorer</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="test-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="test-quote">
+              "Scuba diving at Havelock Island with Ananya was pure magic. Swimming with manta rays while knowing you're guided by a certified marine biologist was unforgettable."
+            </p>
+            <div class="test-author-row">
+              <img src="assets/images/user-3.webp" alt="David Miller" class="test-avatar">
+              <div>
+                <div class="test-author-name">David Miller</div>
+                <div class="test-author-exp">Andaman Scuba Diver</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 08 — FINAL CTA -->
+    <section class="container" style="padding-bottom: 4rem;">
+      <div class="cta-banner-section" style="background-image: url('assets/images/himalayas.webp');">
+        <div class="cta-banner-content">
+          <span class="section-badge badge-primary">Section 08</span>
+          <h2>Life Is Short. Make Every Journey Count.</h2>
+          <p>
+            Join thousands of travelers who have stepped beyond limits and discovered what lies over the next mountain ridgeline.
+          </p>
+          <div style="display:flex; justify-content:center; gap:1.25rem; flex-wrap:wrap;">
+            <a href="Destinations.html" class="btn btn-primary btn-lg">Explore Destinations</a>
+            <a href="Contact.html" class="btn btn-secondary btn-lg">Contact Travel Specialist</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/images/Brand-logo.webp" alt="STACKLY">
+          </a>
+          <p class="footer-desc">
+            Discover extraordinary destinations, experience thrilling adventures, and create unforgettable memories with STACKLY. Your next adventure begins here.
+          </p>
+          <div class="footer-socials">
+            <a href="404.html" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> About</a></li>
+            <li class="footer-link-item"><a href="Destinations.html"><i class="fa-solid fa-angle-right"></i> Destinations</a></li>
+            <li class="footer-link-item"><a href="Services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+            <li class="footer-link-item"><a href="Blog.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Popular Adventures</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="Services.html?activity=Trekking"><i class="fa-solid fa-angle-right"></i> Mountain Trekking</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Rafting"><i class="fa-solid fa-angle-right"></i> River Rafting</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Paragliding"><i class="fa-solid fa-angle-right"></i> Paragliding</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Camping"><i class="fa-solid fa-angle-right"></i> Camping</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Wildlife"><i class="fa-solid fa-angle-right"></i> Wildlife Safari</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Travel Support</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Travel Guide</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Booking Information</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Safety Guidelines</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Cancellation Policy</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">Copyright &copy; 2026 STACKLY. All Rights Reserved.</div>
+        <div class="footer-legal-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — Create an Account | STACKLY</title>
+  
+  <link rel="icon" type="image/webp" href="assets/images/Brand-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="auth-page">
+
+  <!-- Back to Home Button -->
+  <a href="index.html" class="auth-back-link">
+    <i class="fa-solid fa-arrow-left"></i> Back to Home
+  </a>
+
+  <div class="auth-split-container">
+    <!-- Left Hero Banner Side -->
+    <div class="auth-visual-side" style="background-image: url('assets/images/auth-bg.webp');">
+      <div class="auth-visual-top">
+        <a href="index.html" class="auth-logo-wrap">
+          <img src="assets/images/Brand-logo.webp" alt="STACKLY Logo">
+        </a>
+      </div>
+
+      <div class="auth-visual-center">
+        <div class="auth-visual-badge">
+          <i class="fa-solid fa-compass"></i> Join the Community
+        </div>
+        <h1 class="auth-visual-title">Begin Your Expedition Today.</h1>
+        <p class="auth-visual-quote">
+          "The greatest journeys answer questions that in the beginning you didn't even think to ask."
+        </p>
+      </div>
+
+      <div class="auth-visual-bottom">
+        <span><i class="fa-solid fa-shield-halved"></i> 100% Certified Safety</span>
+        <span><i class="fa-solid fa-star"></i> 4.9 Global Rating</span>
+        <span><i class="fa-solid fa-award"></i> Premier Adventure Network</span>
+      </div>
+    </div>
+
+    <!-- Right Signup Form Side -->
+    <div class="auth-form-side">
+      <div class="auth-card">
+        <div class="auth-header">
+          <span class="section-badge badge-primary" style="margin-bottom:0.6rem;">Get Started</span>
+          <h2>Start Your Adventure with STACKLY!</h2>
+          <p>Create your account and discover exciting destinations and unforgettable experiences.</p>
+        </div>
+
+        <form id="signupForm" novalidate>
+          <!-- Signup As Role Selector -->
+          <label class="form-label">Signup As</label>
+          <div class="role-select-cards">
+            <label class="role-radio-label selected">
+              <input type="radio" name="authRole" value="Client" checked>
+              <i class="fa-solid fa-person-hiking"></i>
+              <span>Client / Traveler</span>
+            </label>
+            <label class="role-radio-label">
+              <input type="radio" name="authRole" value="Admin">
+              <i class="fa-solid fa-user-gear"></i>
+              <span>Tourism Admin</span>
+            </label>
+          </div>
+
+          <!-- Full Name -->
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" id="signupName" class="form-control" placeholder="e.g. Maya Sengupta" required>
+            <div class="form-error"></div>
+          </div>
+
+          <!-- Email Address -->
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" id="signupEmail" class="form-control" placeholder="maya@explorer.com" required>
+            <div class="form-error"></div>
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label class="form-label">Password (Min 6 Characters) *</label>
+            <div class="password-input-wrap">
+              <input type="password" id="signupPassword" class="form-control" placeholder="Choose secure password" required>
+              <span class="password-toggle-btn"><i class="fa-solid fa-eye"></i></span>
+            </div>
+            <div class="form-error"></div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="form-group">
+            <label class="form-label">Confirm Password *</label>
+            <div class="password-input-wrap">
+              <input type="password" id="signupConfirmPassword" class="form-control" placeholder="Re-enter password" required>
+              <span class="password-toggle-btn"><i class="fa-solid fa-eye"></i></span>
+            </div>
+            <div class="form-error"></div>
+          </div>
+
+          <!-- Agree to Terms Checkbox -->
+          <div class="form-group" style="margin-bottom: 1.5rem;">
+            <label class="checkbox-label" style="align-items: flex-start;">
+              <input type="checkbox" id="signupTerms" required style="margin-top: 0.25rem;">
+              <span style="font-size: 0.82rem; line-height: 1.5;">
+                I agree to the <a href="404.html" style="color:var(--accent); text-decoration:underline;">Terms & Conditions</a>, Safety Code of Conduct, and Privacy Policy.
+              </span>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="auth-submit-btn">
+            Create Account <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+          <!-- Switch to Login -->
+          <div class="auth-switch-link">
+            Already have an account? <a href="Login.html">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STACKLY — Adventure Tourism | Discover Beyond Limits</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/images/Brand-logo.webp">
+
+  <!-- Google Fonts: Poppins exclusively -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/destinations.css">
+  <link rel="stylesheet" href="css/services.css">
+
+  <style>
+    /* Homepage Specific Hero & Section Enhancements */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+      background: #070e17;
+      overflow: hidden;
+    }
+
+    .hero-bg-parallax {
+      position: absolute;
+      inset: -20px;
+      background-image: url('assets/images/hero-adventure.webp');
+      background-size: cover;
+      background-position: center right;
+      opacity: 0.82;
+      z-index: 1;
+      will-change: transform;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(7, 14, 23, 0.94) 0%, rgba(7, 14, 23, 0.72) 45%, rgba(7, 14, 23, 0.2) 100%);
+      z-index: 2;
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-content {
+      max-width: 680px;
+    }
+
+    .hero-heading {
+      font-size: var(--fs-hero);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-heading .highlight-green,
+    .hero-heading .highlight-sky {
+      color: var(--primary);
+    }
+
+    .hero-desc {
+      font-size: clamp(1rem, 1.3vw, 1.2rem);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      color: var(--text-muted);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Floating badges & route lines */
+    .floating-compass {
+      position: absolute;
+      top: 20%;
+      right: 15%;
+      font-size: 2.5rem;
+      color: rgba(6, 182, 212, 0.35);
+      z-index: 3;
+    }
+
+    .floating-badge-tag {
+      position: absolute;
+      top: 35%;
+      right: 8%;
+      background: rgba(7, 14, 23, 0.85);
+      border: 1px solid var(--border-primary);
+      backdrop-filter: blur(12px);
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5), var(--glow-primary);
+      z-index: 3;
+    }
+
+    /* Hero Search Strip */
+    .hero-search-strip-box {
+      background: var(--bg-dark-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 2rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(20px);
+      position: relative;
+      z-index: 10;
+      margin-top: 1.5rem;
+    }
+
+    .hero-search-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1.5fr 1.2fr 1fr auto;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .hero-search-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .search-col-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .search-col-input {
+      background: transparent;
+      border: none;
+      color: var(--secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+      width: 100%;
+      outline: none;
+    }
+
+    .search-col-input option {
+      background: #0a1422;
+      color: #fff;
+    }
+
+    /* Activities Cards Variation */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .activity-card {
+      position: relative;
+      height: 380px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      transition: all var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.75rem;
+    }
+
+    .activity-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg-img);
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s ease;
+      z-index: 1;
+    }
+
+    .activity-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7, 14, 23, 0.1) 0%, rgba(7, 14, 23, 0.7) 50%, rgba(7, 14, 23, 0.95) 100%);
+      z-index: 2;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-primary);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), var(--glow-primary);
+    }
+
+    .activity-card:hover::before {
+      transform: scale(1.1);
+    }
+
+    .activity-card-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    /* Why Choose STACKLY Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .feature-box {
+      background: var(--bg-dark-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 2.25rem 1.75rem;
+      transition: all var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-box:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), var(--glow-accent);
+    }
+
+    .feature-icon-box {
+      width: 58px;
+      height: 58px;
+      border-radius: var(--radius-sm);
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid var(--border-accent);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      transition: all var(--transition-fast);
+    }
+
+    .feature-box:hover .feature-icon-box {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #071527;
+      transform: scale(1.08);
+    }
+
+    /* Interactive Customizer */
+    .customizer-box {
+      background: var(--bg-dark-card);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.8rem, 4vw, 3rem);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6), var(--glow-accent);
+    }
+
+    .custom-opts-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .custom-pill {
+      padding: 0.55rem 1.2rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-glass);
+      color: var(--secondary);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .custom-pill:hover,
+    .custom-pill.active {
+      background: var(--primary);
+      color: #071527;
+      border-color: var(--primary);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.35);
+    }
+
+    .custom-summary-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .customizer-form {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .custom-dur-trav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .custom-summary-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    /* Gallery Grid */
+    .gallery-masonry {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      height: 260px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--border-glass);
+      cursor: pointer;
+    }
+
+    .gallery-item.span-2 {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item-hover {
+      position: absolute;
+      inset: 0;
+      background: rgba(7, 14, 23, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      color: var(--primary);
+      font-size: 1.8rem;
+    }
+
+    .gallery-item:hover .gallery-item-hover {
+      opacity: 1;
+    }
+
+    /* Timeline Steps */
+    .timeline-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+      margin-top: 3rem;
+    }
+
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      z-index: 1;
+    }
+
+    .timeline-step-item {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .timeline-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #0a1422;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+    }
+
+    /* Testimonials Carousel */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: var(--bg-dark-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-md);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all var(--transition-smooth);
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--border-primary);
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .test-user-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .test-user-img {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--accent);
+    }
+
+    /* Final CTA */
+    .cta-banner-section {
+      position: relative;
+      padding: clamp(5rem, 8vw, 8rem) 1.5rem;
+      background: url('assets/images/promotional-banner.webp') center/cover no-repeat;
+      text-align: center;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .cta-banner-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(7, 14, 23, 0.94) 0%, rgba(7, 14, 23, 0.75) 100%);
+      z-index: 1;
+    }
+
+    .cta-banner-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Responsive Overrides for Homepage Grids & Sections */
+    @media (max-width: 992px) {
+      .customizer-form {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .custom-summary-card {
+        height: auto;
+      }
+      .timeline-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem 1.5rem;
+      }
+      .timeline-container::before {
+        display: none;
+      }
+      .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .activities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-masonry {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .timeline-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .timeline-container::before {
+        display: none;
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      .floating-compass,
+      .floating-badge-tag {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .activities-grid {
+        grid-template-columns: 1fr;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      .custom-dur-trav-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-masonry {
+        grid-template-columns: 1fr;
+      }
+      .gallery-item.span-2 {
+        grid-column: span 1;
+      }
+      .gallery-item {
+        height: 220px;
+      }
+      .customizer-box {
+        padding: 1.4rem 1rem;
+      }
+      .custom-pill {
+        padding: 0.45rem 0.85rem;
+        font-size: 0.82rem;
+      }
+      .testimonial-card {
+        padding: 1.5rem 1.25rem;
+      }
+      .cta-banner-section {
+        padding: 3.5rem 1.25rem;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .customizer-box {
+        padding: 1.15rem 0.65rem;
+      }
+      .custom-opts-grid {
+        gap: 0.4rem;
+      }
+      .custom-pill {
+        padding: 0.4rem 0.65rem;
+        font-size: 0.78rem;
+      }
+      .custom-summary-card {
+        padding: 1.1rem 0.75rem;
+      }
+      #customEstimatedPrice {
+        font-size: 1.7rem !important;
+      }
+      .timeline-circle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.1rem;
+      }
+      .testimonial-card {
+        padding: 1.25rem 0.9rem;
+      }
+      .custom-summary-actions .btn {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Top Sticky Navbar -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY Adventure Tourism" class="brand-logo-img">
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="About.html" class="nav-link">About</a></li>
+          <li><a href="Destinations.html" class="nav-link">Destinations</a></li>
+          <li><a href="Services.html" class="nav-link">Services</a></li>
+          <li><a href="Blog.html" class="nav-link">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="Login.html" class="btn-nav-login">
+          <i class="fa-solid fa-user"></i> Login
+        </a>
+        <button class="mobile-nav-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu-backdrop"></div>
+  <div class="mobile-menu-drawer">
+    <div>
+      <a href="index.html" class="brand-logo-wrap" style="margin-bottom: 2rem;">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY" style="height: 38px;">
+      </a>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="nav-link active">Home</a></li>
+        <li><a href="About.html" class="nav-link">About</a></li>
+        <li><a href="Destinations.html" class="nav-link">Destinations</a></li>
+        <li><a href="Services.html" class="nav-link">Services</a></li>
+          <li><a href="Blog.html" class="nav-link">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <div style="border-top: 1px solid var(--border-glass); padding-top: 1.5rem;">
+      <a href="Login.html" class="btn btn-primary" style="width: 100%;">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Login / Register
+      </a>
+    </div>
+  </div>
+
+  <!-- Global Search Modal Overlay -->
+  <div id="searchModalOverlay" class="search-modal-overlay">
+    <div class="search-modal-box">
+      <button id="searchModalClose" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="margin-bottom: 1.25rem;">Explore STACKLY Expeditions</h3>
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass search-input-icon"></i>
+        <input type="text" id="globalSearchInput" placeholder="Search by destination, activity or trail...">
+      </div>
+      <div id="globalSearchResults" class="search-results-list"></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-bg-parallax"></div>
+      <div class="hero-overlay"></div>
+
+      <!-- Floating Adventure Decorations -->
+      <i class="fa-solid fa-compass floating-adventure-item floating-compass"></i>
+      <div class="floating-adventure-item floating-badge-tag">
+        <i class="fa-solid fa-mountain" style="color:var(--primary); font-size:1.4rem;"></i>
+        <div>
+          <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase;">Elevation Peak</div>
+          <div style="font-size:1rem; font-weight:800; color:#fff;">5,364 Mtrs</div>
+        </div>
+      </div>
+
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="section-badge badge-primary hero-badge">
+            <i class="fa-solid fa-earth-americas"></i> 🌍 EXPLORE THE UNEXPLORED
+          </div>
+          <h1 class="hero-heading">
+            <span class="highlight-sky">Adventure</span> Begins Where <span class="highlight-sky">Comfort Ends.</span>
+          </h1>
+          <p class="hero-desc">
+            Discover breathtaking destinations, explore thrilling experiences, and create unforgettable memories with STACKLY. Your next great adventure is waiting.
+          </p>
+          <div class="hero-cta-group">
+            <a href="Destinations.html" class="btn btn-primary btn-lg">
+              Explore Adventures <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <a href="About.html" class="btn btn-secondary btn-lg">
+              <i class="fa-solid fa-compass"></i> Discover Our Story
+            </a>
+          </div>
+        </div>
+
+        <!-- HERO SEARCH STRIP -->
+        <div class="hero-search-strip-box">
+          <form id="heroSearchForm" class="hero-search-grid" onsubmit="handleHeroSearch(event)">
+            <div class="hero-search-col">
+              <label class="search-col-label"><i class="fa-solid fa-location-dot"></i> Destination</label>
+              <select id="heroDestSelect" class="search-col-input">
+                <option value="all">Any Destination</option>
+                <option value="Himalayas">Himalayas, India</option>
+                <option value="Manali">Manali, India</option>
+                <option value="Ladakh">Ladakh, India</option>
+                <option value="Rishikesh">Rishikesh, India</option>
+                <option value="Meghalaya">Meghalaya, India</option>
+                <option value="Andaman">Andaman Islands</option>
+              </select>
+            </div>
+
+            <div class="hero-search-col">
+              <label class="search-col-label"><i class="fa-solid fa-person-hiking"></i> Adventure Type</label>
+              <select id="heroActSelect" class="search-col-input">
+                <option value="all">All Activities</option>
+                <option value="Trekking">Trekking</option>
+                <option value="Camping">Camping</option>
+                <option value="Rafting">Rafting</option>
+                <option value="Paragliding">Paragliding</option>
+                <option value="Wildlife">Wildlife Safari</option>
+                <option value="Scuba Diving">Scuba Diving</option>
+              </select>
+            </div>
+
+            <div class="hero-search-col">
+              <label class="search-col-label"><i class="fa-solid fa-calendar-days"></i> Travel Date</label>
+              <input type="date" id="heroDateInput" class="search-col-input">
+            </div>
+
+            <div class="hero-search-col">
+              <label class="search-col-label"><i class="fa-solid fa-users"></i> Travelers</label>
+              <select id="heroTravelersSelect" class="search-col-input">
+                <option value="1">1 Person</option>
+                <option value="2" selected>2 Persons</option>
+                <option value="4">4 Persons (Group)</option>
+                <option value="6">6+ Persons</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="padding: 1rem 1.75rem;">
+              Find Adventures <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Wave divider transition from hero into content -->
+    <div class="wave-divider">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 C150,90 350,-40 500,45 C650,130 900,10 1200,60 L1200,120 L0,120 Z" fill="#070e17"></path>
+      </svg>
+    </div>
+
+    <!-- SECTION 01 — POPULAR DESTINATIONS -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-map-pin"></i> Top Destinations</span>
+          <h2 class="section-title">Explore the World's Most Beautiful Destinations</h2>
+          <p class="section-desc">From majestic mountains to hidden tropical paradises, discover destinations that inspire your adventurous spirit.</p>
+        </div>
+
+        <div class="destination-grid-standard">
+          <!-- Card 1: Himalayas -->
+          <div class="dest-card-standard">
+            <div class="dest-img-wrap">
+              <img src="assets/images/himalayas.webp" alt="Himalayas, India" loading="lazy">
+              <span class="dest-badge-top">Mountain Trekking</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> North India</div>
+              <h3 class="dest-title">Himalayas, India</h3>
+              <p class="dest-desc">Traverse spectacular high-altitude snow ridges, pristine glaciated valleys, and remote alpine camps.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9 (14k+)</span>
+                <a href="Destinations.html" class="btn-icon-circle" title="View Destination">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Manali -->
+          <div class="dest-card-standard">
+            <div class="dest-img-wrap">
+              <img src="assets/images/manali.webp" alt="Manali, India" loading="lazy">
+              <span class="dest-badge-top">Alpine & River Valley</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> Himachal Pradesh</div>
+              <h3 class="dest-title">Manali, India</h3>
+              <p class="dest-desc">Pine forests, thrilling whitewater river rafting, tandem paragliding in Solang, and snow trekking.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8 (12k+)</span>
+                <a href="Destinations.html" class="btn-icon-circle" title="View Destination">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Ladakh -->
+          <div class="dest-card-standard">
+            <div class="dest-img-wrap">
+              <img src="assets/images/ladakh.webp" alt="Ladakh, India" loading="lazy">
+              <span class="dest-badge-top">High Altitude Road Trip</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> Jammu & Kashmir</div>
+              <h3 class="dest-title">Ladakh, India</h3>
+              <p class="dest-desc">Iconic high-altitude passes, ancient cliffside monasteries, and sapphire blue high-desert lakes.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9 (18k+)</span>
+                <a href="Destinations.html" class="btn-icon-circle" title="View Destination">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Rishikesh -->
+          <div class="dest-card-standard">
+            <div class="dest-img-wrap">
+              <img src="assets/images/rishikesh.webp" alt="Rishikesh, India" loading="lazy">
+              <span class="dest-badge-top">River Rafting & Camp</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> Uttarakhand</div>
+              <h3 class="dest-title">Rishikesh, India</h3>
+              <p class="dest-desc">White water rapids, bungee jumping platforms, and riverside starlight camping along the holy river.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.7 (9k+)</span>
+                <a href="Destinations.html" class="btn-icon-circle" title="View Destination">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Meghalaya -->
+          <div class="dest-card-standard">
+            <div class="dest-img-wrap">
+              <img src="assets/images/meghalaya.webp" alt="Meghalaya, India" loading="lazy">
+              <span class="dest-badge-top">Waterfalls & Caves</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> North East India</div>
+              <h3 class="dest-title">Meghalaya, India</h3>
+              <p class="dest-desc">Deep forest gorges, double decker living root bridges, emerald canyon rivers, and limestone caves.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8 (8k+)</span>
+                <a href="Destinations.html" class="btn-icon-circle" title="View Destination">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Andaman -->
+          <div class="dest-card-standard">
+            <div class="dest-img-wrap">
+              <img src="assets/images/andaman.webp" alt="Andaman Islands, India" loading="lazy">
+              <span class="dest-badge-top">Scuba & Island Dive</span>
+            </div>
+            <div class="dest-content">
+              <div class="dest-location"><i class="fa-solid fa-location-dot"></i> Andaman & Nicobar</div>
+              <h3 class="dest-title">Andaman Islands, India</h3>
+              <p class="dest-desc">Crystal clear turquoise waters, pristine coral reefs, sea turtle encounters, and tropical beaches.</p>
+              <div class="dest-footer">
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9 (15k+)</span>
+                <a href="Destinations.html" class="btn-icon-circle" title="View Destination">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="Destinations.html" class="btn btn-outline btn-lg">
+            Explore All Destinations <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02 — THRILLING ADVENTURE ACTIVITIES -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary"><i class="fa-solid fa-bolt"></i> Adrenaline Rush</span>
+          <h2 class="section-title">Choose Your Next Adrenaline Rush</h2>
+          <p class="section-desc">Step outside your comfort zone and experience adventures that stay with you forever.</p>
+        </div>
+
+        <div class="activities-grid">
+          <!-- Activity 1 -->
+          <div class="activity-card" style="--bg-img: url('assets/images/trekking.webp');">
+            <div class="activity-card-content">
+              <span class="badge-difficulty moderate">Moderate • 4-7 Days</span>
+              <h3 style="font-size:1.5rem; font-weight:700; margin:0.5rem 0;">Mountain Trekking</h3>
+              <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem;">Explore spectacular mountain trails, high passes, and remote alpine camps.</p>
+              <a href="Services.html?activity=Trekking" class="btn btn-primary btn-sm">Explore Treks</a>
+            </div>
+          </div>
+
+          <!-- Activity 2 -->
+          <div class="activity-card" style="--bg-img: url('assets/images/rafting.webp');">
+            <div class="activity-card-content">
+              <span class="badge-difficulty challenging">Challenging • Grade IV</span>
+              <h3 style="font-size:1.5rem; font-weight:700; margin:0.5rem 0;">River Rafting</h3>
+              <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem;">Experience exciting white-water rapids, whirlpools, and dramatic canyon gorges.</p>
+              <a href="Services.html?activity=Rafting" class="btn btn-primary btn-sm">Explore Rafting</a>
+            </div>
+          </div>
+
+          <!-- Activity 3 -->
+          <div class="activity-card" style="--bg-img: url('assets/images/paragliding.webp');">
+            <div class="activity-card-content">
+              <span class="badge-difficulty easy">Beginner Friendly • Tandem</span>
+              <h3 style="font-size:1.5rem; font-weight:700; margin:0.5rem 0;">Paragliding</h3>
+              <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem;">Discover breathtaking aerial views of mountain valleys and glaciated peaks.</p>
+              <a href="Services.html?activity=Paragliding" class="btn btn-primary btn-sm">Explore Flights</a>
+            </div>
+          </div>
+
+          <!-- Activity 4 -->
+          <div class="activity-card" style="--bg-img: url('assets/images/camping.webp');">
+            <div class="activity-card-content">
+              <span class="badge-difficulty easy">All Skill Levels • Stargazing</span>
+              <h3 style="font-size:1.5rem; font-weight:700; margin:0.5rem 0;">Camping</h3>
+              <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem;">Spend unforgettable nights beside campfires under clear starry constellations.</p>
+              <a href="Services.html?activity=Camping" class="btn btn-primary btn-sm">Explore Camps</a>
+            </div>
+          </div>
+
+          <!-- Activity 5 -->
+          <div class="activity-card" style="--bg-img: url('assets/images/scuba-diving.webp');">
+            <div class="activity-card-content">
+              <span class="badge-difficulty moderate">PADI Certified • Reefs</span>
+              <h3 style="font-size:1.5rem; font-weight:700; margin:0.5rem 0;">Scuba Diving</h3>
+              <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem;">Explore radiant marine ecosystems, manta rays, and underwater sea walls.</p>
+              <a href="Services.html?activity=Scuba Diving" class="btn btn-primary btn-sm">Explore Dives</a>
+            </div>
+          </div>
+
+          <!-- Activity 6 -->
+          <div class="activity-card" style="--bg-img: url('assets/images/wildlife-safari.webp');">
+            <div class="activity-card-content">
+              <span class="badge-difficulty easy">Nature Trails • Jeep Safari</span>
+              <h3 style="font-size:1.5rem; font-weight:700; margin:0.5rem 0;">Wildlife Safari</h3>
+              <p style="font-size:0.88rem; color:var(--text-muted); margin-bottom:1rem;">Discover incredible wildlife, rare birds, and protected forest reserves.</p>
+              <a href="Services.html?activity=Wildlife" class="btn btn-primary btn-sm">Explore Safaris</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 03 — FEATURED ADVENTURE PACKAGES -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-compass"></i> Handpicked Packages</span>
+          <h2 class="section-title">Unforgettable Adventures. Incredible Experiences.</h2>
+          <p class="section-desc">Transparent pricing, certified guides, and carefully planned travel itineraries for the ultimate thrill.</p>
+        </div>
+
+        <div class="packages-grid">
+          <!-- 6 Demonstration Packages -->
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/trekking.webp" alt="Himalayan Trekking Expedition" loading="lazy">
+              <button class="pkg-wishlist-btn" data-wishlist-id="pkg-101" onclick="handleWishlistClick(event, 'pkg-101')">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty moderate">Moderate</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9 (320+)</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Himachal Pradesh</div>
+              <h3 class="pkg-title">Himalayan Trekking Expedition</h3>
+              <p class="pkg-desc">Traverse high altitude ridges, sleep in alpine dome tents under starry skies, and marvel at snow peaks.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 6 Days / 5 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-users"></i> 12 Max</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Starting From</span>
+                  <span class="pkg-price">₹12,999</span>
+                </div>
+                <div class="pkg-actions">
+                  <button class="btn btn-outline btn-sm" onclick="openPackageDetailModal('pkg-101')">Details</button>
+                  <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-101')">Book Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/road-trip.webp" alt="Ladakh Adventure Road Trip" loading="lazy">
+              <button class="pkg-wishlist-btn" data-wishlist-id="pkg-102" onclick="handleWishlistClick(event, 'pkg-102')">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty challenging">Challenging</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9 (410+)</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Ladakh</div>
+              <h3 class="pkg-title">Ladakh Adventure Road Trip</h3>
+              <p class="pkg-desc">Cross Khardung La pass, ride along Pangong Lake, and experience the raw beauty of the Himalayas on wheels.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 7 Days / 6 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-users"></i> 8 Max</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Starting From</span>
+                  <span class="pkg-price">₹24,999</span>
+                </div>
+                <div class="pkg-actions">
+                  <button class="btn btn-outline btn-sm" onclick="openPackageDetailModal('pkg-102')">Details</button>
+                  <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-102')">Book Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/rafting.webp" alt="Rishikesh River Adventure" loading="lazy">
+              <button class="pkg-wishlist-btn" data-wishlist-id="pkg-103" onclick="handleWishlistClick(event, 'pkg-103')">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty moderate">Moderate</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.7 (560+)</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Uttarakhand</div>
+              <h3 class="pkg-title">Rishikesh River Adventure</h3>
+              <p class="pkg-desc">Tackle Marine Drive to Shivpuri rapids, cliff jump into holy emerald waters, and enjoy beach campfire nights.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 3 Days / 2 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-users"></i> 16 Max</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Starting From</span>
+                  <span class="pkg-price">₹5,999</span>
+                </div>
+                <div class="pkg-actions">
+                  <button class="btn btn-outline btn-sm" onclick="openPackageDetailModal('pkg-103')">Details</button>
+                  <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-103')">Book Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/meghalaya.webp" alt="Meghalaya Nature Expedition" loading="lazy">
+              <button class="pkg-wishlist-btn" data-wishlist-id="pkg-104" onclick="handleWishlistClick(event, 'pkg-104')">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty moderate">Moderate</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8 (210+)</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Meghalaya</div>
+              <h3 class="pkg-title">Meghalaya Nature Expedition</h3>
+              <p class="pkg-desc">Hike down the 3,500 stone steps to the Double Decker Root Bridge, kayak on Umngot, and explore deep caves.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 5 Days / 4 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-users"></i> 10 Max</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Starting From</span>
+                  <span class="pkg-price">₹14,999</span>
+                </div>
+                <div class="pkg-actions">
+                  <button class="btn btn-outline btn-sm" onclick="openPackageDetailModal('pkg-104')">Details</button>
+                  <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-104')">Book Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/scuba-diving.webp" alt="Andaman Diving Escape" loading="lazy">
+              <button class="pkg-wishlist-btn" data-wishlist-id="pkg-105" onclick="handleWishlistClick(event, 'pkg-105')">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Beginner</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9 (380+)</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Andaman Islands</div>
+              <h3 class="pkg-title">Andaman Diving Escape</h3>
+              <p class="pkg-desc">Discover vibrant coral gardens at Havelock, dive alongside sea turtles and reef fish with certified PADI dive masters.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 5 Days / 4 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-users"></i> 6 Max</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Starting From</span>
+                  <span class="pkg-price">₹18,999</span>
+                </div>
+                <div class="pkg-actions">
+                  <button class="btn btn-outline btn-sm" onclick="openPackageDetailModal('pkg-105')">Details</button>
+                  <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-105')">Book Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/mountain-camping.webp" alt="Manali Camping Adventure" loading="lazy">
+              <button class="pkg-wishlist-btn" data-wishlist-id="pkg-106" onclick="handleWishlistClick(event, 'pkg-106')">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Easy</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8 (490+)</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Himachal Pradesh</div>
+              <h3 class="pkg-title">Manali Camping Adventure</h3>
+              <p class="pkg-desc">Cozy camping in scenic cedar groves of Solang, riverside bonfires, stargazing, and daytime nature hikes.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 3 Days / 2 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-users"></i> 14 Max</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Starting From</span>
+                  <span class="pkg-price">₹6,999</span>
+                </div>
+                <div class="pkg-actions">
+                  <button class="btn btn-outline btn-sm" onclick="openPackageDetailModal('pkg-106')">Details</button>
+                  <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-106')">Book Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="Services.html" class="btn btn-primary btn-lg">
+            View All Tour Packages <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04 — WHY CHOOSE STACKLY? -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary"><i class="fa-solid fa-shield-halved"></i> The STACKLY Edge</span>
+          <h2 class="section-title">Travel Further. Experience Better.</h2>
+          <p class="section-desc">We believe every journey should be meaningful, exciting, and unforgettable. STACKLY brings your dream adventures closer.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-box">
+            <div class="feature-icon-box"><i class="fa-solid fa-user-shield"></i></div>
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:0.6rem;">Expert Adventure Guides</h3>
+            <p style="font-size:0.9rem; line-height:1.65; color:var(--text-muted);">Explore destinations with certified, knowledgeable mountain, river, and wilderness leaders.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-box"><i class="fa-solid fa-map-location-dot"></i></div>
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:0.6rem;">Handpicked Destinations</h3>
+            <p style="font-size:0.9rem; line-height:1.65; color:var(--text-muted);">Discover carefully curated trails, secret waterfalls, and uncrowded high-altitude viewpoints.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-box"><i class="fa-solid fa-sliders"></i></div>
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:0.6rem;">Customized Experiences</h3>
+            <p style="font-size:0.9rem; line-height:1.65; color:var(--text-muted);">Find trips customized to match your fitness level, travel duration, and specific interests.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-box"><i class="fa-solid fa-kit-medical"></i></div>
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:0.6rem;">Safety First</h3>
+            <p style="font-size:0.9rem; line-height:1.65; color:var(--text-muted);">Strict safety protocols, satellite communication, oxygen gear, and comprehensive risk planning.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-box"><i class="fa-solid fa-calendar-check"></i></div>
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:0.6rem;">Flexible Packages</h3>
+            <p style="font-size:0.9rem; line-height:1.65; color:var(--text-muted);">Choose from weekend getaways to multi-week expeditions fitting diverse travel budgets.</p>
+          </div>
+
+          <div class="feature-box">
+            <div class="feature-icon-box"><i class="fa-solid fa-headset"></i></div>
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:0.6rem;">Dedicated Support</h3>
+            <p style="font-size:0.9rem; line-height:1.65; color:var(--text-muted);">24/7 dedicated expedition support before departure and throughout your trip duration.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05 — CUSTOMIZE YOUR ADVENTURE -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> Tailored Trips</span>
+          <h2 class="section-title">Your Journey. Your Rules. Your Adventure.</h2>
+          <p class="section-desc">Create your own travel experience by choosing the destination, activities, duration, and travel preferences.</p>
+        </div>
+
+        <div class="customizer-box">
+          <form id="tripCustomizerForm" class="customizer-form">
+            <div>
+              <!-- 1. Destination -->
+              <div style="margin-bottom: 1.5rem;">
+                <label class="form-label" style="color:var(--accent); font-weight:600;"><i class="fa-solid fa-mountain-sun"></i> Choose Destination</label>
+                <div class="custom-opts-grid">
+                  <span class="custom-pill custom-dest-opt active" data-value="Himalayas">Himalayas</span>
+                  <span class="custom-pill custom-dest-opt" data-value="Manali">Manali</span>
+                  <span class="custom-pill custom-dest-opt" data-value="Ladakh">Ladakh</span>
+                  <span class="custom-pill custom-dest-opt" data-value="Rishikesh">Rishikesh</span>
+                  <span class="custom-pill custom-dest-opt" data-value="Meghalaya">Meghalaya</span>
+                  <span class="custom-pill custom-dest-opt" data-value="Andaman">Andaman</span>
+                </div>
+              </div>
+
+              <!-- 2. Adventures (Multi-select) -->
+              <div style="margin-bottom: 1.5rem;">
+                <label class="form-label" style="color:var(--accent); font-weight:600;"><i class="fa-solid fa-person-hiking"></i> Choose Adventures (Select Multiple)</label>
+                <div class="custom-opts-grid">
+                  <span class="custom-pill custom-act-chip active" data-value="Trekking"><i class="fa-solid fa-check"></i> Trekking</span>
+                  <span class="custom-pill custom-act-chip" data-value="Camping">Camping</span>
+                  <span class="custom-pill custom-act-chip" data-value="Rafting">Rafting</span>
+                  <span class="custom-pill custom-act-chip" data-value="Paragliding">Paragliding</span>
+                  <span class="custom-pill custom-act-chip" data-value="Scuba Diving">Scuba Diving</span>
+                  <span class="custom-pill custom-act-chip" data-value="Wildlife Safari">Wildlife Safari</span>
+                </div>
+              </div>
+
+              <!-- 3. Duration & Travelers in Grid -->
+              <div class="custom-dur-trav-grid">
+                <div>
+                  <label class="form-label" style="color:var(--accent); font-weight:600;"><i class="fa-solid fa-clock"></i> Duration</label>
+                  <div class="custom-opts-grid">
+                    <span class="custom-pill custom-dur-btn" data-value="2–3 Days" data-mult="1.0">2–3 Days</span>
+                    <span class="custom-pill custom-dur-btn active" data-value="4–5 Days" data-mult="1.5">4–5 Days</span>
+                    <span class="custom-pill custom-dur-btn" data-value="6–7 Days" data-mult="2.0">6–7 Days</span>
+                    <span class="custom-pill custom-dur-btn" data-value="8+ Days" data-mult="2.5">8+ Days</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label class="form-label" style="color:var(--accent); font-weight:600;"><i class="fa-solid fa-users"></i> Travelers</label>
+                  <div class="custom-opts-grid">
+                    <span class="custom-pill custom-trav-btn" data-value="Solo" data-count="1">Solo</span>
+                    <span class="custom-pill custom-trav-btn active" data-value="Couple" data-count="2">Couple</span>
+                    <span class="custom-pill custom-trav-btn" data-value="Friends" data-count="4">Friends</span>
+                    <span class="custom-pill custom-trav-btn" data-value="Family" data-count="4">Family</span>
+                    <span class="custom-pill custom-trav-btn" data-value="Group" data-count="6">Group (6+)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Summary & Live Price Counter -->
+            <div class="custom-summary-card">
+              <div>
+                <span class="section-badge" style="margin-bottom:0.75rem;">Trip Blueprint</span>
+                <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:1rem;">Your Custom Expedition</h3>
+                
+                <div style="font-size:0.9rem; display:flex; flex-direction:column; gap:0.6rem; color:var(--text-muted);">
+                  <div><strong>Destination:</strong> <span id="summaryDestination" style="color:#fff;">Himalayas</span></div>
+                  <div><strong>Activities:</strong> <span id="summaryActivities" style="color:#fff;">Trekking</span></div>
+                  <div><strong>Duration:</strong> <span id="summaryDuration" style="color:#fff;">4–5 Days</span></div>
+                  <div><strong>Travelers:</strong> <span id="summaryTravelers" style="color:#fff;">Couple (2 Travelers)</span></div>
+                </div>
+              </div>
+
+              <div style="border-top:1px solid rgba(255,255,255,0.08); padding-top:1.25rem; margin-top:1.5rem;">
+                <div style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">Illustrative Estimate</div>
+                <div id="customEstimatedPrice" style="font-size:2.2rem; font-weight:900; color:var(--primary); margin:0.2rem 0 1rem;">₹28,500</div>
+                <div class="custom-summary-actions" style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                  <button type="button" id="btnResetCustomizer" class="btn btn-outline btn-sm">Reset</button>
+                  <button type="button" id="btnPlanAdventure" class="btn btn-primary" style="flex:1;">
+                    Plan My Adventure <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06 — ADVENTURE GALLERY -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary"><i class="fa-solid fa-camera"></i> Captured Moments</span>
+          <h2 class="section-title">Moments That Make Every Journey Special</h2>
+          <p class="section-desc">Experience breathtaking summits, river crossings, vibrant campfires, and awe-inspiring landscapes through our travelers' lenses.</p>
+        </div>
+
+        <div class="gallery-masonry">
+          <div class="gallery-item span-2" onclick="openLightbox('assets/images/gallery-1.webp')">
+            <img src="assets/images/gallery-1.webp" alt="Campfire under stars" loading="lazy">
+            <div class="gallery-item-hover"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('assets/images/gallery-2.webp')">
+            <img src="assets/images/gallery-2.webp" alt="Alpine trekking" loading="lazy">
+            <div class="gallery-item-hover"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('assets/images/gallery-3.webp')">
+            <img src="assets/images/gallery-3.webp" alt="Sunset mountain view" loading="lazy">
+            <div class="gallery-item-hover"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('assets/images/gallery-4.webp')">
+            <img src="assets/images/gallery-4.webp" alt="Whitewater rapids" loading="lazy">
+            <div class="gallery-item-hover"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item span-2" onclick="openLightbox('assets/images/gallery-5.webp')">
+            <img src="assets/images/gallery-5.webp" alt="Scuba dive reef" loading="lazy">
+            <div class="gallery-item-hover"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+          <div class="gallery-item" onclick="openLightbox('assets/images/gallery-6.webp')">
+            <img src="assets/images/gallery-6.webp" alt="Wildlife safari" loading="lazy">
+            <div class="gallery-item-hover"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 07 — HOW IT WORKS -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-route"></i> Simple Process</span>
+          <h2 class="section-title">Your Next Adventure in Four Simple Steps</h2>
+          <p class="section-desc">From your first spark of wanderlust to setting foot on the mountain trail, we make your journey seamless.</p>
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-step-item">
+            <div class="timeline-circle">01</div>
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Explore</h3>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Discover majestic destinations and adrenaline-filled activities.</p>
+          </div>
+
+          <div class="timeline-step-item">
+            <div class="timeline-circle">02</div>
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Choose</h3>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Select your preferred handpicked package and expedition date.</p>
+          </div>
+
+          <div class="timeline-step-item">
+            <div class="timeline-circle">03</div>
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Customize</h3>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Choose group size, gear preferences, and optional excursions.</p>
+          </div>
+
+          <div class="timeline-step-item">
+            <div class="timeline-circle">04</div>
+            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:0.5rem;">Get Ready</h3>
+            <p style="font-size:0.88rem; color:var(--text-muted);">Review your demonstration itinerary, pack your bags, and embark!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 08 — TRAVELER STORIES -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary"><i class="fa-solid fa-comments"></i> Real Stories</span>
+          <h2 class="section-title">Adventures Worth Remembering</h2>
+          <p class="section-desc">Read true experiences from explorers who ventured beyond comfort with STACKLY.</p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div>
+              <div class="test-user-header">
+                <img src="assets/images/user-1.webp" alt="Rhea Kapoor" class="test-user-img">
+                <div>
+                  <h4 style="font-size:1.1rem; font-weight:700;">Rhea Kapoor</h4>
+                  <div style="font-size:0.8rem; color:var(--accent);"><i class="fa-solid fa-location-dot"></i> Ladakh Road Trip</div>
+                </div>
+              </div>
+              <p style="font-size:0.92rem; line-height:1.7; color:var(--text-muted); font-style:italic;">
+                "The road trip across Khardung La was exhilarating! The guides were immensely supportive, oxygen was always handy, and the Pangong camp was magical."
+              </p>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:1rem;">
+              <span class="badge-difficulty moderate">Trekking & Camping</span>
+              <span style="color:var(--primary); font-size:0.9rem;"><i class="fa-solid fa-star"></i> 5.0</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div>
+              <div class="test-user-header">
+                <img src="assets/images/user-2.webp" alt="Kunal Singhania" class="test-user-img">
+                <div>
+                  <h4 style="font-size:1.1rem; font-weight:700;">Kunal Singhania</h4>
+                  <div style="font-size:0.8rem; color:var(--accent);"><i class="fa-solid fa-location-dot"></i> Rishikesh River Rafting</div>
+                </div>
+              </div>
+              <p style="font-size:0.92rem; line-height:1.7; color:var(--text-muted); font-style:italic;">
+                "Navigating The Wall rapid was an absolute thrill! Top-notch safety equipment and the evening beach BBQ was unforgettable. Highly recommend STACKLY!"
+              </p>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:1rem;">
+              <span class="badge-difficulty challenging">Grade IV Rafting</span>
+              <span style="color:var(--primary); font-size:0.9rem;"><i class="fa-solid fa-star"></i> 5.0</span>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div>
+              <div class="test-user-header">
+                <img src="assets/images/user-3.webp" alt="Ananya Roy" class="test-user-img">
+                <div>
+                  <h4 style="font-size:1.1rem; font-weight:700;">Ananya Roy</h4>
+                  <div style="font-size:0.8rem; color:var(--accent);"><i class="fa-solid fa-location-dot"></i> Andaman Diving Escape</div>
+                </div>
+              </div>
+              <p style="font-size:0.92rem; line-height:1.7; color:var(--text-muted); font-style:italic;">
+                "My first time scuba diving and I couldn't have asked for better instructors. Swam with sea turtles and explored radiant coral reefs at Havelock."
+              </p>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.5rem; border-top:1px solid rgba(255,255,255,0.08); padding-top:1rem;">
+              <span class="badge-difficulty easy">Scuba Diving</span>
+              <span style="color:var(--primary); font-size:0.9rem;"><i class="fa-solid fa-star"></i> 5.0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 09 — FINAL CTA -->
+    <section class="container">
+      <div class="cta-banner-section">
+        <div class="cta-banner-content">
+          <span class="section-badge badge-primary"><i class="fa-solid fa-fire"></i> Start The Journey</span>
+          <h2 style="font-size:var(--fs-h1); font-weight:800; margin:1rem 0 1.25rem;">Don't Just Dream About Adventure. Live It.</h2>
+          <p style="font-size:1.1rem; line-height:1.7; color:var(--text-muted); margin-bottom:2rem;">
+            Discover new places, challenge yourself, and create stories worth sharing. Your next unforgettable journey starts with STACKLY.
+          </p>
+          <div style="display:flex; justify-content:center; gap:1.25rem; flex-wrap:wrap;">
+            <a href="Destinations.html" class="btn btn-primary btn-lg">Explore Destinations</a>
+            <a href="Services.html" class="btn btn-secondary btn-lg">Plan Your Trip</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer (Common across main pages) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <!-- Col 1: Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/images/Brand-logo.webp" alt="STACKLY Logo">
+          </a>
+          <p class="footer-desc">
+            Discover extraordinary destinations, experience thrilling adventures, and create unforgettable memories with STACKLY. Your next adventure begins here.
+          </p>
+          <div class="footer-socials">
+            <a href="404.html" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" class="social-link" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> About</a></li>
+            <li class="footer-link-item"><a href="Destinations.html"><i class="fa-solid fa-angle-right"></i> Destinations</a></li>
+            <li class="footer-link-item"><a href="Services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+            <li class="footer-link-item"><a href="Blog.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Popular Adventures -->
+        <div>
+          <h4 class="footer-title">Popular Adventures</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="Services.html?activity=Trekking"><i class="fa-solid fa-angle-right"></i> Mountain Trekking</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Rafting"><i class="fa-solid fa-angle-right"></i> River Rafting</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Paragliding"><i class="fa-solid fa-angle-right"></i> Paragliding</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Camping"><i class="fa-solid fa-angle-right"></i> Camping</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Wildlife"><i class="fa-solid fa-angle-right"></i> Wildlife Safari</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Travel Support -->
+        <div>
+          <h4 class="footer-title">Travel Support</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Travel Guide</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Booking Information</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Safety Guidelines</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Cancellation Policy</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          Copyright &copy; 2026 STACKLY. All Rights Reserved.
+        </div>
+        <div class="footer-legal-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms & Conditions</a>
+          <a href="404.html">Cookie Settings</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/trip-customization.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script>
+    function handleHeroSearch(e) {
+      e.preventDefault();
+      const dest = document.getElementById('heroDestSelect').value;
+      const act = document.getElementById('heroActSelect').value;
+      let query = 'Services.html?';
+      if (dest !== 'all') query += `destination=${encodeURIComponent(dest)}&`;
+      if (act !== 'all') query += `activity=${encodeURIComponent(act)}&`;
+      window.location.href = query;
+    }
+  </script>
+</body>
+</html>

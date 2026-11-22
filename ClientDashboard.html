@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorer Hub &amp; Adventure Dashboard | STACKLY Client</title>
+  <meta name="description" content="Manage your STACKLY adventure bookings, track live mountain trail telemetry, view summit loyalty points, and update gear checklists.">
+  <link rel="icon" href="assets/images/Brand-logo.webp" type="image/webp">
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/client-dashboard.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+</head>
+<body class="user-dashboard-body">
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div class="sidebar-backdrop" id="dashSidebarBackdrop"></div>
+
+  <!-- ==========================================================================
+       CLIENT SIDEBAR NAVIGATION
+       ========================================================================== -->
+  <aside class="dash-sidebar" id="dashSidebar">
+    <!-- Header -->
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-brand" aria-label="STACKLY Home">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY" class="sidebar-brand-img">
+        <span class="sidebar-badge-role">EXPLORER</span>
+      </a>
+      <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Active Traveler Workspace Badge -->
+    <div class="sidebar-client-badge">
+      <div class="client-avatar-mini sync-user-avatar">AM</div>
+      <div class="client-meta">
+        <span class="client-company-name sync-user-name">Alex Morgan</span>
+        <span class="sync-user-email" style="font-size:0.72rem; color:var(--text-light); display:block; overflow:hidden; text-overflow:ellipsis; max-width:140px; margin-bottom:2px;">alex.morgan@stackly.com</span>
+        <span class="client-plan-tier"><span class="pulse-cyan"></span> Alpine Explorer Tier</span>
+      </div>
+    </div>
+
+    <!-- Navigation Items -->
+    <nav class="sidebar-nav" aria-label="Explorer Navigation">
+      <div class="sidebar-nav-heading">My Adventures</div>
+
+      <!-- Tab 1: Overview -->
+      <button type="button" class="sidebar-item active" data-tab="tab-overview">
+        <i class="fa-solid fa-house"></i>
+        <span>Explorer Overview</span>
+      </button>
+
+      <!-- Tab 2: My Bookings -->
+      <button type="button" class="sidebar-item" data-tab="tab-bookings">
+        <i class="fa-solid fa-receipt"></i>
+        <span>My Bookings</span>
+        <span class="sidebar-badge highlight">2 Active</span>
+      </button>
+
+      <!-- Tab 3: Live Trail Tracker -->
+      <button type="button" class="sidebar-item" data-tab="tab-tracker">
+        <i class="fa-solid fa-route"></i>
+        <span>Live Trail Tracker</span>
+        <span class="pulse-dot" style="margin-left:auto;"></span>
+      </button>
+
+      <!-- Tab 4: Saved Bucket List -->
+      <button type="button" class="sidebar-item" data-tab="tab-wishlist">
+        <i class="fa-solid fa-heart"></i>
+        <span>Saved Bucket List</span>
+        <span class="sidebar-badge">4</span>
+      </button>
+
+      <div class="sidebar-nav-heading">Rewards &amp; Gear</div>
+
+      <!-- Tab 5: Summit Points -->
+      <button type="button" class="sidebar-item" data-tab="tab-rewards">
+        <i class="fa-solid fa-award"></i>
+        <span>Points &amp; Coupons</span>
+        <span class="sidebar-badge highlight">1,250 Pts</span>
+      </button>
+
+      <!-- Tab 6: Gear Checklist -->
+      <button type="button" class="sidebar-item" data-tab="tab-gear">
+        <i class="fa-solid fa-backpack"></i>
+        <span>Gear &amp; Medical</span>
+      </button>
+
+      <div class="sidebar-nav-heading">Account</div>
+
+      <!-- Tab 7: Profile -->
+      <button type="button" class="sidebar-item" data-tab="tab-profile">
+        <i class="fa-solid fa-user-gear"></i>
+        <span>Traveler Profile</span>
+      </button>
+
+      <!-- Tab 8: Settings -->
+      <button type="button" class="sidebar-item" data-tab="tab-settings">
+        <i class="fa-solid fa-sliders"></i>
+        <span>Safety &amp; Password</span>
+      </button>
+    </nav>
+
+    <!-- Sidebar Footer -->
+    <div class="sidebar-footer">
+      <a href="index.html" class="sidebar-link-btn">
+        <i class="fa-solid fa-compass"></i>
+        <span>Return to Adventures</span>
+      </a>
+      <a href="Login.html" class="sidebar-link-btn" style="color:var(--dash-primary);">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+        <span>Sign Out</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       MAIN CONTENT WRAPPER
+       ========================================================================== -->
+  <div class="dash-main-wrap">
+    <!-- Topbar -->
+    <header class="dash-topbar">
+      <div class="topbar-left">
+        <button type="button" class="dash-mobile-hamburger" id="hamburgerBtn" aria-label="Open mobile menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <a href="index.html" class="dash-mobile-logo" aria-label="STACKLY Home">
+          <img src="assets/images/Brand-logo.webp" alt="STACKLY" class="dash-mobile-logo-img">
+        </a>
+      </div>
+
+      <div class="topbar-right">
+        <!-- Notification Bell Dropdown -->
+        <div class="header-action-container">
+          <button type="button" class="header-icon-btn" id="notifBellBtn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notif-badge-count">2</span>
+          </button>
+
+          <!-- Dropdown Panel -->
+          <div class="dropdown-panel" id="notifDropdown">
+            <div class="dropdown-header">
+              <span class="dropdown-header-title">My Adventure Alerts</span>
+              <span class="status-pill info" style="font-size:0.65rem;">2 New</span>
+            </div>
+            <div class="dropdown-body">
+              <div class="dropdown-item">
+                <div class="notif-indicator cyan"></div>
+                <div class="notif-content">
+                  <p class="notif-text">High-Altitude Permit Issued!</p>
+                  <span class="notif-time">Roopkund National Park Permit #IMF-8422 verified &bull; 1h ago</span>
+                </div>
+              </div>
+              <div class="dropdown-item">
+                <div class="notif-indicator green"></div>
+                <div class="notif-content">
+                  <p class="notif-text">Assigned Guide Tenzing Norbu Connected</p>
+                  <span class="notif-time">Gear checklist &amp; weather briefing updated &bull; 3h ago</span>
+                </div>
+              </div>
+            </div>
+            <div class="dropdown-footer">
+              <a href="#tab-tracker" class="dropdown-footer-link" onclick="document.querySelector('[data-tab=tab-tracker]').click();">Track Live Trail &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Profile Dropdown Trigger -->
+        <div class="header-menu-container">
+          <div class="header-profile-btn" id="userProfileBtn">
+            <div class="header-avatar sync-user-avatar">AM</div>
+            <div class="profile-meta-top">
+              <span class="profile-name-top sync-user-name">Alex Morgan</span>
+              <span class="profile-role-top">Alpine Explorer</span>
+            </div>
+          </div>
+
+          <!-- Profile Dropdown Panel -->
+          <div class="header-dropdown-panel" id="userProfileDropdown">
+            <div class="profile-dropdown-header">
+              <div class="header-avatar-lg sync-user-avatar">AM</div>
+              <div class="profile-meta-lg">
+                <span class="profile-name-lg sync-user-name">Alex Morgan</span>
+                <span class="profile-email-lg sync-user-email">alex.morgan@stackly.com</span>
+                <span class="profile-role-tag">VIP EXPLORER</span>
+              </div>
+            </div>
+            <div class="profile-dropdown-links">
+              <a href="#tab-profile" class="profile-menu-link" onclick="document.querySelector('[data-tab=tab-profile]').click();">
+                <i class="fa-solid fa-user" style="width:16px;"></i>
+                <span>Traveler Profile</span>
+              </a>
+              <a href="#tab-rewards" class="profile-menu-link" onclick="document.querySelector('[data-tab=tab-rewards]').click();">
+                <i class="fa-solid fa-award" style="width:16px;"></i>
+                <span>Summit Points (1,250 Pts)</span>
+              </a>
+              <a href="index.html" class="profile-menu-link">
+                <i class="fa-solid fa-compass" style="width:16px;"></i>
+                <span>Public Tourism Site</span>
+              </a>
+              <a href="Login.html" class="profile-menu-link logout">
+                <i class="fa-solid fa-arrow-right-from-bracket" style="width:16px;"></i>
+                <span>Log Out</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="dash-content">
+
+      <!-- ======================================================================
+           TAB 1: EXPLORER OVERVIEW
+           ====================================================================== -->
+      <section class="tab-panel active" id="tab-overview">
+        <!-- Hero Welcome Banner -->
+        <div class="explorer-welcome-banner">
+          <div class="welcome-lead">
+            <h1 class="welcome-title">Welcome Back, <span class="sync-user-name">Alex Morgan</span>! 🏔️</h1>
+            <p class="welcome-subtitle">Explore your personalized adventure portal, track live trail checkpoints, manage your trip vouchers, and review expedition preparation below.</p>
+          </div>
+
+          <div class="countdown-badge-card">
+            <i class="fa-solid fa-mountain-sun countdown-icon"></i>
+            <div class="countdown-meta">
+              <span class="countdown-label">Next Summit Departure</span>
+              <span class="countdown-value">14 Oct 2026</span>
+              <span style="font-size:0.75rem; color:var(--dash-primary); font-weight:600;">12 Days Remaining</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Explorer Stat Cards -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Completed Expeditions</span>
+              <div class="kpi-icon-wrap kpi-icon-cyan"><i class="fa-solid fa-calendar-check"></i></div>
+            </div>
+            <div class="kpi-val kpi-counter" data-target="8">8</div>
+            <span class="kpi-sub">Himalayas, Spiti &amp; Andaman</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Total Altitude Scaled</span>
+              <div class="kpi-icon-wrap kpi-icon-green"><i class="fa-solid fa-mountain"></i></div>
+            </div>
+            <div class="kpi-val kpi-counter" data-target="18450" data-suffix=" m">18,450 m</div>
+            <span class="kpi-sub" style="color:#10b981;"><i class="fa-solid fa-bolt"></i> Peak: Stok Kangri (6,153m)</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Adventure Points</span>
+              <div class="kpi-icon-wrap kpi-icon-amber"><i class="fa-solid fa-award"></i></div>
+            </div>
+            <div class="kpi-val kpi-counter" data-target="1250">1,250</div>
+            <span class="kpi-sub" style="color:#10b981;">₹6,250 Redeemable Value</span>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Active Bookings</span>
+              <div class="kpi-icon-wrap kpi-icon-blue"><i class="fa-solid fa-route"></i></div>
+            </div>
+            <div class="kpi-val">2</div>
+            <span class="kpi-sub">1 Preparing &bull; 1 Confirmed</span>
+          </div>
+        </div>
+
+        <!-- 5-Step Journey Progress Tracker -->
+        <div class="journey-tracker-card">
+          <div class="tracker-header">
+            <div>
+              <h3 class="tracker-title"><i class="fa-solid fa-flag-checkered" style="color:var(--dash-primary); margin-right:8px;"></i> Himalayan Summit Expedition &bull; Preparation Status</h3>
+              <span style="font-size:0.78rem; color:var(--text-light); margin-top:2px; display:block;">Booking Reference: #STK-ADV-9842 &bull; 8 Days / 7 Nights</span>
+            </div>
+            <span class="status-pill warning"><span class="pulse-dot"></span> Stage 4 of 5 Active</span>
+          </div>
+
+          <div class="tracker-timeline">
+            <div class="tracker-line-bg"></div>
+            <div class="tracker-line-fill" id="trackerFill"></div>
+
+            <!-- Step 1 -->
+            <div class="tracker-step completed" onclick="showToast('Milestone 1', 'Booking confirmed and expedition slot reserved.');">
+              <div class="step-node"><i class="fa-solid fa-check"></i></div>
+              <span class="step-label">Booking Confirmed</span>
+              <span class="step-sub">02 Sep 2026</span>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="tracker-step completed" onclick="showToast('Milestone 2', 'IMF High-Altitude Pass successfully approved.');">
+              <div class="step-node"><i class="fa-solid fa-check"></i></div>
+              <span class="step-label">Permit Issued</span>
+              <span class="step-sub">15 Sep 2026</span>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="tracker-step completed" onclick="showToast('Milestone 3', 'Medical and high-altitude fitness cleared.');">
+              <div class="step-node"><i class="fa-solid fa-check"></i></div>
+              <span class="step-label">Medical Cleared</span>
+              <span class="step-sub">28 Sep 2026</span>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="tracker-step active" onclick="showToast('Milestone 4', 'Basecamp briefing and gear inspection in progress.');">
+              <div class="step-node"><i class="fa-solid fa-person-hiking"></i></div>
+              <span class="step-label">Gear &amp; Briefing</span>
+              <span class="step-sub" style="color:var(--dash-primary);">In Progress</span>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="tracker-step" onclick="showToast('Milestone 5', 'Summit push commences on 18 Oct 2026.');">
+              <div class="step-node"><i class="fa-solid fa-flag"></i></div>
+              <span class="step-label">Summit Push</span>
+              <span class="step-sub">Starts 18 Oct</span>
+            </div>
+          </div>
+
+          <!-- Assigned Mountain Guide Card -->
+          <div class="assigned-guide-card">
+            <div class="assigned-guide-avatar">TN</div>
+            <div class="assigned-guide-meta">
+              <span class="assigned-guide-name">Tenzing Norbu</span>
+              <span class="assigned-guide-title">Assigned Lead Sherpa &bull; IMF Certified Alpine Master</span>
+              <span class="assigned-guide-rating"><i class="fa-solid fa-star"></i> 4.98 (48 summits guided)</span>
+            </div>
+            <div class="assigned-guide-actions">
+              <a href="tel:+919845012345" class="btn-guide-contact"><i class="fa-solid fa-phone"></i> Call Guide</a>
+              <button type="button" class="btn-guide-contact" onclick="showToast('Download Itinerary', 'Downloading official PDF itinerary voucher.');">
+                <i class="fa-solid fa-file-pdf"></i> Download Itinerary
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Expeditions Preview -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3 class="dash-card-title"><i class="fa-solid fa-receipt"></i> Active &amp; Recent Bookings</h3>
+            <a href="#tab-bookings" style="font-size:0.8rem; color:var(--dash-primary); text-decoration:none; font-weight:600;" onclick="document.querySelector('[data-tab=tab-bookings]').click();">View All Trips &rarr;</a>
+          </div>
+
+          <div class="dash-table-wrap">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Expedition</th>
+                  <th>Dates</th>
+                  <th>Guests</th>
+                  <th>Total Cost</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="ticket-id">#STK-ADV-9842</span></td>
+                  <td><strong>Himalayan Summit Expedition (4,800m)</strong></td>
+                  <td>14 Oct &ndash; 22 Oct 2026</td>
+                  <td>2 Persons</td>
+                  <td><strong style="color:var(--dash-primary);">₹49,998</strong></td>
+                  <td><span class="status-pill warning">In Preparation</span></td>
+                  <td>
+                    <button class="table-action-btn" title="View Details" onclick="showToast('Voucher #9842', 'Opening itinerary details for Himalayan Summit.');"><i class="fa-solid fa-eye"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="ticket-id">#STK-ADV-6549</span></td>
+                  <td><strong>Rishikesh White-Water Rapid Rafting</strong></td>
+                  <td>02 Nov &ndash; 05 Nov 2026</td>
+                  <td>2 Persons</td>
+                  <td><strong style="color:var(--dash-primary);">₹17,998</strong></td>
+                  <td><span class="status-pill success">Confirmed</span></td>
+                  <td>
+                    <button class="table-action-btn" title="View Details" onclick="showToast('Voucher #6549', 'Opening itinerary details for Rishikesh Rapids.');"><i class="fa-solid fa-eye"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 2: MY BOOKINGS & ITINERARIES
+           ====================================================================== -->
+      <section class="tab-panel" id="tab-bookings">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">My Adventure Bookings &amp; Itineraries 🎫</h1>
+            <p class="dash-page-subtitle">Access your confirmed expedition tickets, printable vouchers, and detailed travel itineraries.</p>
+          </div>
+          <a href="Services.html" class="dash-btn-action">
+            <i class="fa-solid fa-compass"></i> Explore More Trips
+          </a>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-table-wrap">
+            <table class="dash-table">
+              <thead>
+                <tr>
+                  <th>Booking ID</th>
+                  <th>Expedition Package</th>
+                  <th>Departure Date</th>
+                  <th>Duration</th>
+                  <th>Guests</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="ticket-id">#STK-ADV-9842</span></td>
+                  <td>
+                    <div style="font-weight:700;">Himalayan Summit Expedition</div>
+                    <span style="font-size:0.72rem; color:var(--text-light);">Roopkund Pass &bull; High Altitude</span>
+                  </td>
+                  <td>14 Oct 2026</td>
+                  <td>8 Days / 7 Nights</td>
+                  <td>2 Persons</td>
+                  <td><strong style="color:var(--dash-primary);">₹49,998</strong></td>
+                  <td><span class="status-pill warning">In Preparation</span></td>
+                  <td>
+                    <button class="table-action-btn" title="Download Voucher" onclick="showToast('Voucher Download', 'Official expedition voucher downloaded.');"><i class="fa-solid fa-download"></i></button>
+                    <button class="table-action-btn" title="Emergency Contact" onclick="showToast('Guide Support', 'Connected to lead guide Tenzing Norbu.');"><i class="fa-solid fa-phone"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="ticket-id">#STK-ADV-6549</span></td>
+                  <td>
+                    <div style="font-weight:700;">Rishikesh White-Water Rapid Rafting</div>
+                    <span style="font-size:0.72rem; color:var(--text-light);">Ganges River &bull; Grade IV</span>
+                  </td>
+                  <td>02 Nov 2026</td>
+                  <td>3 Days / 2 Nights</td>
+                  <td>2 Persons</td>
+                  <td><strong style="color:var(--dash-primary);">₹17,998</strong></td>
+                  <td><span class="status-pill success">Confirmed</span></td>
+                  <td>
+                    <button class="table-action-btn" title="Download Voucher" onclick="showToast('Voucher Download', 'Official expedition voucher downloaded.');"><i class="fa-solid fa-download"></i></button>
+                    <button class="table-action-btn" title="Emergency Contact" onclick="showToast('Guide Support', 'Connected to river guide Vikram Singh.');"><i class="fa-solid fa-phone"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><span class="ticket-id">#STK-ADV-3211</span></td>
+                  <td>
+                    <div style="font-weight:700;">Bir Billing Cross-Country Paragliding</div>
+                    <span style="font-size:0.72rem; color:var(--text-light);">Tandem Flight &bull; 2,400m</span>
+                  </td>
+                  <td>12 May 2026</td>
+                  <td>2 Days / 1 Night</td>
+                  <td>1 Person</td>
+                  <td><strong style="color:var(--dash-primary);">₹6,499</strong></td>
+                  <td><span class="status-pill success">Completed</span></td>
+                  <td>
+                    <button class="table-action-btn" title="View Certificate" onclick="showToast('Summit Certificate', 'Showing completed flight certificate.');"><i class="fa-solid fa-certificate"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 3: LIVE TRAIL & SUMMIT TRACKER
+           ====================================================================== -->
+      <section class="tab-panel" id="tab-tracker">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Live Trail &amp; Summit Telemetry 🛰️</h1>
+            <p class="dash-page-subtitle">Track your upcoming trail day-by-day, check elevation profiles, and view real-time mountain weather.</p>
+          </div>
+          <span class="status-pill success"><span class="pulse-cyan"></span> Telemetry Connected</span>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3 class="dash-card-title"><i class="fa-solid fa-route"></i> Himalayan Roopkund Trail Checkpoints (4,800m)</h3>
+            <span style="font-size:0.8rem; color:var(--dash-primary); font-weight:700;">Total Trek: 53 km</span>
+          </div>
+
+          <div class="trail-checkpoints-list">
+            <!-- Day 1 -->
+            <div class="trail-checkpoint-item">
+              <span class="checkpoint-day">Day 01</span>
+              <div class="checkpoint-meta">
+                <span class="checkpoint-name">Lohajung Basecamp &bull; Expedition Assembly</span>
+                <span class="checkpoint-desc">Arrival, gear inspection, and acclimatization briefing with Sherpa Tenzing.</span>
+              </div>
+              <span class="checkpoint-altitude">2,300 m</span>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="trail-checkpoint-item">
+              <span class="checkpoint-day">Day 02</span>
+              <div class="checkpoint-meta">
+                <span class="checkpoint-name">Didna Village Trail &bull; Forest Ascent</span>
+                <span class="checkpoint-desc">Trek through dense oak and rhododendron forests crossing the Neel Ganga river.</span>
+              </div>
+              <span class="checkpoint-altitude">2,500 m</span>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="trail-checkpoint-item">
+              <span class="checkpoint-day">Day 03</span>
+              <div class="checkpoint-meta">
+                <span class="checkpoint-name">Ali Bugyal &bull; High Alpine Meadows</span>
+                <span class="checkpoint-desc">Spectacular 360° views of Mt. Trishul (7,120m) and Nanda Ghunti (6,309m).</span>
+              </div>
+              <span class="checkpoint-altitude">3,300 m</span>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="trail-checkpoint-item">
+              <span class="checkpoint-day">Day 04</span>
+              <div class="checkpoint-meta">
+                <span class="checkpoint-name">Ghora Lotani High Ridge Camp</span>
+                <span class="checkpoint-desc">High wind cold camp with acclimatization walk and pulse-oximetry check.</span>
+              </div>
+              <span class="checkpoint-altitude">3,800 m</span>
+            </div>
+
+            <!-- Day 5 -->
+            <div class="trail-checkpoint-item">
+              <span class="checkpoint-day">Day 05</span>
+              <div class="checkpoint-meta">
+                <span class="checkpoint-name">Bhagwabasa High Base &bull; Snow Line</span>
+                <span class="checkpoint-desc">Crampon training and midnight preparation for the Roopkund summit push.</span>
+              </div>
+              <span class="checkpoint-altitude">4,300 m</span>
+            </div>
+
+            <!-- Day 6 -->
+            <div class="trail-checkpoint-item" style="border-color:var(--border-medium); background:rgba(56,189,248,0.06);">
+              <span class="checkpoint-day" style="background:var(--dash-primary); color:#070e17;">Day 06</span>
+              <div class="checkpoint-meta">
+                <span class="checkpoint-name" style="color:var(--dash-primary);">Summit Push to Roopkund Lake &amp; Junargali Pass</span>
+                <span class="checkpoint-desc">Early 4 AM summit ascent across the snow ridge to reach the glacial lake.</span>
+              </div>
+              <span class="checkpoint-altitude" style="font-size:1rem; color:var(--white);">4,800 m</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 4: SAVED BUCKET LIST
+           ====================================================================== -->
+      <section class="tab-panel" id="tab-wishlist">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Saved Mountain &amp; Ocean Bucket List ❤️</h1>
+            <p class="dash-page-subtitle">Destinations and expeditions you have saved for your future wanderlust adventures.</p>
+          </div>
+          <span class="status-pill info">4 Saved Adventures</span>
+        </div>
+
+        <div class="bucket-list-grid">
+          <!-- Card 1 -->
+          <div class="bucket-card">
+            <div class="bucket-img-wrap">
+              <img src="assets/images/ladakh.webp" alt="Ladakh" class="bucket-img">
+            </div>
+            <div class="bucket-body">
+              <h4 class="bucket-title">Zanskar Frozen River Chadar Trek</h4>
+              <span style="font-size:0.75rem; color:var(--text-light); margin-bottom:8px;"><i class="fa-solid fa-location-dot" style="color:var(--dash-primary);"></i> Ladakh, India</span>
+              <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">Trek across the frozen ice sheets of Zanskar Gorge in sub-zero winter temperatures.</p>
+              <div class="bucket-meta-row">
+                <span style="font-size:1.1rem; font-weight:800; color:var(--dash-primary);">₹38,000</span>
+                <a href="Services.html" class="dash-btn-action" style="padding:0.4rem 0.8rem; font-size:0.75rem;">Book Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bucket-card">
+            <div class="bucket-img-wrap">
+              <img src="assets/images/scuba-diving.webp" alt="Scuba" class="bucket-img">
+            </div>
+            <div class="bucket-body">
+              <h4 class="bucket-title">Havelock Coral Reef Night Dive</h4>
+              <span style="font-size:0.75rem; color:var(--text-light); margin-bottom:8px;"><i class="fa-solid fa-location-dot" style="color:var(--dash-primary);"></i> Andaman Islands, India</span>
+              <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">Explore bioluminescent corals and nocturnal marine life under moonlight.</p>
+              <div class="bucket-meta-row">
+                <span style="font-size:1.1rem; font-weight:800; color:var(--dash-primary);">₹22,500</span>
+                <a href="Services.html" class="dash-btn-action" style="padding:0.4rem 0.8rem; font-size:0.75rem;">Book Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bucket-card">
+            <div class="bucket-img-wrap">
+              <img src="assets/images/meghalaya.webp" alt="Meghalaya" class="bucket-img">
+            </div>
+            <div class="bucket-body">
+              <h4 class="bucket-title">Wei Sawdong 3-Tier Waterfall Canyon</h4>
+              <span style="font-size:0.75rem; color:var(--text-light); margin-bottom:8px;"><i class="fa-solid fa-location-dot" style="color:var(--dash-primary);"></i> Meghalaya, India</span>
+              <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">Hike through limestone canyons and swim in three-tiered emerald natural pools.</p>
+              <div class="bucket-meta-row">
+                <span style="font-size:1.1rem; font-weight:800; color:var(--dash-primary);">₹14,900</span>
+                <a href="Services.html" class="dash-btn-action" style="padding:0.4rem 0.8rem; font-size:0.75rem;">Book Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="bucket-card">
+            <div class="bucket-img-wrap">
+              <img src="assets/images/paragliding.webp" alt="Paragliding" class="bucket-img">
+            </div>
+            <div class="bucket-body">
+              <h4 class="bucket-title">Bir Billing Thermal Paragliding</h4>
+              <span style="font-size:0.75rem; color:var(--text-light); margin-bottom:8px;"><i class="fa-solid fa-location-dot" style="color:var(--dash-primary);"></i> Himachal Pradesh, India</span>
+              <p style="font-size:0.78rem; color:var(--text-muted); line-height:1.4;">Cross-country thermal glider flight over pine valleys and snow-clad Dhauladhar peaks.</p>
+              <div class="bucket-meta-row">
+                <span style="font-size:1.1rem; font-weight:800; color:var(--dash-primary);">₹6,499</span>
+                <a href="Services.html" class="dash-btn-action" style="padding:0.4rem 0.8rem; font-size:0.75rem;">Book Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 5: SUMMIT POINTS & PROMO COUPONS
+           ====================================================================== -->
+      <section class="tab-panel" id="tab-rewards">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Summit Points &amp; Adventure Rewards 🏆</h1>
+            <p class="dash-page-subtitle">Earn reward points for every kilometer trekked and redeem them for exclusive discounts.</p>
+          </div>
+          <button type="button" class="dash-btn-action" onclick="showToast('Redeem Points', 'Points applied to your checkout cart.');">
+            <i class="fa-solid fa-tags"></i> Redeem Points
+          </button>
+        </div>
+
+        <div class="loyalty-banner">
+          <div>
+            <span style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-light);">Current Loyalty Balance</span>
+            <div class="loyalty-points-val">1,250 <span style="font-size:1.2rem; color:var(--white);">Pts</span></div>
+            <span style="font-size:0.85rem; color:#10b981; font-weight:600; margin-top:4px; display:block;"><i class="fa-solid fa-circle-check"></i> ₹6,250 Instant Discount Value</span>
+          </div>
+
+          <div style="min-width:240px;">
+            <div style="display:flex; justify-content:space-between; font-size:0.78rem; margin-bottom:6px;">
+              <span style="color:var(--white); font-weight:600;">Alpine Explorer</span>
+              <span style="color:var(--dash-primary); font-weight:700;">250 pts to Mountaineer Legend</span>
+            </div>
+            <div style="width:100%; height:8px; background:rgba(255,255,255,0.1); border-radius:999px; overflow:hidden;">
+              <div style="width:83%; height:100%; background:linear-gradient(90deg, var(--dash-accent), var(--dash-primary));"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3 class="dash-card-title"><i class="fa-solid fa-ticket"></i> Active Discount Vouchers</h3>
+          </div>
+
+          <div class="coupons-grid">
+            <div class="coupon-card">
+              <span class="coupon-code-badge">SUMMIT20</span>
+              <div style="font-weight:700; color:var(--white);">20% Off High-Altitude Treks</div>
+              <p class="coupon-desc">Applies to all Himalayan expeditions above 4,000m.</p>
+              <div class="coupon-stats">
+                <span>Status: Ready to Use</span>
+                <button type="button" class="btn-guide-contact" style="padding:2px 8px; font-size:0.72rem;" onclick="navigator.clipboard.writeText('SUMMIT20'); showToast('Code Copied', 'SUMMIT20 copied to clipboard.');">Copy Code</button>
+              </div>
+            </div>
+
+            <div class="coupon-card">
+              <span class="coupon-code-badge">TREKFIRST15</span>
+              <div style="font-weight:700; color:var(--white);">15% First-Timer Special</div>
+              <p class="coupon-desc">Valid across all tour packages and weekend getaways.</p>
+              <div class="coupon-stats">
+                <span>Status: Ready to Use</span>
+                <button type="button" class="btn-guide-contact" style="padding:2px 8px; font-size:0.72rem;" onclick="navigator.clipboard.writeText('TREKFIRST15'); showToast('Code Copied', 'TREKFIRST15 copied to clipboard.');">Copy Code</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 6: GEAR CHECKLIST & MEDICAL CLEARANCE
+           ====================================================================== -->
+      <section class="tab-panel" id="tab-gear">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Expedition Gear Checklist &amp; Medical Clearance 🎒</h1>
+            <p class="dash-page-subtitle">Track your high-altitude essentials and keep your emergency medical data up to date.</p>
+          </div>
+          <button type="button" class="dash-btn-action" onclick="showToast('Checklist Saved', 'Gear preparation progress updated.');">
+            <i class="fa-solid fa-floppy-disk"></i> Save Checklist
+          </button>
+        </div>
+
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <div>
+              <h3 class="dash-card-title"><i class="fa-solid fa-list-check"></i> High-Altitude Trekking Gear Checklist</h3>
+              <span style="font-size:0.78rem; color:var(--text-light); margin-top:2px; display:block;">Check off items as you pack them into your 60L rucksack.</span>
+            </div>
+            <span class="status-pill success" id="gearPackCount">4 of 5 Packed (80%)</span>
+          </div>
+
+          <div class="gear-progress-bar-wrap">
+            <div class="gear-progress-fill" id="gearProgressFill" style="width:80%;"></div>
+          </div>
+
+          <div class="gear-checklist" id="gearChecklist">
+            <label class="gear-item">
+              <input type="checkbox" class="gear-checkbox" checked>
+              <span class="gear-text">Waterproof ankle-support trekking boots with Vibram grip</span>
+              <span class="gear-cat">Footwear</span>
+            </label>
+
+            <label class="gear-item">
+              <input type="checkbox" class="gear-checkbox" checked>
+              <span class="gear-text">Thermal base layer tops &amp; bottoms (-10°C rated merino wool)</span>
+              <span class="gear-cat">Clothing</span>
+            </label>
+
+            <label class="gear-item">
+              <input type="checkbox" class="gear-checkbox" checked>
+              <span class="gear-text">700+ fill power down jacket with windproof hood</span>
+              <span class="gear-cat">Outerwear</span>
+            </label>
+
+            <label class="gear-item">
+              <input type="checkbox" class="gear-checkbox" checked>
+              <span class="gear-text">UV Category 4 glacier polarized sunglasses (anti-snowblind)</span>
+              <span class="gear-cat">Eye Protection</span>
+            </label>
+
+            <label class="gear-item">
+              <input type="checkbox" class="gear-checkbox">
+              <span class="gear-text">Altitude sickness acclimatization kit (Diamox, ORS, oximeter)</span>
+              <span class="gear-cat">Medical</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <h3 class="dash-card-title" style="margin-bottom:1rem;"><i class="fa-solid fa-heart-pulse"></i> Medical Clearance &amp; Insurance Info</h3>
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label">Blood Group</label>
+              <input type="text" class="form-input" value="O Positive (O+)" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Wilderness Evacuation Insurance Policy #</label>
+              <input type="text" class="form-input" value="POL-ADV-849204-HIMALAYAS" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Known Allergies / Medical Notes</label>
+              <input type="text" class="form-input" value="None reported &bull; Acclimatization cleared up to 5,000m" readonly>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Emergency Heli-Evac Provider</label>
+              <input type="text" class="form-input" value="Himalayan Air Rescue (+91 11 2467 8900)" readonly>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 7: TRAVELER PROFILE & IDENTITY
+           ====================================================================== -->
+      <section class="tab-panel" id="tab-profile">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Traveler Identity &amp; Profile 👤</h1>
+            <p class="dash-page-subtitle">Update your personal details, government ID verification, and emergency contacts.</p>
+          </div>
+        </div>
+
+        <div class="dash-card">
+          <form id="travelerProfileForm">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="profileFullName">Full Legal Name</label>
+                <input type="text" id="profileFullName" class="form-input" value="Alex Morgan" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profileEmail">Email Address</label>
+                <input type="email" id="profileEmail" class="form-input" value="alex.morgan@stackly.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profilePhone">Phone Number</label>
+                <input type="tel" id="profilePhone" class="form-input" value="+91 98450 12345" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profileNationality">Nationality</label>
+                <input type="text" id="profileNationality" class="form-input" value="Indian" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profileIdNumber">Passport / Aadhaar Number</label>
+                <input type="text" id="profileIdNumber" class="form-input" value="Z8492048" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="profileDob">Date of Birth</label>
+                <input type="date" id="profileDob" class="form-input" value="1995-08-14">
+              </div>
+
+              <div class="form-group full">
+                <label class="form-label" for="profileEmergency">Primary Emergency Contact (Name &amp; Phone)</label>
+                <input type="text" id="profileEmergency" class="form-input" value="Sarah Morgan (Spouse) &bull; +91 98450 99999" required>
+              </div>
+            </div>
+
+            <div style="margin-top:1.5rem; display:flex; justify-content:flex-end;">
+              <button type="submit" class="dash-btn-action"><i class="fa-solid fa-floppy-disk"></i> Save Profile Details</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ======================================================================
+           TAB 8: SAFETY PREFERENCES & PASSWORD
+           ====================================================================== -->
+      <section class="tab-panel" id="tab-settings">
+        <div class="dash-page-header">
+          <div>
+            <h1 class="dash-page-title">Safety Preferences &amp; Account Security 🔐</h1>
+            <p class="dash-page-subtitle">Configure satellite SMS notifications, change password, and customize expedition alerts.</p>
+          </div>
+          <button type="button" class="dash-btn-action" onclick="showToast('Security Saved', 'Account safety preferences saved.');">
+            <i class="fa-solid fa-shield-halved"></i> Save Preferences
+          </button>
+        </div>
+
+        <div class="settings-section-card">
+          <h3 class="dash-card-title" style="margin-bottom:1rem;"><i class="fa-solid fa-bell"></i> Notification &amp; Weather Alerts</h3>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-label-title">SMS &amp; Satellite Trail Weather Alerts</div>
+              <div class="settings-label-sub">Receive automated SMS updates if high winds or sudden snowfall affect your summit route.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="settings-row">
+            <div>
+              <div class="settings-label-title">Email Itinerary Updates &amp; Gear Checklists</div>
+              <div class="settings-label-sub">Get downloadable packing reminders 7 days and 48 hours prior to your expedition departure.</div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-section-card">
+          <h3 class="dash-card-title" style="margin-bottom:1rem;"><i class="fa-solid fa-key"></i> Change Security Password</h3>
+          <form onsubmit="event.preventDefault(); showToast('Password Updated', 'Your account password has been updated.');">
+            <div class="form-grid">
+              <div class="form-group full">
+                <label class="form-label">Current Password</label>
+                <input type="password" class="form-input" placeholder="Enter current password" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">New Password</label>
+                <input type="password" class="form-input" placeholder="Enter new password" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Confirm New Password</label>
+                <input type="password" class="form-input" placeholder="Repeat new password" required>
+              </div>
+            </div>
+            <div style="margin-top:1rem; display:flex; justify-content:flex-end;">
+              <button type="submit" class="dash-btn-action"><i class="fa-solid fa-lock"></i> Update Password</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="dash-toast" id="dashToast">
+    <i class="fa-solid fa-circle-check toast-icon" id="toastIcon"></i>
+    <div class="toast-body">
+      <span class="toast-title" id="toastTitle">Success</span>
+      <span class="toast-desc" id="toastDesc">Operation completed successfully.</span>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/client-dashboard.js"></script>
+</body>
+</html>

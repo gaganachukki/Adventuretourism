@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adventure Blog & Field Guides — Mountain Lore & Expedition Stories | STACKLY</title>
+  
+  <link rel="icon" type="image/webp" href="assets/images/Brand-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY Logo" class="brand-logo-img">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="About.html" class="nav-link">About</a></li>
+          <li><a href="Destinations.html" class="nav-link">Destinations</a></li>
+          <li><a href="Services.html" class="nav-link">Services</a></li>
+          <li><a href="Blog.html" class="nav-link active">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="Login.html" class="btn-nav-login"><i class="fa-solid fa-user"></i> Login</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-menu-backdrop"></div>
+  <div class="mobile-menu-drawer">
+    <div>
+      <a href="index.html" class="brand-logo-wrap" style="margin-bottom: 2rem;">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY" style="height: 38px;">
+      </a>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="About.html" class="nav-link">About</a></li>
+        <li><a href="Destinations.html" class="nav-link">Destinations</a></li>
+        <li><a href="Services.html" class="nav-link">Services</a></li>
+        <li><a href="Blog.html" class="nav-link active">Blog</a></li>
+        <li><a href="Contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <div style="border-top: 1px solid var(--border-glass); padding-top: 1.5rem;">
+      <a href="Login.html" class="btn btn-primary" style="width: 100%;">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Login / Register
+      </a>
+    </div>
+  </div>
+
+  <!-- Global Search Modal -->
+  <div id="searchModalOverlay" class="search-modal-overlay">
+    <div class="search-modal-box">
+      <button id="searchModalClose" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="margin-bottom: 1.25rem;">Search Adventures & Field Guides</h3>
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass search-input-icon"></i>
+        <input type="text" id="globalSearchInput" placeholder="Search stories, survival guides, or trails...">
+      </div>
+      <div id="globalSearchResults" class="search-results-list"></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="page-hero" style="background-image: url('assets/images/hero-adventure.webp');">
+      <div class="page-hero-content">
+        <span class="section-badge badge-primary"><i class="fa-solid fa-book-open"></i> STACKLY Adventure Dispatch</span>
+        <h1>Stories, Field Guides & Mountain Lore</h1>
+        <p>
+          Expert trail survival guides, alpine gear breakdowns, high-altitude acclimatization tips, and captivating first-hand expedition dispatches from certified mountain leaders.
+        </p>
+
+        <!-- Live Blog Filter Search Input -->
+        <div class="blog-search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="blogSearchInput" placeholder="Search by topic, destination or keyword...">
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY PILL FILTER NAVIGATION -->
+    <div class="container">
+      <div class="blog-category-nav">
+        <button class="blog-filter-btn active" data-category="all">
+          <i class="fa-solid fa-layer-group"></i> All Stories
+        </button>
+        <button class="blog-filter-btn" data-category="trekking">
+          <i class="fa-solid fa-mountain"></i> Trekking Guides
+        </button>
+        <button class="blog-filter-btn" data-category="safety">
+          <i class="fa-solid fa-shield-heart"></i> Survival & Safety
+        </button>
+        <button class="blog-filter-btn" data-category="water">
+          <i class="fa-solid fa-water"></i> Water Expeditions
+        </button>
+        <button class="blog-filter-btn" data-category="aerial">
+          <i class="fa-solid fa-wind"></i> Aerial Thrills
+        </button>
+        <button class="blog-filter-btn" data-category="scuba">
+          <i class="fa-solid fa-mask-snorkel"></i> Ocean & Scuba
+        </button>
+        <button class="blog-filter-btn" data-category="overland">
+          <i class="fa-solid fa-truck-monster"></i> Overland Trips
+        </button>
+        <button class="blog-filter-btn" data-category="wildlife">
+          <i class="fa-solid fa-paw"></i> Wildlife & Ecology
+        </button>
+      </div>
+
+      <!-- FEATURED SPOTLIGHT ARTICLE -->
+      <article class="featured-article-card" id="featuredArticle">
+        <div class="featured-img-wrap">
+          <img src="assets/images/mountain-camping.webp" alt="Alpine Winter Bivouac Guide">
+          <div class="featured-floating-badge">
+            <i class="fa-solid fa-star"></i> FEATURED GUIDE • 9 MIN READ
+          </div>
+        </div>
+        <div class="featured-content">
+          <div class="article-meta-row">
+            <span><i class="fa-solid fa-fire-flame-curved"></i> Survival & Safety</span>
+            <span><i class="fa-regular fa-clock"></i> 9 Min Read</span>
+            <span><i class="fa-regular fa-calendar"></i> 18 Nov 2026</span>
+          </div>
+          <h2 class="featured-title">Surviving -25°C: The Definitive Alpine Winter Bivouac Guide</h2>
+          <p class="featured-desc">
+            When temperatures plummet below freezing on high Himalayan ridges, moisture management, caloric pacing, and thermal trapping separate survival from catastrophe. Here is how our certified sherpas prepare winter basecamps.
+          </p>
+          <div class="article-author-row">
+            <div class="author-info-box">
+              <img src="assets/images/guide-1.webp" alt="Tenzing Norbu" class="author-avatar">
+              <div>
+                <div class="author-name">Tenzing Norbu</div>
+                <div class="author-role">IMF Alpine Master & Lead Sherpa</div>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-sm" onclick="openArticleModal('featured-bivouac')">
+              Read Full Guide <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ARTICLES GRID SECTION -->
+      <div class="section-header text-center" style="margin-bottom: 2.5rem;">
+        <span class="section-badge badge-accent"><i class="fa-solid fa-compass"></i> Fresh Field Dispatches</span>
+        <h2 style="font-size: clamp(2rem, 3.2vw, 2.6rem); margin-bottom: 0.5rem;">Latest Adventure Articles & Trail Lore</h2>
+        <p style="color: var(--text-muted); max-width: 620px; margin: 0 auto;">
+          Written directly by expedition leaders, wilderness medics, and certified outdoor navigators.
+        </p>
+      </div>
+
+      <div class="blog-grid" id="blogGrid">
+        
+        <!-- Article 1: Trekking -->
+        <article class="blog-card" data-category="trekking">
+          <div class="blog-card-img">
+            <img src="assets/images/trekking.webp" alt="Hampta Pass Trekking Guide" loading="lazy">
+            <span class="blog-card-tag"><i class="fa-solid fa-mountain"></i> Trekking • 6 Min</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="article-meta-row">
+              <span><i class="fa-regular fa-calendar"></i> 12 Nov 2026</span>
+              <span><i class="fa-solid fa-location-dot"></i> Himachal</span>
+            </div>
+            <h3 class="blog-card-title">The Ultimate 7-Day Hampta Pass Crossing: Valley of Contrasts</h3>
+            <p class="blog-card-desc">
+              How green alpine Kullu pine meadows transform into the stark, barren moonscapes of Spiti within a 3-hour ridgeline traverse.
+            </p>
+            <div class="blog-card-footer">
+              <div class="author-info-box">
+                <img src="assets/images/guide-2.webp" alt="Samantha Ray" class="author-avatar" style="width:36px; height:36px;">
+                <span class="author-name" style="font-size:0.84rem;">Samantha Ray</span>
+              </div>
+              <button class="btn-read-article" onclick="openArticleModal('hampta-crossing')">
+                Read Guide <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 2: Safety & Altitude -->
+        <article class="blog-card" data-category="safety">
+          <div class="blog-card-img">
+            <img src="assets/images/ladakh.webp" alt="High Altitude Sickness" loading="lazy">
+            <span class="blog-card-tag"><i class="fa-solid fa-heart-pulse"></i> Safety • 8 Min</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="article-meta-row">
+              <span><i class="fa-regular fa-calendar"></i> 08 Nov 2026</span>
+              <span><i class="fa-solid fa-mountain"></i> 4,500m+</span>
+            </div>
+            <h3 class="blog-card-title">High Altitude Sickness (AMS): Medical Prevention & Rules</h3>
+            <p class="blog-card-desc">
+              Understanding the physiology of oxygen deprivation at 4,000+ meters, pulse oximetry threshold metrics, and descent emergency rules.
+            </p>
+            <div class="blog-card-footer">
+              <div class="author-info-box">
+                <img src="assets/images/guide-3.webp" alt="Dr. Vikram Malhotra" class="author-avatar" style="width:36px; height:36px;">
+                <span class="author-name" style="font-size:0.84rem;">Dr. Vikram M.</span>
+              </div>
+              <button class="btn-read-article" onclick="openArticleModal('altitude-sickness')">
+                Read Guide <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 3: Water Expeditions -->
+        <article class="blog-card" data-category="water">
+          <div class="blog-card-img">
+            <img src="assets/images/rafting.webp" alt="Whitewater Rafting Physics" loading="lazy">
+            <span class="blog-card-tag"><i class="fa-solid fa-water"></i> Water • 5 Min</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="article-meta-row">
+              <span><i class="fa-regular fa-calendar"></i> 02 Nov 2026</span>
+              <span><i class="fa-solid fa-location-dot"></i> Rishikesh</span>
+            </div>
+            <h3 class="blog-card-title">Navigating Grade IV Rapids: Whitewater Physics in Rishikesh</h3>
+            <p class="blog-card-desc">
+              Hydraulics, recirculating holes, and aggressive forward recovery strokes in the turbulent gorges of the Ganges River.
+            </p>
+            <div class="blog-card-footer">
+              <div class="author-info-box">
+                <img src="assets/images/guide-4.webp" alt="Rohit Thakur" class="author-avatar" style="width:36px; height:36px;">
+                <span class="author-name" style="font-size:0.84rem;">Rohit Thakur</span>
+              </div>
+              <button class="btn-read-article" onclick="openArticleModal('whitewater-rapids')">
+                Read Guide <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 4: Aerial Thrills -->
+        <article class="blog-card" data-category="aerial">
+          <div class="blog-card-img">
+            <img src="assets/images/paragliding.webp" alt="Bir Billing Paragliding" loading="lazy">
+            <span class="blog-card-tag"><i class="fa-solid fa-wind"></i> Aerial • 6 Min</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="article-meta-row">
+              <span><i class="fa-regular fa-calendar"></i> 28 Oct 2026</span>
+              <span><i class="fa-solid fa-location-dot"></i> Bir Billing</span>
+            </div>
+            <h3 class="blog-card-title">Riding the Dhauladhar Thermals: A Pilot’s Guide to Bir Billing</h3>
+            <p class="blog-card-desc">
+              Why the Dhauladhar mountain range creates one of the top three natural thermal lift highways on planet Earth for paragliders.
+            </p>
+            <div class="blog-card-footer">
+              <div class="author-info-box">
+                <img src="assets/images/user-1.webp" alt="Alex Morgan" class="author-avatar" style="width:36px; height:36px;">
+                <span class="author-name" style="font-size:0.84rem;">Alex Morgan</span>
+              </div>
+              <button class="btn-read-article" onclick="openArticleModal('bir-paragliding')">
+                Read Guide <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 5: Scuba & Marine -->
+        <article class="blog-card" data-category="scuba">
+          <div class="blog-card-img">
+            <img src="assets/images/scuba-diving.webp" alt="Andaman Coral Sanctuary" loading="lazy">
+            <span class="blog-card-tag"><i class="fa-solid fa-mask-snorkel"></i> Ocean • 7 Min</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="article-meta-row">
+              <span><i class="fa-regular fa-calendar"></i> 20 Oct 2026</span>
+              <span><i class="fa-solid fa-location-dot"></i> Havelock</span>
+            </div>
+            <h3 class="blog-card-title">Diving the Andaman Coral Sanctuary: Reefs & Marine Giants</h3>
+            <p class="blog-card-desc">
+              Underneath the turquoise shallows of Havelock Island lies an underwater ecosystem of fringing coral reefs and pelagic predators.
+            </p>
+            <div class="blog-card-footer">
+              <div class="author-info-box">
+                <img src="assets/images/user-2.webp" alt="Neha Patel" class="author-avatar" style="width:36px; height:36px;">
+                <span class="author-name" style="font-size:0.84rem;">Neha Patel</span>
+              </div>
+              <button class="btn-read-article" onclick="openArticleModal('andaman-scuba')">
+                Read Guide <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 6: Overland Expeditions -->
+        <article class="blog-card" data-category="overland">
+          <div class="blog-card-img">
+            <img src="assets/images/road-trip.webp" alt="Manali Leh Highway" loading="lazy">
+            <span class="blog-card-tag"><i class="fa-solid fa-truck-monster"></i> Overland • 9 Min</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="article-meta-row">
+              <span><i class="fa-regular fa-calendar"></i> 14 Oct 2026</span>
+              <span><i class="fa-solid fa-location-dot"></i> Ladakh</span>
+            </div>
+            <h3 class="blog-card-title">Conquering the Manali-Leh Highway: 474km of High Altitude</h3>
+            <p class="blog-card-desc">
+              From Rohtang Pass to Tanglang La at 5,328 meters—fuel staging, high-clearance 4x4 mechanics, and route survival.
+            </p>
+            <div class="blog-card-footer">
+              <div class="author-info-box">
+                <img src="assets/images/user-3.webp" alt="Kabir Singh" class="author-avatar" style="width:36px; height:36px;">
+                <span class="author-name" style="font-size:0.84rem;">Kabir Singh</span>
+              </div>
+              <button class="btn-read-article" onclick="openArticleModal('manali-leh-overland')">
+                Read Guide <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 7: Wildlife & Ecology -->
+        <article class="blog-card" data-category="wildlife">
+          <div class="blog-card-img">
+            <img src="assets/images/wildlife-safari.webp" alt="Bengal Tiger Tracking" loading="lazy">
+            <span class="blog-card-tag"><i class="fa-solid fa-paw"></i> Wildlife • 6 Min</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="article-meta-row">
+              <span><i class="fa-regular fa-calendar"></i> 05 Oct 2026</span>
+              <span><i class="fa-solid fa-location-dot"></i> Corbett</span>
+            </div>
+            <h3 class="blog-card-title">Tracking the Royal Bengal Tiger: Pugmarks & Canopy Clues</h3>
+            <p class="blog-card-desc">
+              How master forest trackers read deer alarm calls and fresh dust scat in the dense Sal jungle canopy of Corbett National Park.
+            </p>
+            <div class="blog-card-footer">
+              <div class="author-info-box">
+                <img src="assets/images/guide-3.webp" alt="Rajesh Rawat" class="author-avatar" style="width:36px; height:36px;">
+                <span class="author-name" style="font-size:0.84rem;">Rajesh Rawat</span>
+              </div>
+              <button class="btn-read-article" onclick="openArticleModal('tiger-safari')">
+                Read Guide <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 8: Destination Spotlight -->
+        <article class="blog-card" data-category="trekking">
+          <div class="blog-card-img">
+            <img src="assets/images/meghalaya.webp" alt="Living Root Bridges" loading="lazy">
+            <span class="blog-card-tag"><i class="fa-solid fa-leaf"></i> Nature • 5 Min</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="article-meta-row">
+              <span><i class="fa-regular fa-calendar"></i> 29 Sep 2026</span>
+              <span><i class="fa-solid fa-location-dot"></i> Meghalaya</span>
+            </div>
+            <h3 class="blog-card-title">The Bio-Engineering of Meghalaya’s Living Root Bridges</h3>
+            <p class="blog-card-desc">
+              Century-old Ficus elastica root bridges woven across thundering monsoon canyon rivers in the wettest place on Earth.
+            </p>
+            <div class="blog-card-footer">
+              <div class="author-info-box">
+                <img src="assets/images/guide-2.webp" alt="Ananya Roy" class="author-avatar" style="width:36px; height:36px;">
+                <span class="author-name" style="font-size:0.84rem;">Ananya Roy</span>
+              </div>
+              <button class="btn-read-article" onclick="openArticleModal('meghalaya-canyons')">
+                Read Guide <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 9: Wilderness Camping -->
+        <article class="blog-card" data-category="trekking">
+          <div class="blog-card-img">
+            <img src="assets/images/camping.webp" alt="Pangong Astrophotography" loading="lazy">
+            <span class="blog-card-tag"><i class="fa-solid fa-campground"></i> Camping • 5 Min</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="article-meta-row">
+              <span><i class="fa-regular fa-calendar"></i> 21 Sep 2026</span>
+              <span><i class="fa-solid fa-location-dot"></i> Pangong Tso</span>
+            </div>
+            <h3 class="blog-card-title">Bortle Class 1 Skies: Astrophotography in Pangong Tso</h3>
+            <p class="blog-card-desc">
+              Zero light pollution, crystal-clear high altitude air, and the Milky Way arching across cobalt Tibetan lakes at midnight.
+            </p>
+            <div class="blog-card-footer">
+              <div class="author-info-box">
+                <img src="assets/images/guide-1.webp" alt="Dhruv Sen" class="author-avatar" style="width:36px; height:36px;">
+                <span class="author-name" style="font-size:0.84rem;">Dhruv Sen</span>
+              </div>
+              <button class="btn-read-article" onclick="openArticleModal('astrophotography-camp')">
+                Read Guide <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- No Results Placeholder -->
+      <div id="blogNoResults" style="display:none; text-align:center; padding:3rem 1.5rem; background:var(--bg-dark-card); border-radius:var(--radius-md); border:1px solid var(--border-glass); margin-bottom:3rem;">
+        <i class="fa-solid fa-magnifying-glass" style="font-size:2.5rem; color:var(--text-muted); margin-bottom:1rem;"></i>
+        <h3 style="font-size:1.4rem; margin-bottom:0.5rem;">No matching articles found</h3>
+        <p style="color:var(--text-muted); font-size:0.95rem;">Try adjusting your keyword or reset to All Stories.</p>
+      </div>
+
+      <!-- WEEKLY DISPATCH NEWSLETTER STRIP -->
+      <div class="newsletter-strip">
+        <span class="section-badge badge-primary" style="margin-bottom: 1rem;">
+          <i class="fa-solid fa-envelope-open-text"></i> Alpine Dispatch
+        </span>
+        <h2 style="font-size: clamp(1.8rem, 3.2vw, 2.5rem); margin-bottom: 0.75rem; color: #fff;">
+          Subscribe to The STACKLY Field Dispatch
+        </h2>
+        <p style="color: rgba(255, 255, 255, 0.82); max-width: 620px; margin: 0 auto; line-height: 1.7; font-size: 0.98rem;">
+          Get monthly survival handbooks, secret trail coordinates, gear discounts, and upcoming expedition releases delivered to your inbox. No spam, ever.
+        </p>
+
+        <form id="newsletterForm" class="newsletter-form-wrap">
+          <input type="email" id="newsletterEmail" placeholder="Enter your expedition email..." required>
+          <button type="submit" class="btn btn-primary" style="padding: 0.9rem 1.8rem; font-weight: 600;">
+            <i class="fa-solid fa-paper-plane"></i> Subscribe Free
+          </button>
+        </form>
+      </div>
+
+      <!-- TRAIL CALL TO ACTION BANNER -->
+      <div style="background: linear-gradient(135deg, rgba(7, 14, 23, 0.95), rgba(14, 30, 52, 0.85)), url('assets/images/mountain-camping.webp') center/cover; border: 1px solid var(--border-primary); border-radius: var(--radius-lg); padding: clamp(2.5rem, 5vw, 4rem); text-align: center; margin-bottom: 5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+        <div style="max-width: 700px; margin: 0 auto;">
+          <span class="section-badge badge-accent" style="margin-bottom: 1rem;"><i class="fa-solid fa-route"></i> From Reading to Living</span>
+          <h2 style="font-size: clamp(2rem, 3.8vw, 2.8rem); font-weight: 800; margin-bottom: 1rem; color: #fff;">
+            Inspired by These Stories? Your Expedition Awaits.
+          </h2>
+          <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">
+            Turn inspiration into real adventure. Explore our multi-day packages and adrenaline day experiences with certified guides.
+          </p>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <a href="Services.html" class="btn btn-primary" style="padding: 0.9rem 2rem; font-size: 1rem;">
+              <i class="fa-solid fa-compass"></i> Explore All Services & Packages
+            </a>
+            <a href="Contact.html" class="btn btn-outline" style="padding: 0.9rem 2rem; font-size: 1rem; border-color: var(--accent); color: var(--accent);">
+              <i class="fa-solid fa-headset"></i> Talk to an Outdoor Specialist
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Full Article Reader Modal (Populated Dynamically via blog.js) -->
+  <div id="blogArticleModal" class="article-modal-overlay"></div>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/images/Brand-logo.webp" alt="STACKLY">
+          </a>
+          <p class="footer-desc">
+            Discover extraordinary destinations, experience thrilling adventures, and create unforgettable memories with STACKLY. Your next adventure begins here.
+          </p>
+          <div class="footer-socials">
+            <a href="404.html" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> About</a></li>
+            <li class="footer-link-item"><a href="Destinations.html"><i class="fa-solid fa-angle-right"></i> Destinations</a></li>
+            <li class="footer-link-item"><a href="Services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+            <li class="footer-link-item"><a href="Blog.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Popular Adventures</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="Services.html?activity=Trekking"><i class="fa-solid fa-angle-right"></i> Mountain Trekking</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Rafting"><i class="fa-solid fa-angle-right"></i> River Rafting</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Paragliding"><i class="fa-solid fa-angle-right"></i> Paragliding</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Camping"><i class="fa-solid fa-angle-right"></i> Camping</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Wildlife"><i class="fa-solid fa-angle-right"></i> Wildlife Safari</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Travel Support</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Travel Guide</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Booking Information</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Safety Guidelines</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Cancellation Policy</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">Copyright &copy; 2026 STACKLY. All Rights Reserved.</div>
+        <div class="footer-legal-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/blog.js"></script>
+</body>
+</html>

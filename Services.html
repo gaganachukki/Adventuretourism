@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services & Expeditions — Tour Packages & Adventure Experiences | STACKLY</title>
+  
+  <link rel="icon" type="image/webp" href="assets/images/Brand-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/services.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo-wrap">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY Logo" class="brand-logo-img">
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="About.html" class="nav-link">About</a></li>
+          <li><a href="Destinations.html" class="nav-link">Destinations</a></li>
+          <li><a href="Services.html" class="nav-link active">Services</a></li>
+          <li><a href="Blog.html" class="nav-link">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="Login.html" class="btn-nav-login"><i class="fa-solid fa-user"></i> Login</a>
+        <button class="mobile-nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-menu-backdrop"></div>
+  <div class="mobile-menu-drawer">
+    <div>
+      <a href="index.html" class="brand-logo-wrap" style="margin-bottom: 2rem;">
+        <img src="assets/images/Brand-logo.webp" alt="STACKLY" style="height: 38px;">
+      </a>
+      <ul class="mobile-nav-list">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="About.html" class="nav-link">About</a></li>
+        <li><a href="Destinations.html" class="nav-link">Destinations</a></li>
+        <li><a href="Services.html" class="nav-link active">Services</a></li>
+          <li><a href="Blog.html" class="nav-link">Blog</a></li>
+          <li><a href="Contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+    <div style="border-top: 1px solid var(--border-glass); padding-top: 1.5rem;">
+      <a href="Login.html" class="btn btn-primary" style="width: 100%;">
+        <i class="fa-solid fa-arrow-right-to-bracket"></i> Login / Register
+      </a>
+    </div>
+  </div>
+
+  <!-- Search Modal -->
+  <div id="searchModalOverlay" class="search-modal-overlay">
+    <div class="search-modal-box">
+      <button id="searchModalClose" class="modal-close"><i class="fa-solid fa-xmark"></i></button>
+      <h3 style="margin-bottom: 1.25rem;">Search Adventures & Packages</h3>
+      <div class="search-input-wrap">
+        <i class="fa-solid fa-magnifying-glass search-input-icon"></i>
+        <input type="text" id="globalSearchInput" placeholder="Search by name, region or activity...">
+      </div>
+      <div id="globalSearchResults" class="search-results-list"></div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="page-hero" style="background-image: url('assets/images/trekking.webp');">
+      <div class="page-hero-content">
+        <span class="section-badge badge-primary"><i class="fa-solid fa-compass"></i> STACKLY Adventure Services</span>
+        <h1>Curated Expeditions, Thrills & Tailored Travel Services</h1>
+        <p>
+          Discover curated multi-day tour packages, adrenaline-fueled adventure activities, certified guide services, and custom expedition logistics in one unified hub.
+        </p>
+        <div class="hero-jump-pills">
+          <a href="#services-packages" class="hero-jump-btn primary">
+            <i class="fa-solid fa-suitcase-rolling"></i> Explore Tour Packages
+          </a>
+          <a href="#services-experiences" class="hero-jump-btn secondary">
+            <i class="fa-solid fa-bolt"></i> Adventure Experiences
+          </a>
+          <a href="#services-custom" class="hero-jump-btn secondary">
+            <i class="fa-solid fa-shield-halved"></i> Expedition Logistics
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STICKY SERVICES SUB-NAV -->
+    <nav class="services-subnav-wrapper" aria-label="Services Navigation">
+      <div class="container">
+        <div class="services-subnav-list">
+          <a href="#services-packages" class="services-subnav-link active">
+            <i class="fa-solid fa-suitcase-rolling"></i> Tour Packages
+          </a>
+          <a href="#services-experiences" class="services-subnav-link">
+            <i class="fa-solid fa-bolt"></i> Adventure Experiences
+          </a>
+          <a href="#services-custom" class="services-subnav-link">
+            <i class="fa-solid fa-shield-halved"></i> Guide & Safety Logistics
+          </a>
+          <a href="#custom-adventure-cta" class="services-subnav-link">
+            <i class="fa-solid fa-sliders"></i> Custom Itinerary
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ====================================================================
+         PART 1: TOUR PACKAGES
+         ==================================================================== -->
+    <div id="services-packages" style="scroll-margin-top: 130px;">
+      <!-- MULTI-FILTER BAR -->
+    <div class="container">
+      <div class="packages-filter-bar">
+        <div class="filter-row-top">
+          <!-- Search field -->
+          <div class="search-input-field">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="pkgSearchInput" placeholder="Search package name...">
+          </div>
+
+          <!-- Destination filter -->
+          <div>
+            <select id="pkgDestFilter" class="filter-select">
+              <option value="all">All Destinations</option>
+              <option value="Himalayas">Himalayas</option>
+              <option value="Manali">Manali</option>
+              <option value="Ladakh">Ladakh</option>
+              <option value="Rishikesh">Rishikesh</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Andaman">Andaman</option>
+            </select>
+          </div>
+
+          <!-- Activity filter -->
+          <div>
+            <select id="pkgActFilter" class="filter-select">
+              <option value="all">All Activities</option>
+              <option value="Trekking">Trekking</option>
+              <option value="Camping">Camping</option>
+              <option value="Rafting">Rafting</option>
+              <option value="Paragliding">Paragliding</option>
+              <option value="Road Trip">Road Trip</option>
+              <option value="Scuba Diving">Scuba Diving</option>
+            </select>
+          </div>
+
+          <!-- Budget filter -->
+          <div>
+            <select id="pkgBudgetFilter" class="filter-select">
+              <option value="all">Any Budget</option>
+              <option value="under10k">Under ₹10,000</option>
+              <option value="10k-20k">₹10,000 – ₹20,000</option>
+              <option value="above20k">Above ₹20,000</option>
+            </select>
+          </div>
+
+          <!-- Duration filter -->
+          <div>
+            <select id="pkgDurationFilter" class="filter-select">
+              <option value="all">Any Duration</option>
+              <option value="short">Short (1–3 Days)</option>
+              <option value="medium">Medium (4–6 Days)</option>
+              <option value="long">Long (7+ Days)</option>
+            </select>
+          </div>
+
+          <!-- Sort filter -->
+          <div>
+            <select id="pkgSortSelect" class="filter-select" style="border-color: var(--primary);">
+              <option value="default">Sort: Recommended</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Active tags list -->
+        <div id="pkgActiveTags" class="filter-active-tags"></div>
+      </div>
+    </div>
+
+    
+      <!-- 01 — ALL ADVENTURE PACKAGES -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="demo-banner">
+          <i class="fa-solid fa-circle-info"></i>
+          <span><strong>Demonstration Mode:</strong> Sample packages, illustrative prices, and simulated local booking. All confirmed bookings immediately sync to your Client & Admin dashboards via localStorage.</span>
+        </div>
+
+        <div class="section-header">
+          <span class="section-badge">Section 01</span>
+          <h2 class="section-title">All Adventure Packages</h2>
+          <p class="section-desc text-start">Browse our complete catalogue of outdoor expeditions with instant availability checking.</p>
+        </div>
+
+        <!-- Dynamic Packages Grid rendered by js/packages.js -->
+        <div id="allPackagesContainer" class="packages-grid"></div>
+      </div>
+    </section>
+
+    
+      <!-- 02 — TREKKING PACKAGES -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge badge-primary">Section 02</span>
+          <h2 class="section-title">Mountain Trekking Packages</h2>
+          <p class="section-desc text-start">Alpine passes, glaciated ridges, and remote valley trails with mountain guides.</p>
+        </div>
+
+        <div class="packages-grid">
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/trekking.webp" alt="Hampta Pass Trek" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty moderate">Moderate</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Manali to Spiti</div>
+              <h3 class="pkg-title">Hampta Pass & Chandratal Lake</h3>
+              <p class="pkg-desc">Cross the dramatic contrast from lush green Kullu to the stark desert landscape of Spiti Valley.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 5 Days / 4 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-mountain"></i> 4,287 Mtrs</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹11,499</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-101')">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/himalayas.webp" alt="Kedarkantha Winter Trek" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Beginner Friendly</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Uttarakhand</div>
+              <h3 class="pkg-title">Kedarkantha Peak Winter Summit</h3>
+              <p class="pkg-desc">India’s most popular winter snow trek. Stunning 360-degree views of Himalayan snow giants from the peak.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 6 Days / 5 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-mountain"></i> 3,800 Mtrs</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹9,999</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-101')">Book Now</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/roopkund-trek.webp" alt="Roopkund Alpine Trek" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty challenging">Challenging</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Chamoli, Uttarakhand</div>
+              <h3 class="pkg-title">Roopkund Mystery Lake Expedition</h3>
+              <p class="pkg-desc">Traverse high alpine bugyal meadows of Ali & Bedni, scaling to 5,029m glaciated ridges beneath Mount Trishul.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 8 Days / 7 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-mountain"></i> 5,029 Mtrs</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹14,999</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-101')">Book Now</button>
+              </div>
+            </div>
+          </div>
+</div>
+      </div>
+    </section>
+
+    
+      <!-- 03 — CAMPING PACKAGES -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 03</span>
+          <h2 class="section-title">Nature Camping Packages</h2>
+          <p class="section-desc text-start">Cozy dome tents, starlight gazing, and riverside campfires under the Milky Way.</p>
+        </div>
+
+        <div class="packages-grid">
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/mountain-camping.webp" alt="Solang Stargazing Camp" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Glamping</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Solang Valley</div>
+              <h3 class="pkg-title">Solang Valley Alpine Glamping</h3>
+              <p class="pkg-desc">Luxury insulated dome tents, night telescopes for stargazing, acoustic music, and forest bonfire feasts.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 3 Days / 2 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-fire"></i> Bonfire & BBQ</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹6,999</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-106')">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/camping.webp" alt="Pangong Lake Tents" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty moderate">High Altitude</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Pangong Tso, Ladakh</div>
+              <h3 class="pkg-title">Pangong Lake Starlit Eco-Camp</h3>
+              <p class="pkg-desc">Camp beside the shifting blue hues of Pangong Tso at 4,350m, surrounded by snow-capped mountains.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 2 Days / 1 Night</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-wind"></i> Thermal Tents</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹8,499</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-102')">Book Now</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/rishikesh.webp" alt="Rishikesh Riverside Camp" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Riverside Camp</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Shivpuri, Uttarakhand</div>
+              <h3 class="pkg-title">Rishikesh Riverside Starlight Camp</h3>
+              <p class="pkg-desc">Sleep on white sand riverbanks with starlight acoustic sessions, jungle night walks, and private beach barbecues.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 2 Days / 1 Night</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-fire"></i> Beach Bonfire</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹4,999</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-103')">Book Now</button>
+              </div>
+            </div>
+          </div>
+</div>
+      </div>
+    </section>
+
+    
+      <!-- 04 — WATER ADVENTURE PACKAGES -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge badge-primary">Section 04</span>
+          <h2 class="section-title">Water Adventure Packages</h2>
+          <p class="section-desc text-start">Whitewater rapids, ocean coral reef diving, and serene river canyon kayaking.</p>
+        </div>
+
+        <div class="packages-grid">
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/rafting.webp" alt="Rishikesh Whitewater" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty challenging">Grade IV Rapids</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.7</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Uttarakhand</div>
+              <h3 class="pkg-title">Rishikesh Extreme Rapids Camp</h3>
+              <p class="pkg-desc">26 km of heart-thumping rapids including Three Blind Mice, Roller Coaster, Golf Course, and cliff jumping.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 3 Days / 2 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-water"></i> 26km Rapids</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹5,999</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-103')">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/scuba-diving.webp" alt="Andaman Scuba" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">PADI Certified</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Andaman Islands</div>
+              <h3 class="pkg-title">Havelock Coral Explorer Dives</h3>
+              <p class="pkg-desc">Two open-water boat dives at Dixon's Pinnacle and Elephant Beach with high definition underwater photos.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 4 Days / 3 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-fish"></i> 2 Ocean Dives</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹18,999</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-105')">Book Now</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/dudhsagar-falls.webp" alt="Dudhsagar Waterfall Canyoning" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty moderate">Waterfall Rapids</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Goa & Karnataka Border</div>
+              <h3 class="pkg-title">Dudhsagar Waterfall Canyoning & Kayak</h3>
+              <p class="pkg-desc">Paddle through lush rainforest river canyons and navigate pristine natural pool cascades beneath thundering falls.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 3 Days / 2 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-water"></i> Canyon Kayak</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹7,499</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-105')">Book Now</button>
+              </div>
+            </div>
+          </div>
+</div>
+      </div>
+    </section>
+
+    
+      <!-- 05 — AERIAL ADVENTURE PACKAGES -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 05</span>
+          <h2 class="section-title">Aerial Adventure Packages</h2>
+          <p class="section-desc text-start">Soar above pine valleys and snow-crowned summits with certified pilots.</p>
+        </div>
+
+        <div class="packages-grid">
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/paragliding.webp" alt="Bir Billing Paragliding" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Tandem Flight</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Bir Billing, Himachal</div>
+              <h3 class="pkg-title">Bir Billing World Cup Flight</h3>
+              <p class="pkg-desc">Take off from 2,400 meters at Billing and glide smoothly over tea gardens and Tibetan monasteries to Bir.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 30–45 Mins Flight</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-video"></i> GoPro Video Included</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹4,499</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-106')">Book Now</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/solang-paragliding.webp" alt="Solang High Canopy Paragliding" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Tandem Flight</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Solang Valley, Manali</div>
+              <h3 class="pkg-title">Solang Valley High Canopy Paragliding</h3>
+              <p class="pkg-desc">High-wind alpine flights launching from 2,050 meters with aerial views of snow peaks and pine forests.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 20–30 Mins</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-video"></i> HD Video Clip</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹3,499</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-106')">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/zipline-canyon.webp" alt="Rishikesh Giant Zip Tour" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty challenging">Extreme Air</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Mohan Chatti, Rishikesh</div>
+              <h3 class="pkg-title">Rishikesh Giant Canyon Zip-Tour</h3>
+              <p class="pkg-desc">Asia’s longest tandem zip-line flying across a 1-kilometer river canyon at 140 km/h above rocky gorges.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 1 Km Flight Line</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-wind"></i> Dual Harness</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹2,999</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-103')">Book Now</button>
+              </div>
+            </div>
+          </div>
+</div>
+      </div>
+    </section>
+
+    
+      <!-- 06 — WILDLIFE & NATURE PACKAGES -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge badge-primary">Section 06</span>
+          <h2 class="section-title">Wildlife & Nature Packages</h2>
+          <p class="section-desc text-start">Experience national park safaris and ancient biological reserves.</p>
+        </div>
+
+        <div class="packages-grid">
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/wildlife-safari.webp" alt="Corbett Safari" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Wildlife Safari</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Jim Corbett, Uttarakhand</div>
+              <h3 class="pkg-title">Corbett Dhikala Jungle Safari</h3>
+              <p class="pkg-desc">Exclusive open 4x4 Gypsy safaris into the deep Dhikala zone, riverside bird watching, and forest lodge stay.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 3 Days / 2 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-paw"></i> 3 Jeep Safaris</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹13,999</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-104')">Book Now</button>
+              </div>
+            </div>
+          </div>
+        
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/rhino-safari.webp" alt="Kaziranga Rhino Sanctuary" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Wildlife Safari</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Assam, North East</div>
+              <h3 class="pkg-title">Kaziranga Rhino Sanctuary Expedition</h3>
+              <p class="pkg-desc">Encounter one-horned rhinos, wild water buffaloes, and river dolphins in the Brahmaputra floodplains.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 4 Days / 3 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-paw"></i> 4 Jeep Safaris</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹16,499</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-104')">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/snow-leopard-trail.webp" alt="Hemis Snow Leopard Trail" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty challenging">High Altitude</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Hemis Park, Ladakh</div>
+              <h3 class="pkg-title">Hemis High Altitude Snow Leopard Trail</h3>
+              <p class="pkg-desc">Winter wilderness tracking across sub-zero Rumbak Valley with spotter scopes led by Ladakhi predator trackers.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 7 Days / 6 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-binoculars"></i> Spotter Scopes</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹24,999</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-104')">Book Now</button>
+              </div>
+            </div>
+          </div>
+</div>
+      </div>
+    </section>
+
+    
+      <!-- 07 — GROUP & FAMILY PACKAGES -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 07</span>
+          <h2 class="section-title">Group & Family Expeditions</h2>
+          <p class="section-desc text-start">Adventures crafted with balanced pacing, private vehicle transport, and comfortable boutique stays.</p>
+        </div>
+
+        <div class="packages-grid">
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/manali.webp" alt="Himachal Family Trail" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Family Friendly</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Shimla & Manali</div>
+              <h3 class="pkg-title">Himachal Alpine Family Holiday</h3>
+              <p class="pkg-desc">Scenic mountain drives, apple orchard walks, nature walks, and beginner rafting suitable for all ages.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 6 Days / 5 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-van-shuttle"></i> Private Vehicle</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹16,499</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-106')">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/kashmir-lakes.webp" alt="Kashmir Great Lakes Odyssey" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty moderate">Moderate</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.9</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Sonamarg to Naranag</div>
+              <h3 class="pkg-title">Kashmir Great Lakes Group Odyssey</h3>
+              <p class="pkg-desc">Seven high alpine turquoise lakes, maple forests, meadow camps, and warm Gujjar shepherd hospitality.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 7 Days / 6 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-utensils"></i> All Meals & Stay</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹17,999</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-101')">Book Now</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="package-card">
+            <div class="pkg-img-wrap">
+              <img src="assets/images/kerala-ghats.webp" alt="Kerala Western Ghats Trail" loading="lazy">
+              <div class="pkg-meta-top">
+                <span class="badge-difficulty easy">Scenic Trails</span>
+                <span class="badge-rating"><i class="fa-solid fa-star"></i> 4.8</span>
+              </div>
+            </div>
+            <div class="pkg-body">
+              <div class="pkg-location"><i class="fa-solid fa-location-dot"></i> Munnar & Wayanad</div>
+              <h3 class="pkg-title">Kerala Western Ghats Wilderness Trek</h3>
+              <p class="pkg-desc">Rolling tea plantation trails, cardamom forest river walks, and eco-resort bamboo cottage stays.</p>
+              <div class="pkg-specs">
+                <div class="pkg-spec-item"><i class="fa-solid fa-clock"></i> 5 Days / 4 Nights</div>
+                <div class="pkg-spec-item"><i class="fa-solid fa-car"></i> Private Chauffeur</div>
+              </div>
+              <div class="pkg-footer">
+                <div class="pkg-price-wrap">
+                  <span class="pkg-price-label">Price</span>
+                  <span class="pkg-price">₹12,499</span>
+                </div>
+                <button class="btn btn-primary btn-sm" onclick="openBookingModal('pkg-101')">Book Now</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    </div>
+
+    <!-- ====================================================================
+         PART 2: ADVENTURE EXPERIENCES & THRILLS
+         ==================================================================== -->
+    <div id="services-experiences" style="scroll-margin-top: 130px; border-top: 1px solid var(--border-glass); padding-top: 2rem;">
+      <div class="container" style="text-align: center; margin-bottom: 2rem;">
+        <span class="section-badge badge-accent"><i class="fa-solid fa-bolt"></i> Action & Adrenaline</span>
+        <h2 style="font-size: clamp(2rem, 3.5vw, 2.75rem); margin-bottom: 0.75rem;">Adventure Activities & Day Experiences</h2>
+        <p style="color: var(--text-muted); max-width: 650px; margin: 0 auto;">
+          Step outside your comfort zone with handpicked adrenaline activities led by certified alpine and aquatic specialists.
+        </p>
+      </div>
+
+      <!-- CATEGORY PILL FILTER NAVIGATION -->
+    <div class="container">
+      <div class="exp-filter-nav">
+        <button class="exp-filter-pill active" data-category="all"><i class="fa-solid fa-layer-group"></i> All Thrills</button>
+        <button class="exp-filter-pill" data-category="mountain"><i class="fa-solid fa-mountain"></i> Mountain</button>
+        <button class="exp-filter-pill" data-category="water"><i class="fa-solid fa-water"></i> Water</button>
+        <button class="exp-filter-pill" data-category="air"><i class="fa-solid fa-wind"></i> Aerial</button>
+        <button class="exp-filter-pill" data-category="camping"><i class="fa-solid fa-campground"></i> Camping</button>
+        <button class="exp-filter-pill" data-category="wildlife"><i class="fa-solid fa-paw"></i> Wildlife</button>
+        <button class="exp-filter-pill" data-category="roadtrip"><i class="fa-solid fa-route"></i> Road Trips</button>
+        <button class="exp-filter-pill" data-category="extreme"><i class="fa-solid fa-skull"></i> Extreme</button>
+      </div>
+    </div>
+
+    
+      <!-- 01 — MOUNTAIN ADVENTURES -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 01</span>
+          <h2 class="section-title">Mountain Adventures</h2>
+          <p class="section-desc text-start">Trekking, hiking, rock scrambling, and high-altitude snow exploration.</p>
+        </div>
+
+        <div class="exp-hero-grid">
+          <div class="exp-card" data-category="mountain">
+            <div class="exp-img-box">
+              <img src="assets/images/ridge-trek.webp" alt="High Altitude Ridge Trekking" loading="lazy">
+              <span class="exp-floating-tag">Alpine Expedition</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Moderate / Demanding</span>
+                <span><i class="fa-solid fa-clock"></i> 5–8 Days</span>
+              </div>
+              <h3 class="exp-title">High Altitude Ridge Trekking</h3>
+              <p class="exp-desc">Summit high passes above 4,000 meters, conquer moraines, and sleep beside alpine glacial tarns.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('High Altitude Ridge Trekking', 'Mountain', '5–8 Days', 'Moderate', 'High alpine expeditions featuring glacial crossings and remote base camp stays.', 'assets/images/ridge-trek.webp')">Details</button>
+                <a href="Services.html?activity=Trekking" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="mountain">
+            <div class="exp-img-box">
+              <img src="assets/images/glacier-traverse.webp" alt="Glacier Exploration" loading="lazy">
+              <span class="exp-floating-tag">Snow Trail</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Challenging</span>
+                <span><i class="fa-solid fa-clock"></i> 6–10 Days</span>
+              </div>
+              <h3 class="exp-title">Glacier & Crevasse Traversing</h3>
+              <p class="exp-desc">Learn crampon technique and ice axe self-arrest under certified mountaineers on active Himalayan glaciers.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Glacier & Crevasse Traversing', 'Mountain', '6–10 Days', 'Challenging', 'Technical mountaineering course covering glacier travel, rope team management, and crevasse rescue.', 'assets/images/glacier-traverse.webp')">Details</button>
+                <a href="Services.html?activity=Trekking" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="mountain">
+            <div class="exp-img-box">
+              <img src="assets/images/rock-climbing.webp" alt="Technical Rock Climbing" loading="lazy">
+              <span class="exp-floating-tag">Rock Scramble</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Moderate / Demanding</span>
+                <span><i class="fa-solid fa-clock"></i> 1–2 Days</span>
+              </div>
+              <h3 class="exp-title">Technical Rock Climbing & Rappelling</h3>
+              <p class="exp-desc">Learn knot tying, top-rope belaying, and multi-pitch granite face ascents under Petzl certified instructors.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Technical Rock Climbing', 'Mountain', '1–2 Days', 'Moderate', 'Complete alpine rock climbing fundamentals with Petzl harnesses, shoes, and helmets provided.', 'assets/images/rock-climbing.webp')">Details</button>
+                <a href="Services.html?activity=Trekking" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+      <!-- 02 — WATER ADVENTURES -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge badge-primary">Section 02</span>
+          <h2 class="section-title">Water Adventures</h2>
+          <p class="section-desc text-start">Whitewater river rafting, sea kayaking, scuba diving, and coastal snorkeling.</p>
+        </div>
+
+        <div class="exp-hero-grid">
+          <div class="exp-card" data-category="water">
+            <div class="exp-img-box">
+              <img src="assets/images/whitewater-cliff.webp" alt="Whitewater Rapids" loading="lazy">
+              <span class="exp-floating-tag">Whitewater</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Grade III–IV</span>
+                <span><i class="fa-solid fa-clock"></i> 1–3 Days</span>
+              </div>
+              <h3 class="exp-title">White Water Rafting & Cliff Jump</h3>
+              <p class="exp-desc">Charge through churning river rapids, navigate technical boulder gardens, and leap from sheer granite cliffs.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('White Water Rafting', 'Water', '1–3 Days', 'Grade IV', 'Intense rapids with certified raft captains, high-grade safety vests, and cliff jumps.', 'assets/images/whitewater-cliff.webp')">Details</button>
+                <a href="Services.html?activity=Rafting" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="water">
+            <div class="exp-img-box">
+              <img src="assets/images/coral-dive.webp" alt="Deep Ocean Scuba" loading="lazy">
+              <span class="exp-floating-tag">Marine World</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Beginner Friendly</span>
+                <span><i class="fa-solid fa-clock"></i> 3–5 Days</span>
+              </div>
+              <h3 class="exp-title">Coral Reef Scuba Diving</h3>
+              <p class="exp-desc">Immerse yourself in crystal waters surrounded by sea anemones, manta rays, reef sharks, and clownfish.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Coral Reef Scuba Diving', 'Water', '3–5 Days', 'Beginner', 'PADI registered dive boat trips to colorful coral reefs in the Andaman sea.', 'assets/images/coral-dive.webp')">Details</button>
+                <a href="Services.html?activity=Scuba Diving" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="water">
+            <div class="exp-img-box">
+              <img src="assets/images/sea-kayak.webp" alt="Sea Kayaking & Mangroves" loading="lazy">
+              <span class="exp-floating-tag">Ocean Explorer</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Beginner Friendly</span>
+                <span><i class="fa-solid fa-clock"></i> 1–2 Days</span>
+              </div>
+              <h3 class="exp-title">Sea Kayaking & Mangrove Exploration</h3>
+              <p class="exp-desc">Paddle through tranquil bioluminescent night lagoons and dense mangrove canopy channels in Havelock.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Sea Kayaking & Mangroves', 'Water', '1–2 Days', 'Easy', 'Sit-on-top sea kayaks with spray skirts, night bioluminescence guides, and safety escort skiffs.', 'assets/images/sea-kayak.webp')">Details</button>
+                <a href="Services.html?activity=Scuba Diving" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+      <!-- 03 — AIR ADVENTURES -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 03</span>
+          <h2 class="section-title">Air Adventures & Paragliding</h2>
+          <p class="section-desc text-start">Experience the ultimate freedom of flight with panoramic mountain views.</p>
+        </div>
+
+        <div class="exp-hero-grid">
+          <div class="exp-card" data-category="air">
+            <div class="exp-img-box">
+              <img src="assets/images/hero-adventure.webp" alt="Tandem Paragliding" loading="lazy">
+              <span class="exp-floating-tag">Aerial Flight</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Beginner Friendly</span>
+                <span><i class="fa-solid fa-clock"></i> 30–60 Mins</span>
+              </div>
+              <h3 class="exp-title">Tandem Mountain Paragliding</h3>
+              <p class="exp-desc">Launch into thermal updrafts from high mountain takeoff points with experienced tandem pilots.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Tandem Mountain Paragliding', 'Air', '45 Mins', 'Beginner', 'Soar above pine canopies and Tibetan monasteries with GoPro footage.', 'assets/images/hero-adventure.webp')">Details</button>
+                <a href="Services.html?activity=Paragliding" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="air">
+            <div class="exp-img-box">
+              <img src="assets/images/bali.webp" alt="Hot Air Balloon Sunrise Float" loading="lazy">
+              <span class="exp-floating-tag">Panoramic Flight</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> All Skill Levels</span>
+                <span><i class="fa-solid fa-clock"></i> 1–2 Hours</span>
+              </div>
+              <h3 class="exp-title">Hot Air Balloon Sunrise Float</h3>
+              <p class="exp-desc">Drift peacefully at dawn over ancient mountain valleys, mist-covered pine canyons, and golden summits.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Hot Air Balloon Float', 'Air', '1–2 Hours', 'Easy', 'Gentle thermal sunrise balloon flights with champagne breakfast on landing.', 'assets/images/bali.webp')">Details</button>
+                <a href="Services.html?activity=Paragliding" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="air">
+            <div class="exp-img-box">
+              <img src="assets/images/paramotor-flight.webp" alt="Paramotor Coastal Low-Flyer" loading="lazy">
+              <span class="exp-floating-tag">Motorized Flight</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Tandem Air</span>
+                <span><i class="fa-solid fa-clock"></i> 20–30 Mins</span>
+              </div>
+              <h3 class="exp-title">Paramotor Coastal Low-Flyer</h3>
+              <p class="exp-desc">Low-altitude powered paramotor soaring directly over red laterite cliffs and crashing turquoise ocean surf.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Paramotor Coastal Flyer', 'Air', '25 Mins', 'Easy', 'Powered paramotor tandem flight with pilot headset communication and 4K action cameras.', 'assets/images/paramotor-flight.webp')">Details</button>
+                <a href="Services.html?activity=Paragliding" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+      <!-- 04 — CAMPING EXPERIENCES -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge badge-primary">Section 04</span>
+          <h2 class="section-title">Camping & Stargazing Experiences</h2>
+          <p class="section-desc text-start">Overnight wilderness camps, fireside camaraderie, and unobstructed views of constellations.</p>
+        </div>
+
+        <div class="exp-hero-grid">
+          <div class="exp-card" data-category="camping">
+            <div class="exp-img-box">
+              <img src="assets/images/glamping-dome.webp" alt="High Altitude Stargazing Camp" loading="lazy">
+              <span class="exp-floating-tag">Starlight Camp</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> All Skill Levels</span>
+                <span><i class="fa-solid fa-clock"></i> 2–4 Nights</span>
+              </div>
+              <h3 class="exp-title">Alpine Glamping & Stargazing</h3>
+              <p class="exp-desc">Sleep in heated geodesic dome tents, observe deep space nebula through telescopes, and savor barbecue dinners.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Alpine Glamping & Stargazing', 'Camping', '3 Nights', 'Easy', 'Premium dome camping with deep-sky astronomy workshops.', 'assets/images/glamping-dome.webp')">Details</button>
+                <a href="Services.html?activity=Camping" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="camping">
+            <div class="exp-img-box">
+              <img src="assets/images/rainforest-camp.webp" alt="Rainforest Bushcraft Camp" loading="lazy">
+              <span class="exp-floating-tag">Bushcraft Camp</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Intermediate</span>
+                <span><i class="fa-solid fa-clock"></i> 2–3 Nights</span>
+              </div>
+              <h3 class="exp-title">Rainforest Wilderness Survival Camp</h3>
+              <p class="exp-desc">Learn natural shelter building, bamboo cooking, and hammock bivouacking deep under subtropical cloud canopies.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Rainforest Survival Camp', 'Camping', '3 Nights', 'Moderate', 'Deep wilderness survival skills, knotcraft, and jungle river purification methods.', 'assets/images/rainforest-camp.webp')">Details</button>
+                <a href="Services.html?activity=Camping" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="camping">
+            <div class="exp-img-box">
+              <img src="assets/images/desert-camp.webp" alt="Desert Bedouin Stargazer Camp" loading="lazy">
+              <span class="exp-floating-tag">Desert Safari</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> All Skill Levels</span>
+                <span><i class="fa-solid fa-clock"></i> 2 Nights</span>
+              </div>
+              <h3 class="exp-title">Desert Dune Stargazer Camp</h3>
+              <p class="exp-desc">Sleep on sweeping desert dunes under crystal clear celestial night skies with fireside acoustic folk sessions.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Desert Stargazer Camp', 'Camping', '2 Nights', 'Easy', 'Private luxury Swiss tents, camel sunset treks, and astronomy spotting scopes.', 'assets/images/desert-camp.webp')">Details</button>
+                <a href="Services.html?activity=Camping" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+      <!-- 05 — WILDLIFE ADVENTURES -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 05</span>
+          <h2 class="section-title">Wildlife & Habitat Expeditions</h2>
+          <p class="section-desc text-start">Deep wilderness tracking, elephant herds, and majestic apex predators in their natural habitat.</p>
+        </div>
+
+        <div class="exp-hero-grid">
+          <div class="exp-card" data-category="wildlife">
+            <div class="exp-img-box">
+              <img src="assets/images/tiger-tracking.webp" alt="Tiger Safari" loading="lazy">
+              <span class="exp-floating-tag">Jungle Safari</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Naturalist Led</span>
+                <span><i class="fa-solid fa-clock"></i> 3–5 Days</span>
+              </div>
+              <h3 class="exp-title">Tiger Tracking & Forest Safaris</h3>
+              <p class="exp-desc">Explore dense Sal forests in modified 4x4 open safaris with expert trackers detecting pugmarks and calls.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Tiger Tracking & Forest Safaris', 'Wildlife', '4 Days', 'Easy', 'Track wildlife across protected national parks with senior naturalists.', 'assets/images/tiger-tracking.webp')">Details</button>
+                <a href="Services.html?activity=Wildlife" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="wildlife">
+            <div class="exp-img-box">
+              <img src="assets/images/ladakh.webp" alt="Snow Leopard Tracking" loading="lazy">
+              <span class="exp-floating-tag">Mountain Predator</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Demanding</span>
+                <span><i class="fa-solid fa-clock"></i> 6–8 Days</span>
+              </div>
+              <h3 class="exp-title">Snow Leopard Winter Tracking</h3>
+              <p class="exp-desc">Spot the elusive ghost of the mountains in sub-zero Himalayan gorges alongside veteran Ladakhi spotters.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Snow Leopard Tracking', 'Wildlife', '7 Days', 'Challenging', 'Winter tracking expedition with Swarovski spotting scopes and insulated homestay basecamps.', 'assets/images/ladakh.webp')">Details</button>
+                <a href="Services.html?activity=Wildlife" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="wildlife">
+            <div class="exp-img-box">
+              <img src="assets/images/wild-elephants.webp" alt="Wild Elephant Corridor" loading="lazy">
+              <span class="exp-floating-tag">Elephant Corridor</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Naturalist Led</span>
+                <span><i class="fa-solid fa-clock"></i> 2–3 Days</span>
+              </div>
+              <h3 class="exp-title">Wild Elephant Corridor Safari</h3>
+              <p class="exp-desc">Witness wild Asiatic elephant herds roaming ancient forest river corridors with wildlife biologists.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Elephant Corridor Safari', 'Wildlife', '3 Days', 'Easy', 'Eco-certified electric vehicle safaris and treetop observation platform stays.', 'assets/images/wild-elephants.webp')">Details</button>
+                <a href="Services.html?activity=Wildlife" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+      <!-- 06 — ROAD TRIP ADVENTURES -->
+    <section class="section-padding" style="background: #0a1422;">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge badge-primary">Section 06</span>
+          <h2 class="section-title">Scenic Road Trips & Expeditions</h2>
+          <p class="section-desc text-start">Traverse dramatic winding mountain highways, canyon bridges, and high altitude passes.</p>
+        </div>
+
+        <div class="exp-hero-grid">
+          <div class="exp-card" data-category="roadtrip">
+            <div class="exp-img-box">
+              <img src="assets/images/road-trip.webp" alt="Manali to Leh Highway" loading="lazy">
+              <span class="exp-floating-tag">4x4 & Motorbike</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Challenging</span>
+                <span><i class="fa-solid fa-clock"></i> 7–10 Days</span>
+              </div>
+              <h3 class="exp-title">Manali to Leh Himalayan Odyssey</h3>
+              <p class="exp-desc">Ride through Rohtang, Baralacha La, Tanglang La, and the Gata Loops across the roof of the world.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Manali to Leh Odyssey', 'Road Trips', '8 Days', 'Challenging', 'The legendary mountain road trip with support mechanics, backup vehicle, and luxury boutique stays.', 'assets/images/road-trip.webp')">Details</button>
+                <a href="Services.html?activity=Road Trip" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="roadtrip">
+            <div class="exp-img-box">
+              <img src="assets/images/spiti-roadtrip.webp" alt="Spiti Valley 4x4 Circuit" loading="lazy">
+              <span class="exp-floating-tag">Trans-Himalaya</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Demanding</span>
+                <span><i class="fa-solid fa-clock"></i> 7–9 Days</span>
+              </div>
+              <h3 class="exp-title">Spiti Valley Rugged 4x4 Circuit</h3>
+              <p class="exp-desc">Navigate wild water crossings, Kunzum La pass, and cliff-clinging roads connecting thousand-year-old monasteries.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Spiti Valley 4x4 Circuit', 'Road Trips', '8 Days', 'Challenging', 'Expedition-rigged 4x4 vehicles with high ground clearance, satellite comms, and mechanic escort.', 'assets/images/spiti-roadtrip.webp')">Details</button>
+                <a href="Services.html?activity=Road Trip" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="roadtrip">
+            <div class="exp-img-box">
+              <img src="assets/images/coastal-drive.webp" alt="Western Ghats Coastal Cliff Drive" loading="lazy">
+              <span class="exp-floating-tag">Coastal Twisties</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Scenic Drive</span>
+                <span><i class="fa-solid fa-clock"></i> 4–6 Days</span>
+              </div>
+              <h3 class="exp-title">Western Ghats Coastal Cliff Drive</h3>
+              <p class="exp-desc">Curving rainforest ghat passes and seaside cliff highways connecting Goa, Gokarna, and Kerala.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Coastal Cliff Drive', 'Road Trips', '5 Days', 'Easy', 'Top-down convertible and SUV coastal road trip with heritage seaside resort stays.', 'assets/images/coastal-drive.webp')">Details</button>
+                <a href="Services.html?activity=Road Trip" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+      <!-- 07 — EXTREME ADVENTURES -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Section 07</span>
+          <h2 class="section-title">Extreme Sports & Challenges</h2>
+          <p class="section-desc text-start">Push your physical and mental boundaries with bungee jumps, zip-lining, and ice climbing.</p>
+        </div>
+
+        <div class="exp-hero-grid">
+          <div class="exp-card" data-category="extreme">
+            <div class="exp-img-box">
+              <img src="assets/images/bungee-jump.webp" alt="Canyon Bungee Jump" loading="lazy">
+              <span class="exp-floating-tag">Extreme Adrenaline</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Extreme</span>
+                <span><i class="fa-solid fa-clock"></i> 83 Mtrs Drop</span>
+              </div>
+              <h3 class="exp-title">Rishikesh Canyon Bungee Jump</h3>
+              <p class="exp-desc">Leap from India’s highest fixed bungee platform suspended 83 meters above the rocky Hyul riverbed.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Rishikesh Bungee Jump', 'Extreme', '1 Day', 'Extreme', 'Certified jump masters from New Zealand ensuring international safety protocol.', 'assets/images/bungee-jump.webp')">Details</button>
+                <a href="Services.html?activity=Rafting" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="extreme">
+            <div class="exp-img-box">
+              <img src="assets/images/canyoning-plunge.webp" alt="Waterfall Canyoning & Deep Plunge" loading="lazy">
+              <span class="exp-floating-tag">Aquatic Extreme</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> High Adrenaline</span>
+                <span><i class="fa-solid fa-clock"></i> 1 Day</span>
+              </div>
+              <h3 class="exp-title">Waterfall Canyoning & Deep Plunge</h3>
+              <p class="exp-desc">Abseil down roaring vertical rock faces directly into churning natural canyon plunge pools.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Waterfall Canyoning', 'Extreme', '1 Day', 'Extreme', 'Technical canyoning with thick 5mm neoprene suits, Petzl descenders, and twin safety anchors.', 'assets/images/canyoning-plunge.webp')">Details</button>
+                <a href="Services.html?activity=Rafting" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-card" data-category="extreme">
+            <div class="exp-img-box">
+              <img src="assets/images/via-ferrata.webp" alt="High Altitude Via Ferrata" loading="lazy">
+              <span class="exp-floating-tag">Iron Path</span>
+            </div>
+            <div class="exp-content">
+              <div class="exp-meta-row">
+                <span><i class="fa-solid fa-gauge-high"></i> Extreme Height</span>
+                <span><i class="fa-solid fa-clock"></i> 1–2 Days</span>
+              </div>
+              <h3 class="exp-title">High Altitude Via Ferrata Trail</h3>
+              <p class="exp-desc">Traverse sheer vertical rock cliffs clipped into steel cables, iron rungs, and suspension bridges above 3,000m voids.</p>
+              <div class="exp-footer">
+                <button class="btn btn-outline btn-sm" onclick="openExperienceModal('Via Ferrata Trail', 'Extreme', '2 Days', 'Extreme', 'European standard via ferrata with energy absorption lanyards and mountain guide leads.', 'assets/images/via-ferrata.webp')">Details</button>
+                <a href="Services.html?activity=Trekking" class="btn btn-primary btn-sm">Explore Packages</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    </div>
+
+    <!-- ====================================================================
+         PART 3: 4 PILLARS OF OUTDOOR SERVICES & LOGISTICS
+         ==================================================================== -->
+    <section id="services-custom" class="section" style="scroll-margin-top: 130px; background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--border-glass);">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge badge-primary"><i class="fa-solid fa-shield-halved"></i> Uncompromised Standards</span>
+          <h2>Certified Leadership & Expedition Logistics</h2>
+          <p>Every STACKLY service includes world-class safety protocols, expedition-grade gear, and certified mountaineering leadership.</p>
+        </div>
+
+        <div class="services-pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <h3 class="pillar-title">Certified Mountain Leaders</h3>
+            <p class="pillar-desc">IMF & UIAGM certified sherpas, Wilderness First Responders (WFR), and bilingual alpine navigators.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <i class="fa-solid fa-tent"></i>
+            </div>
+            <h3 class="pillar-title">Expedition Grade Gear</h3>
+            <p class="pillar-desc">Four-season geodesic tents, sub-zero sleeping bags, Petzl harnesses, and UIAA certified climbing hardware.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <i class="fa-solid fa-satellite-dish"></i>
+            </div>
+            <h3 class="pillar-title">Satellite SOS & Evac</h3>
+            <p class="pillar-desc">Garmin inReach two-way satellite comms, pulse oximetry monitoring, emergency oxygen, and helicopter evacuation cover.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon-box">
+              <i class="fa-solid fa-leaf"></i>
+            </div>
+            <h3 class="pillar-title">Eco & Leave No Trace</h3>
+            <p class="pillar-desc">Zero single-use plastics, strict biodegradable waste disposal, carbon-offset logistics, and direct community support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PART 4: CUSTOM ADVENTURE & GROUP EXPEDITION CTA
+         ==================================================================== -->
+    <section id="custom-adventure-cta" class="section" style="scroll-margin-top: 130px; border-top: 1px solid var(--border-glass);">
+      <div class="container">
+        <div style="background: linear-gradient(135deg, rgba(7, 14, 23, 0.95), rgba(14, 30, 52, 0.85)), url('assets/images/mountain-camping.webp') center/cover; border: 1px solid var(--border-primary); border-radius: var(--radius-lg); padding: clamp(2.5rem, 5vw, 4.5rem); text-align: center; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6);">
+          <div style="position: relative; z-index: 2; max-width: 720px; margin: 0 auto;">
+            <span class="section-badge badge-primary" style="margin-bottom: 1.25rem;"><i class="fa-solid fa-sliders"></i> Tailored To You</span>
+            <h2 style="font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem; color: #fff;">
+              Need a Bespoke Adventure or Private Group Tour?
+            </h2>
+            <p style="color: rgba(255, 255, 255, 0.85); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem;">
+              Whether you are planning a corporate alpine summit, college wilderness camp, or private family safari, our certified logistics team will craft an exclusive custom itinerary.
+            </p>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+              <a href="Contact.html" class="btn btn-primary" style="padding: 0.9rem 2rem; font-size: 1rem;">
+                <i class="fa-solid fa-paper-plane"></i> Plan Custom Adventure
+              </a>
+              <a href="Contact.html" class="btn btn-outline" style="padding: 0.9rem 2rem; font-size: 1rem; border-color: var(--accent); color: var(--accent);">
+                <i class="fa-solid fa-headset"></i> Speak to an Outdoor Specialist
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/images/Brand-logo.webp" alt="STACKLY">
+          </a>
+          <p class="footer-desc">
+            Discover extraordinary destinations, experience thrilling adventures, and create unforgettable memories with STACKLY. Your next adventure begins here.
+          </p>
+          <div class="footer-socials">
+            <a href="404.html" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="404.html" class="social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="404.html" class="social-link" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="404.html" class="social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="404.html" class="social-link" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="index.html"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> About</a></li>
+            <li class="footer-link-item"><a href="Destinations.html"><i class="fa-solid fa-angle-right"></i> Destinations</a></li>
+            <li class="footer-link-item"><a href="Services.html"><i class="fa-solid fa-angle-right"></i> Services</a></li>
+            <li class="footer-link-item"><a href="Blog.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Popular Adventures</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="Services.html?activity=Trekking"><i class="fa-solid fa-angle-right"></i> Mountain Trekking</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Rafting"><i class="fa-solid fa-angle-right"></i> River Rafting</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Paragliding"><i class="fa-solid fa-angle-right"></i> Paragliding</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Camping"><i class="fa-solid fa-angle-right"></i> Camping</a></li>
+            <li class="footer-link-item"><a href="Services.html?activity=Wildlife"><i class="fa-solid fa-angle-right"></i> Wildlife Safari</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-title">Travel Support</h4>
+          <ul class="footer-links">
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Travel Guide</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Booking Information</a></li>
+            <li class="footer-link-item"><a href="About.html"><i class="fa-solid fa-angle-right"></i> Safety Guidelines</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Cancellation Policy</a></li>
+            <li class="footer-link-item"><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">Copyright &copy; 2026 STACKLY. All Rights Reserved.</div>
+        <div class="footer-legal-links">
+          <a href="404.html">Privacy Policy</a>
+          <a href="404.html">Terms &amp; Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/wishlist.js"></script>
+  <script src="js/packages.js"></script>
+  <script src="js/experiences.js"></script>
+  <script src="js/services.js"></script>
+</body>
+</html>
